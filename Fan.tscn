@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Wind.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/fan2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/fan_bands.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/fan1.png" type="Texture" id=5]
+[ext_resource path="res://Fan.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 72.7857, 35.7143 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform float x_intensity = 3.0;
+uniform float y_intensity = 0.5;
+uniform float offset = 0.0;
+uniform float speed : hint_range(0, 20) = 2.0;
+uniform float wave_frequency : hint_range(0, 100) = 20;
+uniform float wave_length : hint_range(50, 800) = 200.0;
+
+void fragment() {
+	vec2 real_uv = vec2(UV.x, UV.y);
+	
+	vec2 vecToBottom = vec2(1, 1) - UV.y; 
+	float distToBottom = length(vecToBottom);
+	
+	float final_speed = TIME * (speed / 4.0) + offset;
+	
+	float time_var = (cos(final_speed) * cos(final_speed * 4.0) * cos(final_speed * 2.0))/(200.0);
+	float time_var2 = (cos(final_speed) * cos(final_speed * 6.0) * cos(final_speed * 2.0))/(200.0);
+	
+	float wave_from_x = (cos(real_uv.x * 100.0)/1000.0);
+	float wave_large_from_x = cos(TIME + (real_uv.x * wave_frequency))/wave_length;
+	
+	float wave_from_y = (cos(real_uv.y * 99000.0)/90000.0);
+	
+	float new_x = real_uv.x + time_var * (distToBottom * x_intensity) + wave_from_x + (wave_large_from_x);
+	float new_y = real_uv.y + time_var2 * (distToBottom * y_intensity);
+	
+	vec2 new_uv1 = vec2(new_x, new_y);
+	vec4 new_texture = texture(TEXTURE, new_uv1);
+	
+	if(new_texture.rgb != vec3(1,1,0)){
+		COLOR.rgba = new_texture.rgba;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/x_intensity = 5.0
+shader_param/y_intensity = 0.5
+shader_param/offset = 0.0
+shader_param/speed = 20.0
+shader_param/wave_frequency = 20.0
+shader_param/wave_length = 437.624
+
+[sub_resource type="Curve" id=2]
+resource_local_to_scene = true
+min_value = 60.0
+max_value = 100.0
+_data = [ Vector2( 0, 100 ), 0.0, -7.6883, 0, 0, Vector2( 1, 60 ), -140.395, 0.0, 0, 0 ]
+
+[node name="Fan" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0.5, 1 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+frame = 1
+speed_scale = 45.0
+playing = true
+
+[node name="Sprite" type="Sprite" parent="AnimatedSprite"]
+material = SubResource( 5 )
+position = Vector2( 0, -36 )
+texture = ExtResource( 4 )
+
+[node name="Wind" parent="." instance=ExtResource( 1 )]
+gravity = 20.0
+_range = 300
+knockback_over_distance = SubResource( 2 )

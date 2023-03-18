@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CollectedKeysDisplay.gd" type="Script" id=1]
+
+[node name="CollectedKeysDisplay" type="ReferenceRect"]
+margin_left = 4.0
+margin_right = 343.0
+margin_bottom = 60.0
+border_color = Color( 0.784314, 0.788235, 0.0941176, 1 )
+border_width = 5.0
+script = ExtResource( 1 )
+appear_speed = 1.0
+
+[node name="AppearDelay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="AppearDelay" to="." method="_on_AppearDelay_timeout"]

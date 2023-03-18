@@ -1,0 +1,499 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Sprites/Enemies/Bird.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Combat/BulletPattern.tscn" type="PackedScene" id=2]
+[ext_resource path="res://FlyingEnemy.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Combat/BulletPattern.gd" type="Script" id=4]
+[ext_resource path="res://Projectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HealthBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Combat/AutoShooter.tscn" type="PackedScene" id=7]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 3, 12, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 29, 12, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 55, 12, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 81, 12, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 3, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 29, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 55, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 81, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 107, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 133, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 159, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 185, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 211, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 237, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 1 )
+region = Rect2( 263, 51, 26, 27 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 289, 51, 26, 27 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "Fly",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "Shoot",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "WindDown",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 60.0083
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 64.6297
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HurtBox:collision_layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HurtBox:collision_mask")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimatedSprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "Fly" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Shoot"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Fly" ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "die"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1800.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_process"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HurtBox:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HurtBox:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("AutoShooter")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:collision_layer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:collision_mask")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "take_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="ShootingEnemyTemplate2" type="KinematicBody2D" groups=["Animated", "Destructible", "Processing"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 3 )
+move_speed = 150
+touch_damage = 3
+current_health = 20
+max_health = 20
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 6.19, 5.68 )
+frames = SubResource( 1 )
+animation = "Fly"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 3 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+margin_left = -89.0
+margin_top = -118.0
+margin_right = 307.0
+margin_bottom = -65.0
+rect_scale = Vector2( 0.442011, 0.849361 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/Shoot = SubResource( 23 )
+anims/die = SubResource( 6 )
+anims/take_damage = SubResource( 4 )
+
+[node name="AutoShooter" parent="." instance=ExtResource( 7 )]
+position = Vector2( -4, 0 )
+minimum_shot_delay = 0.2
+reload_time = 3.0
+
+[node name="BulletPattern4" type="Node2D" parent="AutoShooter"]
+script = ExtResource( 4 )
+
+[node name="Projectile4" parent="AutoShooter/BulletPattern4" instance=ExtResource( 5 )]
+position = Vector2( 1, -144 )
+rotation = -1.5708
+damage = 2
+size = 2.0
+
+[node name="BulletPattern5" type="Node2D" parent="AutoShooter"]
+script = ExtResource( 4 )
+
+[node name="Projectile4" parent="AutoShooter/BulletPattern5" instance=ExtResource( 5 )]
+position = Vector2( 88, -93 )
+rotation = -0.785395
+damage = 2
+size = 2.0
+
+[node name="BulletPattern6" type="Node2D" parent="AutoShooter"]
+script = ExtResource( 4 )
+
+[node name="Projectile" parent="AutoShooter/BulletPattern6" instance=ExtResource( 5 )]
+position = Vector2( 104, 0 )
+damage = 2
+size = 2.0
+
+[node name="BulletPattern7" type="Node2D" parent="AutoShooter"]
+script = ExtResource( 4 )
+
+[node name="Projectile" parent="AutoShooter/BulletPattern7" instance=ExtResource( 5 )]
+position = Vector2( 72, 63 )
+rotation = 0.785398
+damage = 2
+size = 2.0
+
+[node name="BulletPattern8" type="Node2D" parent="AutoShooter"]
+script = ExtResource( 4 )
+
+[node name="Projectile2" parent="AutoShooter/BulletPattern8" instance=ExtResource( 5 )]
+position = Vector2( 0, 112 )
+rotation = 1.5708
+damage = 2
+size = 2.0
+
+[node name="BulletPattern9" type="Node2D" parent="AutoShooter"]
+script = ExtResource( 4 )
+
+[node name="Projectile2" parent="AutoShooter/BulletPattern9" instance=ExtResource( 5 )]
+position = Vector2( -82, 75 )
+rotation = 2.18166
+damage = 2
+size = 2.0
+
+[node name="BulletPattern" parent="AutoShooter" instance=ExtResource( 2 )]
+
+[node name="Projectile3" parent="AutoShooter/BulletPattern" instance=ExtResource( 5 )]
+position = Vector2( -123, 1 )
+rotation = 3.14159
+damage = 2
+size = 2.0
+
+[node name="BulletPattern2" parent="AutoShooter" instance=ExtResource( 2 )]
+chance = 0
+
+[node name="Projectile3" parent="AutoShooter/BulletPattern2" instance=ExtResource( 5 )]
+position = Vector2( -93, -78 )
+rotation = 3.75246
+damage = 2
+max_range = 2000
+size = 2.0
+
+[node name="BulletPattern10" type="Node2D" parent="AutoShooter"]
+script = ExtResource( 4 )
+additional_auto_shooter_cooldown = 1.0
+
+[node name="Projectile4" parent="AutoShooter/BulletPattern10" instance=ExtResource( 5 )]
+position = Vector2( 1, -144 )
+rotation = -1.5708
+damage = 2
+size = 2.0
+
+[node name="BulletPattern3" parent="AutoShooter" instance=ExtResource( 2 )]
+additional_auto_shooter_cooldown = 2.0
+
+[node name="Projectile" parent="AutoShooter/BulletPattern3" instance=ExtResource( 5 )]
+position = Vector2( 0, -18 )
+size = 2.0
+ignore_relative_position = false
+
+[node name="Projectile2" parent="AutoShooter/BulletPattern3" instance=ExtResource( 5 )]
+size = 2.0
+ignore_relative_position = false
+
+[node name="Projectile3" parent="AutoShooter/BulletPattern3" instance=ExtResource( 5 )]
+position = Vector2( 0, 18 )
+size = 2.0
+ignore_relative_position = false
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
+[connection signal="body_exited" from="HurtBox" to="." method="_on_HurtBox_body_exited"]

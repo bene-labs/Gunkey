@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Movement.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=9]
+min_value = 30.0
+max_value = 80.0
+_data = [ Vector2( 0, 31.8182 ), 0.0, 111.778, 0, 0, Vector2( 0.995696, 80 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=10]
+min_value = 2.0
+max_value = 10.0
+_data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 0.236581, 4.19091 ), 16.2704, 16.2704, 0, 0, Vector2( 1, 10 ), -8.41576e-06, 0.0, 0, 0 ]
+
+[node name="Movement" type="Node2D"]
+script = ExtResource( 1 )
+acceleration_curve = SubResource( 9 )
+air_resitance_curve = SubResource( 10 )
+gravity_force = 25.0
+jump_force = 800
+
+[node name="AccelerationTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="MantainAccelerationGracePeriodTimer" type="Timer" parent="."]
+wait_time = 0.34
+one_shot = true
+
+[connection signal="timeout" from="MantainAccelerationGracePeriodTimer" to="." method="_on_MantainAccelerationGracePeriodTimer_timeout"]

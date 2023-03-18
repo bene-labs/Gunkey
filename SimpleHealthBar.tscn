@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SimpleHealthBar.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/UI/ScreenUI/SimpleHealthBar.png" type="Texture" id=3]
+
+[node name="HealthBar" type="TextureProgress"]
+margin_right = 156.0
+margin_bottom = 26.0
+rect_scale = Vector2( 0.5, 0.35 )
+texture_progress = ExtResource( 3 )
+script = ExtResource( 2 )
+colors = [ Color( 0.372549, 0.407843, 0.137255, 1 ), Color( 0.372549, 0.407843, 0.137255, 1 ), Color( 0.8, 0.592157, 0.101961, 1 ), Color( 0.290196, 0.109804, 0.101961, 1 ) ]
+
+[connection signal="value_changed" from="." to="." method="_on_HealthBar_value_changed"]

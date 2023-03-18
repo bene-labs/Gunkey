@@ -1,0 +1,102 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Scripts/Gun.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/WeaponArm_UZI.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_05.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_06.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_00.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_04.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_02.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_01.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_07.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_09.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_21.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_14.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_20.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_22.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_16.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_12.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_11.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_10.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_23.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_19.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_13.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_17.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_08.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_18.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_15.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdlePistoleArm/Armatureasehher_Idle_03.png" type="Texture" id=26]
+[ext_resource path="res://ProjectileUZI.tscn" type="PackedScene" id=27]
+[ext_resource path="res://SFX/Weapons/Utzi2_One_Shot.wav" type="AudioStream" id=28]
+[ext_resource path="res://PitchRandomizer.gd" type="Script" id=29]
+[ext_resource path="res://SFX/Player/Reload_Alternative2.wav" type="AudioStream" id=30]
+[ext_resource path="res://Knockback.tscn" type="PackedScene" id=48]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 26 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 23 ), ExtResource( 10 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 12 ), ExtResource( 25 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 24.0
+} ]
+
+[sub_resource type="Curve" id=4]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 1 ), 0.0, -0.135407, 0, 0, Vector2( 1, 0 ), -1.49523, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 1 ), 0.0, -2.16777, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Uzi" type="AnimatedSprite" groups=["Processing", "Timed"]]
+position = Vector2( 19, -3 )
+frames = SubResource( 1 )
+animation = "Walk"
+script = ExtResource( 1 )
+role = 2
+projectile_scene = ExtResource( 27 )
+bullet_speed = 1500
+max_range = 800
+bullet_spread_degrees = 0.0
+min_offset = -5
+max_offset = 5
+shot_delay = 0.1
+max_ammo = 100
+reload_time = 1.76
+screen_shake_strength = 5
+screen_shake_duration = 0.1
+
+[node name="Knockback" parent="." instance=ExtResource( 48 )]
+knockback_force = 26.0
+horizontal_multiplier = 2.0
+vertical_multiplier = 1.3
+movement_counter_force = 2.0
+gravity_counter_force = 0.8
+ground_multiplier = 2.5
+steady_ground_multiplier = 0.8
+air_multiplier = 1.2
+horizontal_knockback_multiplier_by_XVelocity = SubResource( 4 )
+vertical_knockback_multiplier_by_YVelocity = SubResource( 3 )
+
+[node name="SpawnPosition" type="Position2D" parent="."]
+position = Vector2( 99, -36 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 82, -34 )
+stream = ExtResource( 28 )
+volume_db = -5.0
+bus = "SFX"
+script = ExtResource( 29 )
+min_pitch = 0.89
+max_pitch = 1.1
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 10, -37 )
+stream = ExtResource( 30 )
+
+[connection signal="shot_fired" from="." to="Knockback" method="apply_knockback"]

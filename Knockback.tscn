@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Knockback.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=2]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 1 ), 0.0, -2.94286, 0, 0, Vector2( 1, 0 ), 0.158627, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 1 ), 0.0, -2.16777, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Knockback" type="Node2D"]
+script = ExtResource( 1 )
+horizontal_knockback_multiplier_by_XVelocity = SubResource( 2 )
+vertical_knockback_multiplier_by_YVelocity = SubResource( 3 )

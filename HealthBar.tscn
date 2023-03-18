@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/UI/hp_bar_fill.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/UI/hp_bar_border.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/HealthBar.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/UI/hp_bar_fill_mid.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/hp_bar_fill_low.png" type="Texture" id=5]
+
+[node name="HealthBar" type="TextureProgress"]
+margin_right = 396.0
+margin_bottom = 53.0
+rect_scale = Vector2( 1.80201, 1.88 )
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+script = ExtResource( 3 )
+textures = [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ) ]
+
+[connection signal="value_changed" from="." to="." method="_on_HealthBar_value_changed"]

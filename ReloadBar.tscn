@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/UI/UZI_border.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/HealthBar.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/UI/UZI_fill.png" type="Texture" id=5]
+
+[node name="ReloadBar" type="TextureProgress"]
+rect_rotation = -90.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 5 )
+script = ExtResource( 3 )
+textures = [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ]
+
+[connection signal="value_changed" from="." to="." method="_on_HealthBar_value_changed"]

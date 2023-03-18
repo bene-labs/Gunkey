@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Combat/Explosive.gd" type="Script" id=1]
+[ext_resource path="res://Knockback.tscn" type="PackedScene" id=3]
+[ext_resource path="res://VFX/vfx_Explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SFX/Weapons/Explosion.mp3" type="AudioStream" id=5]
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0.00343643, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.377922, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=19]
+max_value = 1000.0
+_data = [ Vector2( 0, 1000 ), 0.0, -1000.0, 0, 1, Vector2( 1, 0 ), -1000.0, 0.0, 1, 0 ]
+
+[sub_resource type="Curve" id=20]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 1 ), 0.0, -2.94286, 0, 0, Vector2( 1, 0 ), 0.158627, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=21]
+resource_local_to_scene = true
+_data = [ Vector2( 0, 1 ), 0.0, -2.16777, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Explosive" type="Node2D"]
+script = ExtResource( 1 )
+damage_over_distance = SubResource( 18 )
+knockback_over_distance = SubResource( 19 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="Explosion" parent="." instance=ExtResource( 4 )]
+
+[node name="Knockback" parent="." instance=ExtResource( 3 )]
+knockback_force = 750.0
+horizontal_knockback_multiplier_by_XVelocity = SubResource( 20 )
+vertical_knockback_multiplier_by_YVelocity = SubResource( 21 )
+is_reverse = false
+
+[node name="ParticleTimer" type="Timer" parent="."]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+visible = false
+margin_left = -150.0
+margin_top = -150.0
+margin_right = 150.0
+margin_bottom = 150.0
+border_width = 3.0
+editor_only = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+bus = "SFX"
+
+[connection signal="timeout" from="ParticleTimer" to="." method="_on_ParticleTimer_timeout"]

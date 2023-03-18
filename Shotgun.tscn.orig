@@ -1,0 +1,83 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_23.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Gun.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_10.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_04.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_06.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_07.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_01.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_02.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_08.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_09.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_13.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_16.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_00.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_17.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_18.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_21.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_15.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_19.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_22.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_03.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_05.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_12.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_14.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_20.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/Armatureasehher_Idle_11.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_02.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_03.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_09.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_10.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_11.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_12.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_01.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_00.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_04.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_05.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_06.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_07.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_08.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_18.png" type="Texture" id=39]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_17.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_13.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_14.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_15.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_16.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_19.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_20.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/Placeholders/Characters/Gunkey_Arm/RunCycleShotgunArm/Armatureasehher_RunCycle_21.png" type="Texture" id=47]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 20 ), ExtResource( 4 ), ExtResource( 21 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 11 ), ExtResource( 23 ), ExtResource( 17 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 32 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 24.0
+} ]
+
+[node name="Shotgun" type="Node2D"]
+script = ExtResource( 2 )
+bullets_per_shot = 12
+max_range = 420
+bullet_spread_degrees = 60.0
+min_offset = 0
+max_offset = 0
+shot_delay = 0.5
+max_ammo = 36
+reload_time = 1.0
+
+[node name="Sprite" type="AnimatedSprite" parent="." groups=["Processing", "Timed"]]
+position = Vector2( 2, 0 )
+scale = Vector2( 0.991, 0.833 )
+frames = SubResource( 1 )
+animation = "Walk"
+offset = Vector2( 161, 36 )
+
+[node name="SpawnPosition" type="Position2D" parent="Sprite"]
+position = Vector2( 316.852, -63.6254 )

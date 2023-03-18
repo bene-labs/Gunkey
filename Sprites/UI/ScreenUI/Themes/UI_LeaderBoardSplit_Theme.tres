@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=24]
+size = 30
+extra_spacing_top = 12
+font_data = ExtResource( 1 )
+
+[resource]
+ItemList/fonts/font = SubResource( 24 )

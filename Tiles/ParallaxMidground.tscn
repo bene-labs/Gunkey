@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Parallax/bushpx.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Parallax/masts.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Parallax/px_pit.png" type="Texture" id=3]
+
+[node name="ParallaxMidground" type="ParallaxBackground"]
+
+[node name="masts" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 2882, 0 )
+
+[node name="Sprite" type="Sprite" parent="masts"]
+position = Vector2( 768, 173 )
+texture = ExtResource( 2 )
+
+[node name="pit" type="ParallaxLayer" parent="."]
+position = Vector2( 0, -580 )
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 2500, 0 )
+
+[node name="Sprite" type="Sprite" parent="pit"]
+position = Vector2( -42.8113, -38.0546 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="bushes" type="ParallaxLayer" parent="."]
+position = Vector2( -291, 0 )
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 2460, 0 )
+
+[node name="Sprite" type="Sprite" parent="bushes"]
+position = Vector2( -27, 213 )
+texture = ExtResource( 1 )
+centered = false

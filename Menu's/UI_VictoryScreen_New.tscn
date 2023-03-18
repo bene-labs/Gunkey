@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menu's/CollectedKeysDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_retry.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 140
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 160
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.654902, 0.654902, 0.654902, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.301961, 0.301961, 0.301961, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="VictoryScreen" type="CanvasLayer"]
+
+[node name="Title" type="MarginContainer" parent="."]
+margin_left = 312.0
+margin_top = 100.0
+margin_bottom = 193.0
+
+[node name="TitleUnderlay" type="Label" parent="Title"]
+margin_top = 12.0
+margin_right = 659.0
+margin_bottom = 181.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "You won!"
+align = 1
+
+[node name="Title" type="Label" parent="Title"]
+margin_right = 659.0
+margin_bottom = 193.0
+custom_fonts/font = SubResource( 2 )
+text = "You won!"
+align = 1
+
+[node name="Timers" type="Node2D" parent="."]
+position = Vector2( 336, 320 )
+
+[node name="TimeLabel" type="Label" parent="Timers"]
+margin_right = 420.0
+margin_bottom = 49.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "insert time here"
+
+[node name="BestTimeLabel" type="Label" parent="Timers"]
+margin_top = 96.0
+margin_right = 420.0
+margin_bottom = 145.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "insert BestTime here"
+
+[node name="PersonalBestLabel" type="Label" parent="Timers/BestTimeLabel"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 264.0
+margin_bottom = 79.0
+custom_colors/font_color = Color( 0.886275, 0.752941, 0.152941, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "- Personal Best -"
+
+[node name="CollectedKeysDisplay" parent="." instance=ExtResource( 2 )]
+margin_left = 336.0
+margin_top = 528.0
+margin_right = 675.0
+margin_bottom = 588.0
+
+[node name="MedalDisplay" type="ReferenceRect" parent="."]
+margin_left = 776.0
+margin_top = 320.0
+margin_right = 816.0
+margin_bottom = 360.0
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2( 1024, 600 )
+
+[node name="MainMenuButton" type="Button" parent="Buttons"]
+margin_right = 240.0
+margin_bottom = 96.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_pressed = Color( 0.486275, 0.392157, 0.309804, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "Main Menu"
+
+[node name="NextLevlButton" type="Button" parent="Buttons"]
+margin_top = -105.0
+margin_right = 240.0
+margin_bottom = -9.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_pressed = Color( 0.486275, 0.392157, 0.309804, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "Next Level"
+
+[node name="RetryButton" type="Button" parent="Buttons"]
+margin_left = -248.0
+margin_right = -8.0
+margin_bottom = 96.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_pressed = Color( 0.486275, 0.392157, 0.309804, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "Retry"
+icon = ExtResource( 3 )

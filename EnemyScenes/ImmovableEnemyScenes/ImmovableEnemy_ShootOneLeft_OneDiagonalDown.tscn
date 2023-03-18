@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Combat/BulletPattern.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EnemyScenes/ImmovableEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnemyScenes/VisualAutoShooter.tscn" type="PackedScene" id=4]
+
+[node name="ImmovableEnemy_ShootOneLeft_OneDiagonalUp" instance=ExtResource( 3 )]
+look_at_target = false
+path = "res://EnemyScenes/ImmovableEnemyScenes/ImmovableEnemy_ShootOneLeft_OneDiagonalDown.tscn"
+
+[node name="VisualAutoShooter" parent="." index="5" instance=ExtResource( 4 )]
+
+[node name="BulletPattern" parent="VisualAutoShooter" index="2" instance=ExtResource( 2 )]
+
+[node name="Projectile" parent="VisualAutoShooter/BulletPattern" index="0" instance=ExtResource( 1 )]
+position = Vector2( -27, 0 )
+rotation = 3.14159
+move_speed = 600
+damage = 4
+
+[node name="Projectile2" parent="VisualAutoShooter/BulletPattern" index="1" instance=ExtResource( 1 )]
+position = Vector2( -27, 21 )
+rotation = 2.26893
+move_speed = 600
+damage = 4

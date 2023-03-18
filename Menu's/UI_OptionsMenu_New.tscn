@@ -1,0 +1,810 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menu's/OptionsMenu.gd" type="Script" id=2]
+[ext_resource path="res://Menu's/ResolutionDropDown.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEinhalb-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Menu's/TransparentOverlay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/UI/ScreenUI/MenuUnderlayOptions.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_GeneralButtons_Theme.tres" type="Theme" id=7]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/option1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/option3.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/option2.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/keybind_underlay.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/ScreenUI/legonkl.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_return.png" type="Texture" id=25]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_top = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_top = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_top = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 30
+extra_spacing_top = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+extra_spacing_bottom = -12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 4 )
+
+[node name="OptionsMenu" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 6 )
+
+[node name="TransparentOverlay" parent="." instance=ExtResource( 5 )]
+visible = false
+focus_mode = 2
+
+[node name="Title" type="Label" parent="."]
+margin_left = 424.0
+margin_top = 50.0
+margin_right = 856.0
+margin_bottom = 195.0
+focus_neighbour_left = NodePath("../Categories/CategoryLabels/VideoButton")
+focus_neighbour_top = NodePath("../Categories/CategoryLabels/VideoButton")
+focus_neighbour_right = NodePath("../Categories/CategoryLabels/VideoButton")
+focus_neighbour_bottom = NodePath("../Categories/CategoryLabels/VideoButton")
+focus_mode = 2
+custom_colors/font_color = Color( 0.0980392, 0.0431373, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Options"
+align = 1
+
+[node name="OptionsUnderlay" type="ColorRect" parent="."]
+visible = false
+margin_left = 384.0
+margin_top = 195.0
+margin_right = 1024.0
+margin_bottom = 608.0
+color = Color( 0.333333, 0.270588, 0.211765, 1 )
+
+[node name="Categories" type="MarginContainer" parent="."]
+margin_left = 128.0
+margin_top = 204.0
+margin_right = 328.0
+margin_bottom = 612.0
+
+[node name="CategoryLabels" type="VBoxContainer" parent="Categories"]
+margin_right = 200.0
+margin_bottom = 408.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="VideoButton" type="Button" parent="Categories/CategoryLabels"]
+margin_right = 200.0
+margin_bottom = 119.0
+focus_neighbour_left = NodePath("../../../VideoOptions/VideoOptionsButtons/FullscreenCheckBox")
+focus_neighbour_top = NodePath("../../../ReturnButton")
+focus_neighbour_right = NodePath("../../../VideoOptions/VideoOptionsButtons/FullscreenCheckBox")
+focus_neighbour_bottom = NodePath("../AudioButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+text = "Video"
+align = 2
+
+[node name="AudioButton" type="Button" parent="Categories/CategoryLabels"]
+margin_top = 144.0
+margin_right = 200.0
+margin_bottom = 263.0
+focus_neighbour_left = NodePath("../../../AudioOptions/AudioOptionsButtons/MasterCheckBox")
+focus_neighbour_top = NodePath("../VideoButton")
+focus_neighbour_right = NodePath("../../../AudioOptions/AudioOptionsButtons/MasterCheckBox")
+focus_neighbour_bottom = NodePath("../ControlsButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 14 )
+text = "Audio"
+align = 2
+
+[node name="ControlsButton" type="Button" parent="Categories/CategoryLabels"]
+margin_top = 288.0
+margin_right = 200.0
+margin_bottom = 408.0
+focus_neighbour_left = NodePath("../../../ReturnButton")
+focus_neighbour_top = NodePath("../AudioButton")
+focus_neighbour_right = NodePath("../../../ReturnButton")
+focus_neighbour_bottom = NodePath("../../../ReturnButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 14 )
+text = "Controls"
+align = 2
+
+[node name="ReturnButton" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 608.0
+margin_right = 1264.0
+margin_bottom = 704.0
+focus_neighbour_left = NodePath("../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_top = NodePath("../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_right = NodePath("../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_bottom = NodePath("../Categories/CategoryLabels/VideoButton")
+theme = ExtResource( 7 )
+icon = ExtResource( 25 )
+align = 0
+
+[node name="ReturnButtonLabel" type="Label" parent="ReturnButton"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_top = NodePath("../../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_right = NodePath("../../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_bottom = NodePath("../../Categories/CategoryLabels/VideoButton")
+focus_mode = 2
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "Return"
+valign = 1
+
+[node name="VideoOptions" type="Node2D" parent="."]
+position = Vector2( 408, 216 )
+
+[node name="Option1" type="Sprite" parent="VideoOptions"]
+position = Vector2( 280, 188 )
+texture = ExtResource( 8 )
+
+[node name="VideoOptionsNames" type="VBoxContainer" parent="VideoOptions"]
+margin_left = 25.0
+margin_top = 17.0
+margin_right = 323.0
+margin_bottom = 154.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FullscreenLabel" type="Label" parent="VideoOptions/VideoOptionsNames"]
+margin_right = 298.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Fullscreen"
+
+[node name="ResolutionLabel" type="Label" parent="VideoOptions/VideoOptionsNames"]
+margin_top = 47.0
+margin_right = 298.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Resolution"
+
+[node name="ScreenShakeLabel" type="Label" parent="VideoOptions/VideoOptionsNames"]
+margin_top = 94.0
+margin_right = 298.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Screen Shake"
+
+[node name="VideoOptionsButtons" type="Node2D" parent="VideoOptions"]
+position = Vector2( 323, 17 )
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="VideoOptions/VideoOptionsButtons"]
+margin_top = -9.0
+margin_right = 43.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 43, 43 )
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/VideoButton")
+focus_neighbour_top = NodePath("../ScreenShakeCheckBox")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/VideoButton")
+focus_neighbour_bottom = NodePath("../ResolutionDropDown")
+theme = ExtResource( 7 )
+
+[node name="ResolutionDropDown" type="MenuButton" parent="VideoOptions/VideoOptionsButtons"]
+margin_top = 38.0
+margin_right = 220.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 220, 43 )
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/VideoButton")
+focus_neighbour_top = NodePath("../FullscreenCheckBox")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/VideoButton")
+focus_neighbour_bottom = NodePath("../ScreenShakeCheckBox")
+focus_mode = 2
+size_flags_vertical = 3
+theme = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "   1920x1080"
+flat = false
+items = [ "1920x1080", null, 0, false, false, 0, 0, null, "", false ]
+script = ExtResource( 3 )
+
+[node name="ScreenShakeCheckBox" type="CheckBox" parent="VideoOptions/VideoOptionsButtons"]
+margin_top = 85.0
+margin_right = 43.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 43, 43 )
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/VideoButton")
+focus_neighbour_top = NodePath("../ResolutionDropDown")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/VideoButton")
+focus_neighbour_bottom = NodePath("../FullscreenCheckBox")
+theme = ExtResource( 7 )
+
+[node name="TextureButton" type="Button" parent="VideoOptions/VideoOptionsButtons"]
+margin_left = -308.0
+margin_top = 288.0
+margin_right = -79.0
+margin_bottom = 356.0
+theme = ExtResource( 7 )
+text = "Delete Save"
+
+[node name="AudioOptions" type="Node2D" parent="."]
+visible = false
+position = Vector2( 408, 216 )
+
+[node name="Option2" type="Sprite" parent="AudioOptions"]
+position = Vector2( 280, 188 )
+texture = ExtResource( 10 )
+
+[node name="AudioOptionsNames" type="VBoxContainer" parent="AudioOptions"]
+margin_left = 25.0
+margin_top = 17.0
+margin_right = 323.0
+margin_bottom = 154.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MasterLabel" type="Label" parent="AudioOptions/AudioOptionsNames"]
+margin_right = 298.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Master"
+
+[node name="SFXLabel" type="Label" parent="AudioOptions/AudioOptionsNames"]
+margin_top = 47.0
+margin_right = 298.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "SFX"
+
+[node name="MusicLabel" type="Label" parent="AudioOptions/AudioOptionsNames"]
+margin_top = 94.0
+margin_right = 298.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Music"
+
+[node name="AudioOptionsButtons" type="Node2D" parent="AudioOptions"]
+position = Vector2( 25, 17 )
+
+[node name="MasterCheckBox" type="CheckBox" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 298.0
+margin_top = -9.0
+margin_right = 341.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 43, 43 )
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/AudioButton")
+focus_neighbour_top = NodePath("../MusicCheckBox")
+focus_neighbour_right = NodePath("../MasterSlider")
+focus_neighbour_bottom = NodePath("../SFXCheckBox")
+theme = ExtResource( 7 )
+
+[node name="MasterSlider" type="HSlider" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 344.0
+margin_top = -9.0
+margin_right = 517.0
+margin_bottom = 34.0
+focus_neighbour_left = NodePath("../MasterCheckBox")
+focus_neighbour_top = NodePath("../MusicSlider")
+focus_neighbour_right = NodePath("../MasterCheckBox")
+focus_neighbour_bottom = NodePath("../SFXSlider")
+theme = ExtResource( 7 )
+max_value = 1.0
+step = 0.01
+
+[node name="MasterVolumeLabel" type="Label" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 519.0
+margin_top = 4.0
+margin_right = 559.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "100%"
+align = 1
+valign = 1
+
+[node name="SFXCheckBox" type="CheckBox" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 298.0
+margin_top = 39.0
+margin_right = 341.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 43, 43 )
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/AudioButton")
+focus_neighbour_top = NodePath("../MasterCheckBox")
+focus_neighbour_right = NodePath("../SFXSlider")
+focus_neighbour_bottom = NodePath("../MusicCheckBox")
+theme = ExtResource( 7 )
+
+[node name="SFXSlider" type="HSlider" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 344.0
+margin_top = 38.0
+margin_right = 517.0
+margin_bottom = 81.0
+focus_neighbour_top = NodePath("../MasterSlider")
+focus_neighbour_bottom = NodePath("../MusicSlider")
+theme = ExtResource( 7 )
+max_value = 1.0
+step = 0.01
+
+[node name="SFXVolumeLabel" type="Label" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 519.0
+margin_top = 52.0
+margin_right = 559.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "100%"
+align = 1
+valign = 1
+
+[node name="MusicCheckBox" type="CheckBox" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 298.0
+margin_top = 85.0
+margin_right = 341.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 43, 43 )
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/AudioButton")
+focus_neighbour_top = NodePath("../SFXCheckBox")
+focus_neighbour_right = NodePath("../MusicSlider")
+focus_neighbour_bottom = NodePath("../MasterCheckBox")
+theme = ExtResource( 7 )
+
+[node name="MusicSlider" type="HSlider" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 344.0
+margin_top = 85.0
+margin_right = 517.0
+margin_bottom = 128.0
+theme = ExtResource( 7 )
+max_value = 1.0
+step = 0.01
+
+[node name="MusicVolumeLabel" type="Label" parent="AudioOptions/AudioOptionsButtons"]
+margin_left = 519.0
+margin_top = 99.0
+margin_right = 559.0
+margin_bottom = 119.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "100%"
+align = 1
+valign = 1
+
+[node name="ControlsOptions" type="Node2D" parent="."]
+visible = false
+position = Vector2( 408, 216 )
+
+[node name="Option3" type="Sprite" parent="ControlsOptions"]
+position = Vector2( 280, 188 )
+texture = ExtResource( 9 )
+
+[node name="ControlsOptionsNames" type="VBoxContainer" parent="ControlsOptions"]
+margin_left = 25.0
+margin_top = 17.0
+margin_right = 323.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_right = 298.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Walk Left"
+
+[node name="WalkRightLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_top = 47.0
+margin_right = 298.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Walk Right"
+
+[node name="JumpLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_top = 94.0
+margin_right = 298.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Jump"
+
+[node name="FallDownLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_top = 141.0
+margin_right = 298.0
+margin_bottom = 184.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Fall Down"
+
+[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_top = 188.0
+margin_right = 298.0
+margin_bottom = 231.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Fire Shotgun"
+
+[node name="FireUZILabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_top = 235.0
+margin_right = 298.0
+margin_bottom = 278.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Fire UZI"
+
+[node name="ReloadLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_top = 282.0
+margin_right = 298.0
+margin_bottom = 325.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Reload"
+
+[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
+margin_top = 329.0
+margin_right = 298.0
+margin_bottom = 372.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Pause / Unpause"
+
+[node name="ControlsOptionsKeybinds" type="VBoxContainer" parent="ControlsOptions"]
+margin_left = 323.0
+margin_top = 17.0
+margin_right = 523.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+
+[node name="WalkLeftContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+
+[node name="WalkLeftUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/WalkLeftContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/WalkLeftContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "A"
+align = 1
+
+[node name="WalkRightContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+position = Vector2( 0, 45 )
+
+[node name="WalkRightUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/WalkRightContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="WalkRightLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/WalkRightContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "D"
+align = 1
+
+[node name="JumpContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+position = Vector2( 0, 91 )
+
+[node name="JumpUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/JumpContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="JumpLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/JumpContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Spacebar"
+align = 1
+
+[node name="FallDownContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+position = Vector2( 0, 137 )
+
+[node name="FallDownUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/FallDownContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="FallDownLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/FallDownContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "S"
+align = 1
+
+[node name="FireShotgunContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+position = Vector2( 0, 183 )
+
+[node name="FireShotgunUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/FireShotgunContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/FireShotgunContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "L_Mouse"
+align = 1
+
+[node name="FireUZIContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+position = Vector2( 0, 229 )
+
+[node name="FireUZIUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/FireUZIContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="FireUZILabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/FireUZIContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "R_Mouse"
+align = 1
+
+[node name="ReloadContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+position = Vector2( 0, 275 )
+
+[node name="ReloadUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/ReloadContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="ReloadLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/ReloadContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "R"
+align = 1
+
+[node name="PauseUnpauseContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+position = Vector2( 0, 321 )
+
+[node name="PauseUnpauseUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/PauseUnpauseContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/PauseUnpauseContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Escape / P"
+align = 1
+
+[node name="ControlsOptionsControllerKeybinds" type="VBoxContainer" parent="ControlsOptions"]
+visible = false
+margin_left = 323.0
+margin_top = 17.0
+margin_right = 523.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+
+[node name="WalkLeftContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+
+[node name="WalkLeftUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkLeftContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkLeftContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "L_Joystick"
+align = 1
+
+[node name="WalkRightContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+position = Vector2( 0, 45 )
+
+[node name="WalkRightUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkRightContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="WalkRightLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkRightContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "L_Joystick"
+align = 1
+
+[node name="JumpContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+position = Vector2( 0, 91 )
+
+[node name="JumpUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/JumpContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="JumpLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/JumpContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "L1/R1/A/B"
+align = 1
+
+[node name="FallDownContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+position = Vector2( 0, 137 )
+
+[node name="FallDownUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FallDownContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="FallDownLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FallDownContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "L_Joystick"
+align = 1
+
+[node name="FireShotgunContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+position = Vector2( 0, 183 )
+
+[node name="FireShotgunUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireShotgunContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireShotgunContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "L2"
+align = 1
+
+[node name="FireUZIContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+position = Vector2( 0, 229 )
+
+[node name="FireUZIUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireUZIContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="FireUZILabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireUZIContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "R2"
+align = 1
+
+[node name="ReloadContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+position = Vector2( 0, 275 )
+
+[node name="ReloadUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/ReloadContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="ReloadLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/ReloadContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "X/Y"
+align = 1
+
+[node name="PauseUnpauseContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+position = Vector2( 0, 321 )
+
+[node name="PauseUnpauseUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Start"
+align = 1
+
+[node name="Legonkl" type="Sprite" parent="."]
+position = Vector2( 1022, 278 )
+texture = ExtResource( 12 )
+
+[connection signal="button_up" from="Categories/CategoryLabels/VideoButton" to="." method="_on_VideoButton_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/VideoButton" to="." method="_on_VideoButton_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/AudioButton" to="." method="_on_AudioButton_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/AudioButton" to="." method="_on_AudioButton_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/ControlsButton" to="." method="_on_ControlsButton_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/ControlsButton" to="." method="_on_ControlsButton_focus_entered"]
+[connection signal="button_up" from="ReturnButton" to="." method="_on_ReturnButton_button_up"]
+[connection signal="button_up" from="VideoOptions/VideoOptionsButtons/FullscreenCheckBox" to="." method="_on_Fullscreen_Button_button_up"]
+[connection signal="about_to_show" from="VideoOptions/VideoOptionsButtons/ResolutionDropDown" to="VideoOptions/VideoOptionsButtons/ResolutionDropDown" method="_on_ResolutionDropDown_about_to_show"]
+[connection signal="button_up" from="VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox" to="." method="_on_ScreenShakeButton_button_up"]
+[connection signal="button_up" from="VideoOptions/VideoOptionsButtons/TextureButton" to="." method="_on_TextureButton_button_up"]
+[connection signal="toggled" from="AudioOptions/AudioOptionsButtons/MasterCheckBox" to="." method="_on_MasterCheckBox_toggled"]
+[connection signal="value_changed" from="AudioOptions/AudioOptionsButtons/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="toggled" from="AudioOptions/AudioOptionsButtons/SFXCheckBox" to="." method="_on_SFXCheckBox_toggled"]
+[connection signal="value_changed" from="AudioOptions/AudioOptionsButtons/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="toggled" from="AudioOptions/AudioOptionsButtons/MusicCheckBox" to="." method="_on_MusicCheckBox_toggled"]
+[connection signal="value_changed" from="AudioOptions/AudioOptionsButtons/MusicSlider" to="." method="_on_MusicSlider_value_changed"]

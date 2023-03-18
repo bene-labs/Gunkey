@@ -1,0 +1,519 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_GeneralButtons_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Menu's/UI_LeaderBoard.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/UI/ScreenUI/MenuUnderlay.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/ScreenUI/medal_gold.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/ScreenUI/medal_silver.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/ScreenUI/medal_bronze.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/ScreenUI/medal_special.png" type="Texture" id=7]
+[ext_resource path="res://Menu's/ReturnButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEinhalb-Regular.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://Sprites/UI/ScreenUI/medal_empty.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_LeaderBoardSplit_Theme.tres" type="Theme" id=12]
+[ext_resource path="res://Sprites/UI/ScreenUI/backdrop_leader.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/ScreenUI/progress_fill_leader.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/UI/ScreenUI/progress_leader.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/UI/ScreenUI/nameplate_x.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/UI/ScreenUI/nameplate.png" type="Texture" id=17]
+
+[sub_resource type="DynamicFont" id=1]
+size = 92
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 46
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+content_margin_left = 15.0
+bg_color = Color( 0, 0, 0, 0 )
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+content_margin_left = 15.0
+bg_color = Color( 0, 0, 0, 0 )
+border_width_bottom = 2
+border_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 15.0
+content_margin_top = 4.0
+bg_color = Color( 0, 0, 0, 0 )
+border_width_right = 2
+border_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+content_margin_left = 10.0
+content_margin_top = 4.0
+bg_color = Color( 0, 0, 0, 0 )
+border_width_right = 2
+border_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+content_margin_left = 15.0
+content_margin_top = 4.0
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 36
+extra_spacing_bottom = -8
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 24
+extra_spacing_bottom = -6
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 308, 46 )
+
+[sub_resource type="StyleBoxTexture" id=28]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 308, 46 )
+
+[sub_resource type="StyleBoxTexture" id=29]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 308, 46 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 30
+extra_spacing_top = 6
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 762, 16 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 762, 16 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 762, 16 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 28
+extra_spacing_top = 8
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=31]
+size = 28
+font_data = ExtResource( 9 )
+
+[node name="LeaderBoard" type="CanvasLayer"]
+script = ExtResource( 2 )
+max_rows = 6
+medal_textures = [ ExtResource( 11 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ) ]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+scale = Vector2( 0.667, 0.667 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Title" type="Label" parent="."]
+margin_left = 321.0
+margin_top = 50.0
+margin_bottom = 146.0
+focus_neighbour_left = NodePath("../Categories/CategoryLabels/Level1Button")
+focus_neighbour_top = NodePath("../Categories/CategoryLabels/Level1Button")
+focus_neighbour_right = NodePath("../Categories/CategoryLabels/Level1Button")
+focus_neighbour_bottom = NodePath("../Categories/CategoryLabels/Level1Button")
+focus_mode = 2
+custom_colors/font_color = Color( 0.0980392, 0.0431373, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Leaderboards"
+align = 1
+
+[node name="BackdropLeader" type="Sprite" parent="."]
+position = Vector2( 731, 393.5 )
+scale = Vector2( 1, 1.01804 )
+texture = ExtResource( 13 )
+
+[node name="Categories" type="MarginContainer" parent="."]
+margin_left = 56.0
+margin_top = 209.0
+margin_right = 228.0
+margin_bottom = 584.0
+
+[node name="CategoryLabels" type="VBoxContainer" parent="Categories"]
+margin_right = 172.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="Level1Button" type="Button" parent="Categories/CategoryLabels"]
+margin_right = 172.0
+margin_bottom = 56.0
+focus_neighbour_left = NodePath("../../../HSlider")
+focus_neighbour_top = NodePath("../../../ReturnButton")
+focus_neighbour_right = NodePath("../../../HSlider")
+focus_neighbour_bottom = NodePath("../Level2Button")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 32 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 14 )
+text = "Level 1"
+align = 0
+
+[node name="Level2Button" type="Button" parent="Categories/CategoryLabels"]
+margin_top = 81.0
+margin_right = 172.0
+margin_bottom = 137.0
+focus_neighbour_left = NodePath("../../../HSlider")
+focus_neighbour_top = NodePath("../Level1Button")
+focus_neighbour_right = NodePath("../../../HSlider")
+focus_neighbour_bottom = NodePath("../Level3Button")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 33 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 14 )
+text = "Level 2"
+align = 0
+
+[node name="Level3Button" type="Button" parent="Categories/CategoryLabels"]
+margin_top = 162.0
+margin_right = 172.0
+margin_bottom = 218.0
+focus_neighbour_left = NodePath("../../../HSlider")
+focus_neighbour_top = NodePath("../Level2Button")
+focus_neighbour_right = NodePath("../../../HSlider")
+focus_neighbour_bottom = NodePath("../Level4Button")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 34 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 14 )
+text = "Level 3"
+align = 0
+
+[node name="Level4Button" type="Button" parent="Categories/CategoryLabels"]
+margin_top = 243.0
+margin_right = 172.0
+margin_bottom = 299.0
+focus_neighbour_left = NodePath("../../../HSlider")
+focus_neighbour_top = NodePath("../Level3Button")
+focus_neighbour_right = NodePath("../../../HSlider")
+focus_neighbour_bottom = NodePath("../TotalButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 35 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 14 )
+text = "Level 4"
+align = 0
+
+[node name="TotalButton" type="Button" parent="Categories/CategoryLabels"]
+margin_top = 324.0
+margin_right = 172.0
+margin_bottom = 380.0
+focus_neighbour_left = NodePath("../../../HSlider")
+focus_neighbour_top = NodePath("../Level4Button")
+focus_neighbour_right = NodePath("../../../HSlider")
+focus_neighbour_bottom = NodePath("../../../AllKeysCheckBox")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+text = "Total"
+align = 0
+
+[node name="Table" type="Node2D" parent="."]
+position = Vector2( 258, 266 )
+
+[node name="Header" type="Node2D" parent="Table"]
+position = Vector2( -1, -70 )
+
+[node name="ItemListHeader" type="ItemList" parent="Table/Header"]
+margin_left = 1.0
+margin_right = 422.0
+margin_bottom = 70.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 17 )
+items = [ "Name", null, false ]
+max_columns = 4
+fixed_column_width = 210
+
+[node name="ItemListHeader2" type="ItemList" parent="Table/Header"]
+margin_left = 422.0
+margin_right = 647.0
+margin_bottom = 70.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 17 )
+items = [ "Time", null, false ]
+max_columns = 4
+fixed_column_width = 210
+
+[node name="ItemListHeader3" type="ItemList" parent="Table/Header"]
+margin_left = 647.0
+margin_right = 798.0
+margin_bottom = 70.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 17 )
+items = [ "Medal", null, false ]
+max_columns = 4
+fixed_column_width = 210
+
+[node name="ItemListHeader4" type="ItemList" parent="Table/Header"]
+margin_left = 798.0
+margin_right = 947.0
+margin_bottom = 70.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 21 )
+items = [ "Rank", null, false ]
+max_columns = 4
+fixed_column_width = 210
+
+[node name="Body" type="Node2D" parent="Table"]
+
+[node name="UsernameList" type="ItemList" parent="Table/Body"]
+anchor_left = 0.691
+anchor_top = 0.048
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 421.0
+margin_bottom = 325.0
+theme = ExtResource( 12 )
+custom_colors/guide_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 4 )
+icon_scale = 0.5
+
+[node name="TimeList" type="ItemList" parent="Table/Body"]
+margin_left = 421.0
+margin_right = 646.0
+margin_bottom = 325.0
+theme = ExtResource( 12 )
+custom_colors/guide_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 4 )
+
+[node name="MedalList" type="ItemList" parent="Table/Body"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 646.0
+margin_right = 797.0
+margin_bottom = 325.0
+theme = ExtResource( 12 )
+custom_colors/guide_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 22 )
+icon_mode = 0
+icon_scale = 0.41
+
+[node name="RankingList" type="ItemList" parent="Table/Body"]
+margin_left = 797.0
+margin_right = 946.0
+margin_bottom = 325.0
+theme = ExtResource( 12 )
+custom_colors/guide_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_constants/hseparation = 10
+custom_styles/bg = SubResource( 20 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="UsernameEditLabel" type="Label" parent="."]
+anchor_right = 0.031
+anchor_bottom = 0.019
+margin_left = 273.0
+margin_top = 619.0
+margin_right = 437.32
+margin_bottom = 663.32
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "Username:"
+valign = 1
+
+[node name="UsernameLineEdit" type="LineEdit" parent="."]
+margin_left = 465.0
+margin_top = 624.0
+margin_right = 773.0
+margin_bottom = 670.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 19 )
+custom_icons/clear = ExtResource( 16 )
+custom_styles/read_only = SubResource( 27 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/normal = SubResource( 29 )
+text = "BigGunkey"
+align = 1
+max_length = 20
+clear_button_enabled = true
+placeholder_text = "Username"
+caret_blink = true
+
+[node name="ReturnButton" parent="." instance=ExtResource( 8 )]
+focus_neighbour_left = NodePath("../AllKeysCheckBox")
+focus_neighbour_top = NodePath("../Categories/CategoryLabels/TotalButton")
+focus_neighbour_right = NodePath("../Categories/CategoryLabels/TotalButton")
+focus_neighbour_bottom = NodePath("../Categories/CategoryLabels/Level1Button")
+focus_next = NodePath("../Categories/CategoryLabels/TotalButton")
+text = ""
+align = 0
+
+[node name="ReturnButtonLabel" type="Label" parent="ReturnButton"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 30 )
+text = "Return"
+valign = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+anchor_right = 0.006
+margin_left = 257.0
+margin_top = 146.0
+margin_right = 1011.32
+margin_bottom = 190.0
+theme = ExtResource( 1 )
+custom_styles/slider = SubResource( 24 )
+custom_styles/grabber_area_highlight = SubResource( 25 )
+custom_styles/grabber_area = SubResource( 26 )
+max_value = 1.0
+
+[node name="Label" type="Label" parent="HSlider"]
+margin_left = 768.0
+margin_right = 938.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 23 )
+text = "Page 1 / 1"
+
+[node name="AllKeysCheckBox" type="CheckBox" parent="."]
+margin_left = 814.0
+margin_top = 628.0
+margin_right = 857.0
+margin_bottom = 671.0
+focus_neighbour_left = NodePath("../Categories/CategoryLabels/TotalButton")
+focus_neighbour_top = NodePath("../Categories/CategoryLabels/TotalButton")
+focus_neighbour_right = NodePath("../ReturnButton")
+focus_neighbour_bottom = NodePath("../ReturnButton")
+theme = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="AllKeysCheckBox"]
+margin_left = 45.0
+margin_top = 9.0
+margin_right = 153.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 31 )
+text = "All Keys"
+align = 1
+valign = 1
+
+[connection signal="button_up" from="Categories/CategoryLabels/Level1Button" to="." method="_on_Level1Button_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/Level1Button" to="." method="_on_Level1Button_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/Level2Button" to="." method="_on_Leve2Button_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/Level2Button" to="." method="_on_Level2Button_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/Level3Button" to="." method="_on_Level3Button_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/Level3Button" to="." method="_on_Level3Button_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/Level4Button" to="." method="_on_Level4Button_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/Level4Button" to="." method="_on_Level4Button_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/TotalButton" to="." method="_on_TotalButton_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/TotalButton" to="." method="_on_TotalButton_focus_entered"]
+[connection signal="text_change_rejected" from="UsernameLineEdit" to="." method="_on_UsernameLineEdit_text_change_rejected"]
+[connection signal="text_entered" from="UsernameLineEdit" to="." method="_on_UsernameLineEdit_text_entered"]
+[connection signal="button_up" from="ReturnButton" to="." method="_on_ReturnButton_button_up"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="button_up" from="AllKeysCheckBox" to="." method="_on_AllKeysCheckBox_button_up"]

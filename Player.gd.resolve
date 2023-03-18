@@ -1,0 +1,252 @@
+class_name Player extends RigidBody2D
+
+var direction = Movement.Direction.NONE
+
+export var current_health = 20
+export var max_health = 20
+export var invicibility_time = 1.0
+
+export (NodePath) var camera_path = ""
+export (bool) var show_kill_count = false
+export (bool) var flip_guns = false
+
+export (bool) var friendly = true
+
+export (NodePath) var checkpoint_manager = ""
+
+var is_idle = true
+var is_grounded = false
+var velocity setget set_velocity, get_velocity
+
+export var is_invincible = false
+var is_inside_hurt_zone = false
+var hurt_zone_damage = 0
+
+var is_on_floor = false
+
+signal died
+signal enter_floor
+signal exit_floor
+
+func reset_animation():
+	$Body/AnimationPlayer.play("Player_Idle")
+
+func reset():
+	current_health = max_health
+	reset_animation()
+	$Movement.reset()
+	direction = Movement.Direction.NONE
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	reset_animation()
+	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.max_value = max_health
+	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.value = current_health
+	if not show_kill_count:
+		$Camera2D/CanvasLayer/KillCount.hide()
+	else:
+		pass
+	AnimationHelper.reconfige_even_timed_animation_lenght($AnimationPlayer.get_animation("take_damage"), invicibility_time, [0.25, 0.5])
+	if camera_path != "":
+		$Camera2D.current = false
+		get_node(camera_path).current = true
+		var remote_transform = RemoteTransform2D.new()
+		remote_transform.remote_path = "../" + camera_path
+		remote_transform.name = "CameraRemoteTransform"
+		add_child(remote_transform)
+
+func _process(delta):
+	$Body/Arm.look_at(get_global_mouse_position())
+	if flip_guns:
+		if (int(abs($Body/Arm.rotation_degrees)) - 85) % 365 < 365 / 2:
+			$Body/Arm/Pistol.scale.y = -abs($Body/Arm/Pistol.scale.y)
+			$Body/Arm/Shotgun.scale.y = -abs($Body/Arm/Shotgun.scale.y)
+		else:
+			$Body/Arm/Pistol.scale.y = abs($Body/Arm/Pistol.scale.y)
+			$Body/Arm/Shotgun.scale.y = abs($Body/Arm/Shotgun.scale.y)
+
+func _input(event):
+	if Input.is_action_just_pressed("move_right") and not (event.is_action_pressed("move_left") or direction == Movement.Direction.LEFT):
+		direction = Movement.Direction.RIGHT
+	elif Input.is_action_just_pressed("move_left") and not (event.is_action_pressed("move_right") or direction == Movement.Direction.RIGHT):
+		direction = Movement.Direction.LEFT
+	elif Input.is_action_just_released("move_left"):
+		if  Input.is_action_pressed("move_right"):
+			direction = Movement.Direction.RIGHT
+		else:
+			direction = Movement.Direction.NONE
+	elif Input.is_action_just_released("move_right"):
+		if Input.is_action_pressed("move_left"):
+			direction = Movement.Direction.LEFT
+		else:
+			direction = Movement.Direction.NONE
+	
+	is_idle = true if direction == Movement.Direction.NONE else false
+	if is_inside_hurt_zone:
+		take_damage(hurt_zone_damage)
+
+func set_velocity(value):
+	$Movement.velocity = value
+	
+func get_velocity():
+	return $Movement.velocity
+
+func _physics_process(delta):
+	if not (not $CoyoteTimer.is_stopped() and not is_on_floor and is_grounded != is_on_floor):
+		if is_grounded:
+			emit_signal("exit_floor")
+		else:
+			emit_signal("enter_floor")
+	$Movement.process(direction, Input.is_action_just_pressed("jump"))
+	
+func _integrate_forces(state):
+	print($Movement.velocity)
+	applied_force = $Movement.velocity
+
+func heal(ammount):
+	current_health += ammount
+	if current_health > max_health:
+		current_health = max_health
+	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.value = current_health
+
+func take_damage(damage = 1):
+	if damage <= 0 or is_invincible or current_health <= 0:
+		return
+	current_health -= damage
+	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.value = current_health
+	$AnimationPlayer.play("take_damage")
+	if current_health <= 0:
+		die()
+
+func restart(hard = false):
+	if not hard and checkpoint_manager != "" and is_instance_valid(get_node(checkpoint_manager).selected_checkpoint):
+		get_node(checkpoint_manager).respawn(self)
+	else:
+		get_tree().reload_current_scene()
+
+func die():
+	for child in get_children():
+		if child.has_method("stop"):
+			child.stop()
+	pause()
+	if is_grounded:
+		$Body/AnimationPlayer.play("Player_DeathGround")
+	else:
+		$Body/AnimationPlayer.play("Player_DeathAir")
+	
+	print("DEAD!")
+	emit_signal("died")
+
+func _on_VictoryZone_win():
+	$Camera2D/CanvasLayer/LevelTimer.on_level_cleared()
+
+func set_key_total(total):
+	$Camera2D/CanvasLayer/CollectionDisplay.total = total
+
+func collect(coin):
+	$Camera2D/CanvasLayer/CollectionDisplay.collected += 1
+	
+func get_level_stats() -> Dictionary:
+	var stats = {}
+	stats["time"] = $Camera2D/CanvasLayer/LevelTimer.passed_time
+	stats["kills"] = $Camera2D/CanvasLayer/KillCount.kills
+	stats["keys"] = get_tree().root.get_child(1).get_node("Collectibles").collectibles
+	
+	return stats
+
+func _on_checkpoint_activated():
+	$Camera2D/CanvasLayer/Notification.create(("%02.2f") % get_passed_time())
+
+func get_passed_time():
+	return $Camera2D/CanvasLayer/LevelTimer.passed_time
+	
+func _on_Player_enter_floor():
+	$Body/AnimationPlayer.play("Player_Landing")
+	is_grounded = true
+	$CoyoteTimer.stop()
+
+func _on_Player_exit_floor():
+	$CoyoteTimer.start()
+
+func _on_CoyoteTimer_timeout():
+	is_grounded = false
+
+func pause_animation():
+	$Body/AnimatedSprite.playing = false
+	$AnimationPlayer.stop(false)
+	$Body/AnimationPlayer.stop(false)
+	
+func unpause_animation():
+	$Body/AnimationPlayer.play()
+	
+func _on_Movement_enter_idle():
+	is_idle = true
+	if is_grounded:
+		$Body/AnimationPlayer.play("Player_Idle")
+	else:
+		$Body/AnimationPlayer.play("Player_Falling")
+	$PlayerParticles/DustTrail.emitting = false
+	
+func _on_Movement_enter_jump():
+	is_grounded = false
+	$Body/AnimationPlayer.play("Player_Jump")
+	$CoyoteTimer.stop()
+
+func _on_Movement_enter_left():
+	if is_grounded:
+		$Body/AnimationPlayer.play("Player_Run")
+	else:
+		$Body/AnimationPlayer.play("Player_FallingSide")
+	$Body.scale.x = -1
+	$PlayerParticles/DustTrail.emitting = true
+	$PlayerParticles/DustTrail.process_material.direction.x = 1
+
+func _on_Movement_enter_right():
+	if is_grounded:
+		$Body/AnimationPlayer.play("Player_Run")
+	else:
+		$Body/AnimationPlayer.play("Player_FallingSide")
+	$Body.scale.x = 1
+	$PlayerParticles/DustTrail.emitting = true
+	$PlayerParticles/DustTrail.process_material.direction.x = -1
+
+func _on_AnimationPlayer_animation_finished(name):
+	if name == "Player_Jump":
+		$Body/AnimationPlayer.play("Player_Falling")
+	elif name == "Player_Landing":
+		if is_idle:
+			$Body/AnimationPlayer.play("Player_Idle")
+		else:
+			$Body/AnimationPlayer.play("Player_Run")
+	elif name == "Player_DeathGround" or name == "Player_DeathAir":
+		restart()
+
+func _on_Shotgun_shot_fired(parent, _roation):
+	$Body/Arm/Shotgun.visible = true
+	$Body/Arm/Pistol.visible = false
+
+func _on_Pistol_shot_fired(parent, _rotation):
+	$Body/Arm/Shotgun.visible = false
+	$Body/Arm/Pistol.visible = true
+
+<<<<<<< working copy
+func pause():
+	set_process(false)
+	set_process_input(false)
+	set_physics_process(false)
+	pause_animation()
+
+func unpause():
+	set_process(true)
+	set_process_input(true)
+	set_physics_process(true)
+	unpause_animation()
+=======
+
+func _on_FeetArea_body_entered(body):
+	is_on_floor = true
+
+func _on_FeetArea_body_exited(body):
+	if len($FeetArea.get_overlapping_bodies()) == 0:
+		is_on_floor = false
+>>>>>>> merge rev

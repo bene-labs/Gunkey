@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Blastwave_FX_GrenadeExplosion_S08WA.229.mp3-c213e58f0bd4c63b1059910dccde4093.mp3str"
+
+[deps]
+
+source_file="res://SFX/Blastwave_FX_GrenadeExplosion_S08WA.229.mp3"
+dest_files=[ "res://.import/Blastwave_FX_GrenadeExplosion_S08WA.229.mp3-c213e58f0bd4c63b1059910dccde4093.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

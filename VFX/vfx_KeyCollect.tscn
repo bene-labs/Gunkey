@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sprites/VFX/sparkle1.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.0129032, 0.529032, 1 )
+colors = PoolColorArray( 0.898438, 0.741664, 0.375519, 0.6, 0.957031, 0.871011, 0.485992, 1, 0.911133, 0.683854, 0.153042, 0.756863 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+min_value = -1.0
+_data = [ Vector2( 0, -0.884091 ), 0.0, 7.48409, 0, 0, Vector2( 1, -1 ), -6.73449, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.3
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 300.0
+orbit_velocity = 1.7
+orbit_velocity_random = 0.3
+orbit_velocity_curve = SubResource( 5 )
+radial_accel = 20.0
+radial_accel_random = 1.0
+damping = 100.0
+angle = 720.0
+angle_random = 1.0
+scale = 0.2
+scale_random = 0.15
+color_ramp = SubResource( 3 )
+hue_variation = 0.04
+hue_variation_random = 1.0
+
+[node name="KeyCollect" type="Particles2D"]
+amount = 64
+lifetime = 0.5
+explosiveness = 0.8
+process_material = SubResource( 1 )
+texture = ExtResource( 1 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Independent_Music_Licensing_Collective_IMLC_-_Get_Down.mp3-9f0a1a6d9da2d33c977ef80ea54a3e58.mp3str"
+
+[deps]
+
+source_file="res://Music/Independent_Music_Licensing_Collective_IMLC_-_Get_Down.mp3"
+dest_files=[ "res://.import/Independent_Music_Licensing_Collective_IMLC_-_Get_Down.mp3-9f0a1a6d9da2d33c977ef80ea54a3e58.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

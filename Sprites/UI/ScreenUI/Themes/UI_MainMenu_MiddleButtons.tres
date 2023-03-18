@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/UI/ScreenUI/menu_text_bar_mid.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 1032, 240 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 1032, 240 )
+modulate_color = Color( 0.815686, 0.815686, 0.815686, 1 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 1032, 240 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 1032, 240 )
+
+[resource]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 27 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 24 )
+Button/styles/normal = SubResource( 25 )
+Button/styles/pressed = SubResource( 26 )

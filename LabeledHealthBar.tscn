@@ -1,0 +1,54 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://HealthBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEinhalb-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://LabeledHealthBar.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/UI/hp_bar_fill.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/hp_bar_fill_mid.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/hp_bar_fill_low.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/hp_bar_bg.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/hp_bar_icon.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/hp_bar_icon_mid.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/hp_bar_icon_full.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/hp_bar_icon_low.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/hp_bar_icon_mid2.png" type="Texture" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+font_data = ExtResource( 2 )
+
+[node name="LabeledHealthBar" type="Node2D"]
+script = ExtResource( 3 )
+textures = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 6 ) ]
+icons = [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ]
+
+[node name="HpBarBg" type="Sprite" parent="."]
+position = Vector2( -1, 159 )
+scale = Vector2( 1.80201, 1.88 )
+texture = ExtResource( 7 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 1 )]
+margin_left = -339.0
+margin_top = 66.0
+margin_right = 57.0
+margin_bottom = 119.0
+script = null
+
+[node name="Label" type="Label" parent="."]
+margin_left = -207.0
+margin_top = 125.0
+margin_right = 481.0
+margin_bottom = 194.0
+custom_colors/font_color_shadow = Color( 0.317647, 0.286275, 0.0823529, 1 )
+custom_constants/shadow_offset_x = 5
+custom_fonts/font = SubResource( 1 )
+text = "100/100"
+align = 1
+valign = 1
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( -32, 162 )
+scale = Vector2( 1.57282, 1.57282 )
+texture = ExtResource( 8 )
+
+[connection signal="value_changed" from="HealthBar" to="." method="_on_HealthBar_value_changed"]

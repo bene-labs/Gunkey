@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/UI/ScreenUI/progress1.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/UI/ScreenUI/progress2.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 316, 48 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 316, 48 )
+
+[node name="ProgressOverlay" type="ProgressBar"]
+margin_right = 316.0
+margin_bottom = 48.0
+custom_styles/fg = SubResource( 11 )
+custom_styles/bg = SubResource( 10 )
+percent_visible = false

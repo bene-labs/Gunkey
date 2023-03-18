@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://FlyingEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Combat/BulletPattern.tscn" type="PackedScene" id=3]
+
+
+[node name="ShootThreeUpCross" instance=ExtResource( 2 )]
+move_speed = 0
+
+[node name="BulletPattern" parent="AutoShooter" index="0" instance=ExtResource( 3 )]
+
+[node name="Projectile" parent="AutoShooter/BulletPattern" index="0" instance=ExtResource( 1 )]
+position = Vector2( -34, 0 )
+rotation = -3.14159
+ignore_relative_position = false
+
+[node name="Projectile2" parent="AutoShooter/BulletPattern" index="1" instance=ExtResource( 1 )]
+position = Vector2( -2, -34 )
+rotation = -1.5708
+ignore_relative_position = false
+
+[node name="Projectile3" parent="AutoShooter/BulletPattern" index="2" instance=ExtResource( 1 )]
+position = Vector2( 35, 0 )
+ignore_relative_position = false

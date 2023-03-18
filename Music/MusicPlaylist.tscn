@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Music/MusicPlaylist.gd" type="Script" id=1]
+[ext_resource path="res://Music/Independent_Music_Licensing_Collective_IMLC_-_Get_Down.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Music/gunkey3-2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Music/Ketsa_-_The_Mage.mp3" type="AudioStream" id=4]
+
+[node name="MusicPlaylist" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+bus = "Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -15.0
+bus = "Music"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
+bus = "Music"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_Song_finished"]
+[connection signal="finished" from="AudioStreamPlayer2" to="." method="_on_Song_finished"]
+[connection signal="finished" from="AudioStreamPlayer3" to="." method="_on_Song_finished"]

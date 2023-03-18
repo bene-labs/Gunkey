@@ -1,0 +1,266 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/team/annii.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.254902, 0.254902, 0.254902, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="CreditsScreen" type="CanvasLayer"]
+
+[node name="Ttile" type="Label" parent="."]
+margin_left = 424.0
+margin_top = 50.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Credits"
+align = 1
+
+[node name="CreditsContainer" type="MarginContainer" parent="."]
+margin_left = 100.0
+margin_top = 195.0
+margin_right = 1180.0
+margin_bottom = 528.0
+
+[node name="Credits" type="HBoxContainer" parent="CreditsContainer"]
+margin_right = 1080.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="CreditsLeft" type="VBoxContainer" parent="CreditsContainer/Credits"]
+margin_right = 540.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="CreditsAnni" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft"]
+margin_right = 540.0
+margin_bottom = 111.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconAnni" type="Sprite" parent="CreditsContainer/Credits/CreditsLeft/CreditsAnni"]
+position = Vector2( 51.9, 51.9 )
+scale = Vector2( 0.333974, 0.333974 )
+texture = ExtResource( 2 )
+
+[node name="NameAnni" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAnni"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Anni Kostrzewa"
+
+[node name="MainFocusAnni" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAnni"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "insert what you (mostly) did here"
+
+[node name="CreditsAva" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft"]
+margin_top = 111.0
+margin_right = 540.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconAva" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft/CreditsAva"]
+margin_right = 104.0
+margin_bottom = 104.0
+
+[node name="NameAva" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAva"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Ava Wilski"
+
+[node name="MainFocusAva" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAva"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "insert what you (mostly) did here"
+
+[node name="CreditsBenedikt" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft"]
+margin_top = 222.0
+margin_right = 540.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconBenedikt" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft/CreditsBenedikt"]
+margin_right = 104.0
+margin_bottom = 104.0
+
+[node name="NameBenedikt" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsBenedikt"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Benedikt Mertes"
+
+[node name="MainFocusBenedikt" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsBenedikt"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "insert what you (mostly) did here"
+
+[node name="CreditsRight" type="VBoxContainer" parent="CreditsContainer/Credits"]
+margin_left = 540.0
+margin_right = 1080.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="CreditsGiulio" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight"]
+margin_right = 540.0
+margin_bottom = 111.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconGiulio" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight/CreditsGiulio"]
+margin_right = 104.0
+margin_bottom = 104.0
+
+[node name="NameGiulio" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsGiulio"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Giulio Pichierri"
+
+[node name="MainFocusGiulio" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsGiulio"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "insert what you (mostly) did here"
+
+[node name="CreditsMerit" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight"]
+margin_top = 111.0
+margin_right = 540.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconMerit" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight/CreditsMerit"]
+margin_right = 104.0
+margin_bottom = 104.0
+
+[node name="NameMerit" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsMerit"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Merit Füssli"
+
+[node name="MainFocusMerit" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsMerit"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "insert what you (mostly) did here"
+
+[node name="CreditsTill" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight"]
+margin_top = 222.0
+margin_right = 540.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconTill" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight/CreditsTill"]
+margin_right = 104.0
+margin_bottom = 104.0
+
+[node name="NameTill" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsTill"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Till Braunwald"
+
+[node name="MainFocusTill" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsTill"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "insert what you (mostly) did here"
+
+[node name="ReturnButton" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 608.0
+margin_right = 1264.0
+margin_bottom = 704.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_colors/font_color_pressed = Color( 0.486275, 0.392157, 0.309804, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Return"

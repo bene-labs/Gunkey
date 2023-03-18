@@ -1,0 +1,353 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menu's/CollectedKeysDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CollectedKeysDisplay.gd" type="Script" id=3]
+[ext_resource path="res://Menu's/Levelselect.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/key.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/ScreenUI/MenuUnderlay.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_return.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_resume_play.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_GeneralButtons_Theme.tres" type="Theme" id=9]
+[ext_resource path="res://Sprites/UI/ScreenUI/progress1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/ScreenUI/progress2.png" type="Texture" id=11]
+[ext_resource path="res://Menu's/SelectSound.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Menu's/ScreenTransition.tscn" type="PackedScene" id=13]
+[ext_resource path="res://medal_shine.tres" type="Material" id=14]
+[ext_resource path="res://Menu's/ProgressBar.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Menu's/Medal.tscn" type="PackedScene" id=17]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 30
+extra_spacing_top = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+extra_spacing_top = 3
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 316, 48 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 316, 48 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 25
+font_data = ExtResource( 1 )
+
+[node name="LevelSelect" type="CanvasLayer"]
+script = ExtResource( 4 )
+Level1ScenePath = "res://lvl_One_new_tiles.tscn"
+Level2ScenePath = "res://lvl_Two_reworked.tscn"
+
+[node name="MenuUnderlay" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+scale = Vector2( 0.666667, 0.666667 )
+texture = ExtResource( 6 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 296.0
+margin_top = 50.0
+focus_neighbour_left = NodePath("../LevelContainer/Level/Levl1&3/Level1/Level1Button")
+focus_neighbour_top = NodePath("../LevelContainer/Level/Levl1&3/Level1/Level1Button")
+focus_neighbour_right = NodePath("../LevelContainer/Level/Levl1&3/Level1/Level1Button")
+focus_neighbour_bottom = NodePath("../LevelContainer/Level/Levl1&3/Level1/Level1Button")
+focus_mode = 2
+custom_colors/font_color = Color( 0.0980392, 0.0431373, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Level Select"
+
+[node name="LevelContainer" type="MarginContainer" parent="."]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 1180.0
+margin_bottom = 584.0
+
+[node name="Level" type="HBoxContainer" parent="LevelContainer"]
+margin_right = 980.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Levl1&3" type="VBoxContainer" parent="LevelContainer/Level"]
+margin_right = 488.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 100
+
+[node name="Level1" type="Node2D" parent="LevelContainer/Level/Levl1&3"]
+
+[node name="Level1Button" type="Button" parent="LevelContainer/Level/Levl1&3/Level1"]
+margin_right = 240.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../../Levl2&4/Level4/Level4Button")
+focus_neighbour_top = NodePath("../../Level3/Level3Button")
+focus_neighbour_right = NodePath("../../../Levl2&4/Level2/Level2Button")
+focus_neighbour_bottom = NodePath("../../Level3/Level3Button")
+theme = ExtResource( 9 )
+icon = ExtResource( 8 )
+align = 0
+
+[node name="Level1ButtonLabel" type="Label" parent="LevelContainer/Level/Levl1&3/Level1/Level1Button"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Level 1"
+valign = 1
+
+[node name="Level1BestTime" type="Label" parent="LevelContainer/Level/Levl1&3/Level1"]
+margin_left = 96.0
+margin_top = 104.0
+margin_right = 370.0
+margin_bottom = 129.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Best Time: 00:00.00"
+
+[node name="Level1CollectedKeysDisplay" parent="LevelContainer/Level/Levl1&3/Level1" instance=ExtResource( 2 )]
+margin_left = 244.0
+margin_right = 276.0
+margin_bottom = 96.0
+border_color = Color( 0.788235, 0.160784, 0.0941176, 1 )
+border_width = 1.0
+render_vertical = true
+
+[node name="Level1Medal" parent="LevelContainer/Level/Levl1&3/Level1" instance=ExtResource( 17 )]
+position = Vector2( 49, 80 )
+
+[node name="Level3" type="Node2D" parent="LevelContainer/Level/Levl1&3"]
+position = Vector2( 0, 184 )
+
+[node name="Level3Button" type="Button" parent="LevelContainer/Level/Levl1&3/Level3"]
+margin_right = 240.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../../Levl2&4/Level2/Level2Button")
+focus_neighbour_top = NodePath("../../Level1/Level1Button")
+focus_neighbour_right = NodePath("../../../Levl2&4/Level4/Level4Button")
+focus_neighbour_bottom = NodePath("../../Level1/Level1Button")
+theme = ExtResource( 9 )
+disabled = true
+icon = ExtResource( 8 )
+align = 0
+
+[node name="Level3ButtonLabel" type="Label" parent="LevelContainer/Level/Levl1&3/Level3/Level3Button"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Level 3"
+valign = 1
+
+[node name="Level3BestTime" type="Label" parent="LevelContainer/Level/Levl1&3/Level3"]
+margin_left = 96.0
+margin_top = 104.0
+margin_right = 370.0
+margin_bottom = 129.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Best Time: 00:00.00"
+
+[node name="Level3CollectedKeysDisplay" type="ReferenceRect" parent="LevelContainer/Level/Levl1&3/Level3"]
+margin_left = 244.0
+margin_right = 276.0
+margin_bottom = 96.0
+script = ExtResource( 3 )
+render_vertical = true
+total_keys = 2
+
+[node name="Level3Medal" parent="LevelContainer/Level/Levl1&3/Level3" instance=ExtResource( 17 )]
+position = Vector2( 49, 80 )
+
+[node name="Levl2&4" type="VBoxContainer" parent="LevelContainer/Level"]
+margin_left = 492.0
+margin_right = 980.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Level2" type="Node2D" parent="LevelContainer/Level/Levl2&4"]
+
+[node name="Level2Button" type="Button" parent="LevelContainer/Level/Levl2&4/Level2"]
+margin_right = 240.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../../Levl1&3/Level1/Level1Button")
+focus_neighbour_top = NodePath("../../Level4/Level4Button")
+focus_neighbour_right = NodePath("../../../Levl1&3/Level3/Level3Button")
+focus_neighbour_bottom = NodePath("../../Level4/Level4Button")
+theme = ExtResource( 9 )
+disabled = true
+icon = ExtResource( 8 )
+align = 0
+
+[node name="Level2ButtonLabel" type="Label" parent="LevelContainer/Level/Levl2&4/Level2/Level2Button"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Level 2"
+valign = 1
+
+[node name="Level2BestTime" type="Label" parent="LevelContainer/Level/Levl2&4/Level2"]
+margin_left = 96.0
+margin_top = 104.0
+margin_right = 370.0
+margin_bottom = 129.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Best Time: 00:00.00"
+
+[node name="Level2CollectedKeysDisplay" type="ReferenceRect" parent="LevelContainer/Level/Levl2&4/Level2"]
+margin_left = 244.0
+margin_right = 276.0
+margin_bottom = 96.0
+script = ExtResource( 3 )
+render_vertical = true
+total_keys = 4
+
+[node name="Level2Medal" parent="LevelContainer/Level/Levl2&4/Level2" instance=ExtResource( 17 )]
+position = Vector2( 49, 80 )
+
+[node name="Level4" type="Node2D" parent="LevelContainer/Level/Levl2&4"]
+position = Vector2( 0, 184 )
+
+[node name="Level4Button" type="Button" parent="LevelContainer/Level/Levl2&4/Level4"]
+margin_right = 240.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../../Levl1&3/Level3/Level3Button")
+focus_neighbour_top = NodePath("../../Level2/Level2Button")
+focus_neighbour_right = NodePath("../../../Levl1&3/Level1/Level1Button")
+focus_neighbour_bottom = NodePath("../../../../../ReturnButton")
+theme = ExtResource( 9 )
+disabled = true
+icon = ExtResource( 8 )
+align = 0
+
+[node name="Level4ButtonLabel" type="Label" parent="LevelContainer/Level/Levl2&4/Level4/Level4Button"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Level 4"
+valign = 1
+
+[node name="Level4BestTime" type="Label" parent="LevelContainer/Level/Levl2&4/Level4"]
+margin_left = 96.0
+margin_top = 104.0
+margin_right = 370.0
+margin_bottom = 129.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Best Time: 00:00.00"
+
+[node name="Level4CollectedKeysDisplay" type="ReferenceRect" parent="LevelContainer/Level/Levl2&4/Level4"]
+margin_left = 244.0
+margin_right = 276.0
+margin_bottom = 96.0
+script = ExtResource( 3 )
+render_vertical = true
+
+[node name="Level4Medal" parent="LevelContainer/Level/Levl2&4/Level4" instance=ExtResource( 17 )]
+position = Vector2( 49, 80 )
+
+[node name="ReturnButton" type="Button" parent="."]
+margin_left = 1024.0
+margin_top = 608.0
+margin_right = 1264.0
+margin_bottom = 704.0
+focus_neighbour_left = NodePath("../LevelContainer/Level/Levl2&4/Level4/Level4Button")
+focus_neighbour_top = NodePath("../LevelContainer/Level/Levl2&4/Level4/Level4Button")
+theme = ExtResource( 9 )
+icon = ExtResource( 7 )
+align = 0
+
+[node name="ReturnButtonLabel" type="Label" parent="ReturnButton"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Return"
+valign = 1
+
+[node name="TotalBestTime" type="Node2D" parent="."]
+
+[node name="TotalBestTimeLabel" type="Label" parent="TotalBestTime"]
+margin_left = 227.0
+margin_top = 640.0
+margin_right = 624.0
+margin_bottom = 677.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Total Best Time: 00:00.00"
+
+[node name="TotalBestTimeMedal" parent="TotalBestTime" instance=ExtResource( 17 )]
+position = Vector2( 190, 651 )
+
+[node name="TotalKeysCollected" type="ReferenceRect" parent="."]
+margin_left = 624.0
+margin_top = 632.0
+margin_right = 940.0
+margin_bottom = 680.0
+
+[node name="ProgressOverlay" parent="TotalKeysCollected" instance=ExtResource( 15 )]
+
+[node name="ProgressOverlayFull" type="ProgressBar" parent="TotalKeysCollected"]
+visible = false
+material = ExtResource( 14 )
+margin_right = 316.0
+margin_bottom = 48.0
+custom_styles/fg = SubResource( 11 )
+custom_styles/bg = SubResource( 10 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+
+[node name="KeyIcon" type="Sprite" parent="TotalKeysCollected"]
+position = Vector2( 24.0795, 24 )
+scale = Vector2( 0.378, 0.378 )
+texture = ExtResource( 5 )
+
+[node name="KeyCounter" type="Label" parent="TotalKeysCollected"]
+margin_left = 54.0
+margin_top = 4.0
+margin_right = 269.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "0 / 12"
+align = 1
+valign = 1
+
+[node name="SelectSound" parent="." instance=ExtResource( 12 )]
+
+[node name="ScreenTransition" parent="." instance=ExtResource( 13 )]
+self_activate = true
+
+[connection signal="button_up" from="LevelContainer/Level/Levl1&3/Level1/Level1Button" to="." method="_on_Level_1_Button_button_up"]
+[connection signal="button_up" from="LevelContainer/Level/Levl1&3/Level3/Level3Button" to="." method="_on_Level_3_Button_button_up"]
+[connection signal="button_up" from="LevelContainer/Level/Levl2&4/Level2/Level2Button" to="." method="_on_Level_2_Button_button_up"]
+[connection signal="button_up" from="LevelContainer/Level/Levl2&4/Level4/Level4Button" to="." method="_on_BonusLevel1Button_button_up"]
+[connection signal="button_up" from="ReturnButton" to="." method="_on_Return_Button_button_up"]

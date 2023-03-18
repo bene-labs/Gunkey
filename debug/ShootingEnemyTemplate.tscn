@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://FlyingEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EnemyScenes/VisualAutoShooter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Combat/BulletPattern.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=23]
+resource_name = "Shoot"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Fly" ]
+}
+
+[node name="ShootingEnemyTemplate" instance=ExtResource( 1 )]
+move_speed = 0
+look_at_target = false
+
+[node name="AnimatedSprite" parent="." index="0"]
+frame = 2
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/Shoot = SubResource( 23 )
+
+[node name="BulletPattern3" parent="." index="5" instance=ExtResource( 5 )]
+chance = 0
+
+[node name="Projectile" parent="BulletPattern3" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0, -15 )
+size = 2.0
+ignore_relative_position = false
+
+[node name="Projectile2" parent="BulletPattern3" index="1" instance=ExtResource( 2 )]
+size = 2.0
+ignore_relative_position = false
+
+[node name="Projectile3" parent="BulletPattern3" index="2" instance=ExtResource( 2 )]
+position = Vector2( 0, 15 )
+size = 2.0
+ignore_relative_position = false
+
+[node name="VisualAutoShooter" parent="." index="6" instance=ExtResource( 3 )]
+max_ammo = 3
+barrel_appear_speed = 0.25
+barrel_dissappear_speed = 0.25
+barrel_appear_delay = 0.25
+barrel_dissappear_delay = 0.25
+
+[node name="BulletPattern" parent="VisualAutoShooter" index="0" instance=ExtResource( 5 )]
+
+[node name="Projectile" parent="VisualAutoShooter/BulletPattern" index="0" instance=ExtResource( 2 )]
+position = Vector2( 104, 0 )
+damage = 2
+size = 2.0
+
+[node name="Projectile2" parent="VisualAutoShooter/BulletPattern" index="1" instance=ExtResource( 2 )]
+position = Vector2( 0, 112 )
+rotation = 1.5708
+damage = 2
+size = 2.0
+
+[node name="Projectile3" parent="VisualAutoShooter/BulletPattern" index="2" instance=ExtResource( 2 )]
+position = Vector2( -123, 1 )
+rotation = 3.14159
+damage = 2
+size = 2.0
+
+[node name="Projectile4" parent="VisualAutoShooter/BulletPattern" index="3" instance=ExtResource( 2 )]
+position = Vector2( 1, -144 )
+rotation = 4.71239
+damage = 2
+size = 2.0
+
+[node name="BulletPattern2" parent="VisualAutoShooter" index="3" instance=ExtResource( 5 )]
+
+[node name="Projectile" parent="VisualAutoShooter/BulletPattern2" index="0" instance=ExtResource( 2 )]
+position = Vector2( 72, 63 )
+rotation = 0.785398
+damage = 2
+size = 2.0
+
+[node name="Projectile2" parent="VisualAutoShooter/BulletPattern2" index="1" instance=ExtResource( 2 )]
+position = Vector2( -82, 75 )
+rotation = 2.18166
+damage = 2
+size = 2.0
+
+[node name="Projectile3" parent="VisualAutoShooter/BulletPattern2" index="2" instance=ExtResource( 2 )]
+position = Vector2( -93, -78 )
+rotation = 3.75246
+damage = 2
+max_range = 2000
+size = 2.0
+
+[node name="Projectile4" parent="VisualAutoShooter/BulletPattern2" index="3" instance=ExtResource( 2 )]
+position = Vector2( 88, -93 )
+rotation = 5.49779
+damage = 2
+size = 2.0

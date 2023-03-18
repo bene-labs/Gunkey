@@ -1,0 +1,329 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menu's/CreditsMenu.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/UI/ScreenUI/MenuUnderlayCredits.png" type="Texture" id=3]
+[ext_resource path="res://Menu's/ReturnButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/team/annii.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/team/bene.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/team/avatar.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/team/till.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/team/giulio.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/team/me.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+extra_spacing_top = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[node name="CreditsScreen" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="MenuUnderlay" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 3 )
+
+[node name="Ttile" type="Label" parent="."]
+margin_left = 424.0
+margin_top = 50.0
+custom_colors/font_color = Color( 0.0980392, 0.0431373, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Credits"
+align = 1
+
+[node name="CreditsContainer" type="MarginContainer" parent="."]
+margin_left = 176.0
+margin_top = 208.0
+margin_right = 1104.0
+margin_bottom = 541.0
+
+[node name="Credits" type="HBoxContainer" parent="CreditsContainer"]
+margin_right = 928.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="CreditsLeft" type="VBoxContainer" parent="CreditsContainer/Credits"]
+margin_right = 464.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="CreditsAnni" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft"]
+margin_right = 464.0
+margin_bottom = 111.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconAnni" type="Sprite" parent="CreditsContainer/Credits/CreditsLeft/CreditsAnni"]
+position = Vector2( 52, 52 )
+scale = Vector2( 0.334, 0.334 )
+texture = ExtResource( 5 )
+
+[node name="NameAnni" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAnni"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Anni Kostrzewa"
+
+[node name="MainFocusAnni" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAnni"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "System Design, Level Design"
+
+[node name="CreditsAva" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft"]
+margin_top = 111.0
+margin_right = 464.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconAva" type="Sprite" parent="CreditsContainer/Credits/CreditsLeft/CreditsAva"]
+scale = Vector2( 0.334, 0.334 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="NameAva" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAva"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Ava Wilski"
+
+[node name="MainFocusAva" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsAva"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Animation, Concept Art"
+
+[node name="CreditsBenedikt" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsLeft"]
+margin_top = 222.0
+margin_right = 464.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconBenedikt" type="Sprite" parent="CreditsContainer/Credits/CreditsLeft/CreditsBenedikt"]
+scale = Vector2( 0.334, 0.334 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="NameBenedikt" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsBenedikt"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Benedikt Mertes"
+
+[node name="MainFocusBenedikt" type="Label" parent="CreditsContainer/Credits/CreditsLeft/CreditsBenedikt"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Programming"
+
+[node name="CreditsRight" type="VBoxContainer" parent="CreditsContainer/Credits"]
+margin_left = 464.0
+margin_right = 928.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="CreditsGiulio" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight"]
+margin_right = 464.0
+margin_bottom = 111.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconGiulio" type="Sprite" parent="CreditsContainer/Credits/CreditsRight/CreditsGiulio"]
+scale = Vector2( 0.334, 0.334 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="NameGiulio" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsGiulio"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Giulio Pichierri"
+
+[node name="MainFocusGiulio" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsGiulio"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Level Design, Sounds"
+
+[node name="CreditsMerit" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight"]
+margin_top = 111.0
+margin_right = 464.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconMerit" type="Sprite" parent="CreditsContainer/Credits/CreditsRight/CreditsMerit"]
+scale = Vector2( 0.334, 0.334 )
+texture = ExtResource( 10 )
+centered = false
+flip_h = true
+
+[node name="NameMerit" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsMerit"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Merit Faske"
+
+[node name="MainFocusMerit" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsMerit"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "2D Art, Art Direction"
+
+[node name="CreditsTill" type="ReferenceRect" parent="CreditsContainer/Credits/CreditsRight"]
+margin_top = 222.0
+margin_right = 464.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconTill" type="Sprite" parent="CreditsContainer/Credits/CreditsRight/CreditsTill"]
+scale = Vector2( 0.334, 0.334 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="NameTill" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsTill"]
+margin_left = 116.0
+margin_top = 13.0
+margin_right = 236.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Till Braunwald"
+
+[node name="MainFocusTill" type="Label" parent="CreditsContainer/Credits/CreditsRight/CreditsTill"]
+margin_left = 116.0
+margin_top = 50.0
+margin_right = 156.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Game Design, VFX, UI / UX"
+
+[node name="ReturnButton" parent="." instance=ExtResource( 4 )]
+text = ""
+align = 0
+
+[node name="ReturnButtonLabel" type="Label" parent="ReturnButton"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Return"
+valign = 1
+
+[node name="ThanksToText" type="Node2D" parent="."]
+position = Vector2( 124, 613 )
+rotation = -0.0698132
+
+[node name="ThanksToTitle" type="Label" parent="ThanksToText"]
+margin_left = -85.7695
+margin_top = 8.0365
+margin_right = 189.23
+margin_bottom = 45.0365
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Special Thanks To:"
+
+[node name="ThanksToNames" type="Label" parent="ThanksToText"]
+margin_top = 37.0
+margin_right = 40.0
+margin_bottom = 51.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Floyd Seiffert  -  Web Design
+Nico Chera  -  Music
+Emile Hanau  -  Cloud Engineer"
+
+[node name="ThanksToNames2" type="Label" parent="ThanksToText"]
+margin_left = 271.519
+margin_top = 45.0498
+margin_right = 526.519
+margin_bottom = 88.0498
+rect_rotation = 6.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Our playtersters :)
+And you  -  for playing"
+
+[node name="MusicLibraryText" type="Node2D" parent="."]
+position = Vector2( 732, 634 )
+rotation = -0.0698132
+
+[node name="MusicLibraryTitle" type="Label" parent="MusicLibraryText"]
+margin_left = -80.3632
+margin_top = 2.39996
+margin_right = 124.637
+margin_bottom = 39.4
+custom_colors/font_color = Color( 0.133333, 0.0823529, 0.0509804, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Music Library:"
+
+[node name="MusicLibraryNames" type="Label" parent="MusicLibraryText"]
+margin_top = 37.0
+margin_right = 40.0
+margin_bottom = 51.0
+custom_colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "freemusicarchive.com"
+
+[connection signal="button_up" from="ReturnButton" to="." method="_on_ReturnButton_button_up"]

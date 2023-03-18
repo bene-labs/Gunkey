@@ -1,0 +1,4509 @@
+[gd_scene load_steps=60 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/UI/main_menu.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_lvlselect.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_credits.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_newgame.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_options.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_quitgame.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_quit_h.png" type="Texture" id=8]
+[ext_resource path="res://Menu's/UI_OptionsMenu_New.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Menu's/MainMenu.gd" type="Script" id=10]
+[ext_resource path="res://Sprites/UI/ScreenUI/main_menu_barrel.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_MainMenu_UpperButtons.tres" type="Theme" id=12]
+[ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_MainMenu_LowerButtons.tres" type="Theme" id=13]
+[ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_MainMenu_MiddleButtons.tres" type="Theme" id=14]
+[ext_resource path="res://Player/CustomMenuCursor.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Sprites/UI/ScreenUI/sf_up.png" type="Texture" id=16]
+[ext_resource path="res://Animation/Godot/Menu'sBarrelOut.tres" type="Animation" id=17]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_settings_h.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_leader.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_credits_h.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_lvlselect_h.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_newgame_h.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_leader_h.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/UI/ScreenUI/sf_down.png" type="Texture" id=24]
+[ext_resource path="res://Animation/Godot/Menu'sBarrelIn.tres" type="Animation" id=25]
+[ext_resource path="res://SFX/Menu/Rotate_MainMenu2.wav" type="AudioStream" id=27]
+[ext_resource path="res://Sprites/UI/scroll_arrow1.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/UI/scroll_arrow2.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/UI/scroll_arrow2_h.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/UI/scroll_arrow1_h.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/UI/scroll_arrow2_p.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/UI/scroll_arrow1_p.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/VFX/vfx_mm_smoke.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/VFX/vfx_cigarette_glow.png" type="Texture" id=35]
+[ext_resource path="res://Menu's/ScreenTransition.tscn" type="PackedScene" id=36]
+
+[sub_resource type="Gradient" id=24]
+offsets = PoolRealArray( 0, 0.832258, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.745098, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=25]
+gradient = SubResource( 24 )
+
+[sub_resource type="Curve" id=26]
+_data = [ Vector2( 0, 0 ), 0.0, 1.54165, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=27]
+curve = SubResource( 26 )
+
+[sub_resource type="ParticlesMaterial" id=23]
+lifetime_randomness = 0.2
+flag_disable_z = true
+spread = 90.0
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = -7.5
+tangential_accel_random = 1.0
+angle = 720.0
+angle_random = 1.0
+scale_curve = SubResource( 27 )
+color_ramp = SubResource( 25 )
+
+[sub_resource type="Gradient" id=28]
+offsets = PoolRealArray( 0, 0.316129, 0.651613, 1 )
+colors = PoolColorArray( 0.627451, 0.203922, 0.0745098, 1, 0.941406, 0.690311, 0.0956116, 1, 0.627451, 0.203922, 0.0745098, 1, 0.164706, 0.164706, 0.164706, 0 )
+
+[sub_resource type="GradientTexture" id=29]
+gradient = SubResource( 28 )
+
+[sub_resource type="ParticlesMaterial" id=30]
+emission_shape = 1
+emission_sphere_radius = 4.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 20.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+scale = 0.07
+scale_random = 0.05
+color_ramp = SubResource( 29 )
+hue_variation = 0.01
+hue_variation_random = 1.0
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+extra_spacing_top = 14
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 60
+extra_spacing_top = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "CreditsDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonCredits:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonCredits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UpperCard/UpperButtonLevelSelect:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UpperCard/UpperButtonLevelSelect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LowerCard/LowerButtonExtraSlot:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LowerCard/LowerButtonExtraSlot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonLevelSelect:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonLevelSelect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonCredits:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonCredits:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonPlay:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonPlay:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 60.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 60.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 60.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 60.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 60.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 60.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "LevelSelect" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfDown:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_down"
+} ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "CreditsUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonCredits:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonCredits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UpperCard/UpperButtonLevelSelect:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UpperCard/UpperButtonLevelSelect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LowerCard/LowerButtonExtraSlot:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LowerCard/LowerButtonExtraSlot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonExtraSlot:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonExtraSlot:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 180.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 180.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 180.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 180.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 180.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 180.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("UpperCard/UpperButtonCredits:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("UpperCard/UpperButtonCredits:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("LowerCard/LowerButtonQuitGame:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("LowerCard/LowerButtonQuitGame:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "ExtraSlot" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfUp:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_up"
+} ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "ExtraSlotDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 240.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonExtraSlot:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonExtraSlot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LowerCard/LowerButtonQuitGame:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LowerCard/LowerButtonQuitGame:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonCredits:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonCredits:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonCredits:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonCredits:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonExtraSlot:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonExtraSlot:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonLevelSelect:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonLevelSelect:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 120.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 120.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 120.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 120.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 120.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 120.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Credits" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfDown:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_down"
+} ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "ExtraSlotUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -180.0, -240.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonExtraSlot:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonExtraSlot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LowerCard/LowerButtonQuitGame:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LowerCard/LowerButtonQuitGame:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonCredits:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonCredits:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("UpperCard/UpperButtonExtraSlot:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("UpperCard/UpperButtonExtraSlot:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MiddleCard/MiddleButtonQuitGame:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MiddleCard/MiddleButtonQuitGame:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("LowerCard/LowerButtonOptions:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("LowerCard/LowerButtonOptions:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 240.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 240.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 240.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 240.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 240.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 240.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "QuitGame" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfUp:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_up"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "LevelSelectDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -59.9999, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonLevelSelect:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonLevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LowerCard/LowerButtonCredits:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LowerCard/LowerButtonCredits:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonPlay:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonPlay:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonPlay:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonPlay:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonLevelSelect:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonLevelSelect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonOptions:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonOptions:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 0.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 0.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 0.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 0.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 0.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Play" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfDown:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_down"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "LevelSelectUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -59.9999, -120.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonLevelSelect:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonLevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UpperCard/UpperButtonPlay:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UpperCard/UpperButtonPlay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LowerCard/LowerButtonCredits:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LowerCard/LowerButtonCredits:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonCredits:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonCredits:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonExtraSlot:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonExtraSlot:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonLevelSelect:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonLevelSelect:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 120.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 120.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 120.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 120.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 120.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 120.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Credits" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfUp:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_up"
+} ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "OptionsDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 120.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonOptions:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonOptions:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LowerCard/LowerButtonPlay:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LowerCard/LowerButtonPlay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonQuitGame:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonQuitGame:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonQuitGame:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonQuitGame:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("UpperCard/UpperButtonExtraSlot:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("UpperCard/UpperButtonExtraSlot:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("LowerCard/LowerButtonOptions:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("LowerCard/LowerButtonOptions:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, -120.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, -120.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, -120.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, -120.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, -120.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, -120.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "QuitGame" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfDown:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_down"
+} ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "OptionsUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonOptions:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonOptions:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LowerCard/LowerButtonPlay:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LowerCard/LowerButtonPlay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonQuitGame:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonQuitGame:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonPlay:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonPlay:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonLevelSelect:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonLevelSelect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonOptions:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonOptions:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 0.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 0.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 0.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 0.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 0.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Play" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfUp:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_up"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "PlayDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LowerCard/LowerButtonLevelSelect:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LowerCard/LowerButtonLevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MiddleCard/MiddleButtonPlay:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MiddleCard/MiddleButtonPlay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonOptions:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonOptions:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonOptions:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonOptions:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonPlay:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonPlay:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonQuitGame:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonQuitGame:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Options" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfDown:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_down"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "PlayUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LowerCard/LowerButtonLevelSelect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LowerCard/LowerButtonLevelSelect:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MiddleCard/MiddleButtonPlay:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MiddleCard/MiddleButtonPlay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonOptions:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonOptions:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonLevelSelect:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonLevelSelect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonCredits:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonCredits:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonPlay:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonPlay:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "LevelSelect" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfUp:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_up"
+} ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "QuitGameDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonQuitGame:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonQuitGame:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LowerCard/LowerButtonOptions:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LowerCard/LowerButtonOptions:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonExtraSlot:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonExtraSlot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonExtraSlot:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonExtraSlot:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonQuitGame:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonQuitGame:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonCredits:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonCredits:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -180.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -180.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -180.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -180.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -180.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -180.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "ExtraSlot" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfDown:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_down"
+} ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "QuitGameUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 120.0, 60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiddleCard/MiddleButtonQuitGame:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiddleCard/MiddleButtonQuitGame:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LowerCard/LowerButtonOptions:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LowerCard/LowerButtonOptions:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonExtraSlot:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonExtraSlot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonOptions:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonOptions:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LowerCard/LowerButtonPlay:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("LowerCard/LowerButtonPlay:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("UpperCard/UpperButtonQuitGame:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("UpperCard/UpperButtonQuitGame:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -60.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -60.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -60.0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -60.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -60.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -120.0, -60.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath(".:main_button_name")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Options" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SfUp:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "buttons_up"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RevolverBarrel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LowerCard/LowerButtonLevelSelect:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LowerCard/LowerButtonLevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MiddleCard/MiddleButtonPlay:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MiddleCard/MiddleButtonPlay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UpperCard/UpperButtonOptions:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("UpperCard/UpperButtonOptions:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiddleCard/MiddleButtonLevelSelect:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiddleCard/MiddleButtonLevelSelect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("UpperCard/UpperButtonPlay:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("UpperCard/UpperButtonPlay:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("LowerCard/LowerButtonCredits:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("LowerCard/LowerButtonCredits:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("UpperCard/UpperButtonCredits:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("UpperCard/UpperButtonCredits:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("UpperCard/UpperButtonExtraSlot:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("UpperCard/UpperButtonExtraSlot:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("UpperCard/UpperButtonLevelSelect:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("UpperCard/UpperButtonLevelSelect:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("UpperCard/UpperButtonQuitGame:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("UpperCard/UpperButtonQuitGame:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("MiddleCard/MiddleButtonCredits:disabled")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("MiddleCard/MiddleButtonCredits:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("MiddleCard/MiddleButtonExtraSlot:disabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("MiddleCard/MiddleButtonExtraSlot:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("MiddleCard/MiddleButtonOptions:disabled")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("MiddleCard/MiddleButtonOptions:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("MiddleCard/MiddleButtonQuitGame:disabled")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("MiddleCard/MiddleButtonQuitGame:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("LowerCard/LowerButtonExtraSlot:disabled")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("LowerCard/LowerButtonExtraSlot:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("LowerCard/LowerButtonPlay:disabled")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("LowerCard/LowerButtonPlay:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("LowerCard/LowerButtonOptions:disabled")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("LowerCard/LowerButtonOptions:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("LowerCard/LowerButtonQuitGame:disabled")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("LowerCard/LowerButtonQuitGame:visible")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon:rect_rotation")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon:rect_rotation")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon:rect_rotation")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon:rect_rotation")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon:rect_rotation")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon:rect_rotation")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath(".:main_button_name")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Play" ]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("RevolverBarrel:rect_position")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -344, 16 ) ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("SfUp:visible")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("SfDown:visible")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BarrelCollsionContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -344, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../RevolverBarrel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -344, 16 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:is_barrel_out")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource( 10 )
+LevelselectScenePath = "res://Menu's/UI_LevelSelect_New.tscn"
+CreditsScenePath = "res://Menu's/UI_CreditsScreen_New.tscn"
+
+[node name="MenuUnderlay" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 2 )
+
+[node name="Smoke" type="Particles2D" parent="."]
+position = Vector2( 848, 528 )
+amount = 18
+lifetime = 15.0
+preprocess = 600.0
+explosiveness = 0.1
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 23 )
+texture = ExtResource( 34 )
+
+[node name="CigaretteGlow" type="Particles2D" parent="."]
+position = Vector2( 862, 535 )
+lifetime = 5.0
+explosiveness = 0.2
+process_material = SubResource( 30 )
+texture = ExtResource( 35 )
+
+[node name="UpperCard" type="ReferenceRect" parent="."]
+margin_left = -135.0
+margin_top = 88.0
+margin_right = 761.0
+margin_bottom = 240.0
+rect_pivot_offset = Vector2( -912, 64 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="UpperButtonCredits" type="Button" parent="UpperCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                 Credits "
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="UpperButtonExtraSlot" type="Button" parent="UpperCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                         Leaderboard"
+
+[node name="UpperButtonLevelSelect" type="Button" parent="UpperCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                        Level Select "
+
+[node name="UpperButtonPlay" type="Button" parent="UpperCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                 Play      "
+
+[node name="UpperButtonOptions" type="Button" parent="UpperCard"]
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "                 Options "
+
+[node name="UpperButtonQuitGame" type="Button" parent="UpperCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 12 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                     Quit Game "
+
+[node name="MiddleCard" type="ReferenceRect" parent="."]
+margin_left = -135.0
+margin_top = 240.0
+margin_right = 897.0
+margin_bottom = 480.0
+mouse_filter = 2
+
+[node name="MiddleButtonCredits" type="Button" parent="MiddleCard"]
+visible = false
+margin_right = 1032.0
+margin_bottom = 240.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 8 )
+disabled = true
+text = "                Credits "
+
+[node name="MiddleButtonExtraSlot" type="Button" parent="MiddleCard"]
+visible = false
+margin_right = 1032.0
+margin_bottom = 240.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 8 )
+disabled = true
+text = "                        Leaderboard"
+
+[node name="MiddleButtonLevelSelect" type="Button" parent="MiddleCard"]
+visible = false
+margin_right = 1032.0
+margin_bottom = 240.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 8 )
+disabled = true
+text = "                       Level Select "
+
+[node name="MiddleButtonPlay" type="Button" parent="MiddleCard"]
+margin_right = 1032.0
+margin_bottom = 240.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "          Play "
+
+[node name="MiddleButtonOptions" type="Button" parent="MiddleCard"]
+visible = false
+margin_right = 1032.0
+margin_bottom = 240.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 8 )
+disabled = true
+text = "               Options "
+
+[node name="MiddleButtonQuitGame" type="Button" parent="MiddleCard"]
+visible = false
+margin_right = 1032.0
+margin_bottom = 240.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 8 )
+disabled = true
+text = "                   Quit Game "
+
+[node name="LowerCard" type="ReferenceRect" parent="."]
+margin_left = -135.0
+margin_top = 480.0
+margin_right = 761.0
+margin_bottom = 632.0
+mouse_filter = 2
+
+[node name="LowerButtonCredits" type="Button" parent="LowerCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 13 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                 Credits "
+
+[node name="LowerButtonExtraSlot" type="Button" parent="LowerCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 13 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                         Leaderboard"
+
+[node name="LowerButtonLevelSelect" type="Button" parent="LowerCard"]
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 13 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "                        Level Select "
+
+[node name="LowerButtonPlay" type="Button" parent="LowerCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 13 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                 Play      "
+
+[node name="LowerButtonOptions" type="Button" parent="LowerCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 13 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                 Options "
+
+[node name="LowerButtonQuitGame" type="Button" parent="LowerCard"]
+visible = false
+margin_right = 896.0
+margin_bottom = 152.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 13 )
+custom_colors/font_color_disabled = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_focus = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "                     Quit Game "
+
+[node name="SfUp" type="Sprite" parent="."]
+visible = false
+position = Vector2( 410, 362 )
+texture = ExtResource( 16 )
+
+[node name="SfDown" type="Sprite" parent="."]
+visible = false
+position = Vector2( 410, 362 )
+texture = ExtResource( 24 )
+
+[node name="RevolverBarrel" type="ReferenceRect" parent="."]
+margin_left = -344.0
+margin_top = 16.0
+margin_right = 344.0
+margin_bottom = 704.0
+rect_pivot_offset = Vector2( 344, 344 )
+mouse_filter = 2
+
+[node name="MainMenuBarrel" type="Sprite" parent="RevolverBarrel"]
+position = Vector2( 344, 344 )
+texture = ExtResource( 11 )
+
+[node name="IconsRight" type="ReferenceRect" parent="RevolverBarrel"]
+margin_left = 344.0
+margin_right = 688.0
+margin_bottom = 688.0
+mouse_filter = 2
+
+[node name="UpperIconRight" type="ReferenceRect" parent="RevolverBarrel/IconsRight"]
+margin_left = 56.0
+margin_top = 116.0
+margin_right = 152.0
+margin_bottom = 212.0
+mouse_filter = 1
+
+[node name="OptionsIcon" type="TextureButton" parent="RevolverBarrel/IconsRight/UpperIconRight"]
+rect_pivot_offset = Vector2( 48, 48 )
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 18 )
+
+[node name="MiddleIconRight" type="ReferenceRect" parent="RevolverBarrel/IconsRight"]
+margin_left = 162.0
+margin_top = 294.0
+margin_right = 258.0
+margin_bottom = 390.0
+mouse_filter = 1
+
+[node name="NewGameIcon" type="TextureButton" parent="RevolverBarrel/IconsRight/MiddleIconRight"]
+rect_pivot_offset = Vector2( 48, 48 )
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 22 )
+
+[node name="LowerIconRight" type="ReferenceRect" parent="RevolverBarrel/IconsRight"]
+margin_left = 55.0
+margin_top = 472.0
+margin_right = 151.0
+margin_bottom = 568.0
+mouse_filter = 1
+
+[node name="LevelSelectIcon" type="TextureButton" parent="RevolverBarrel/IconsRight/LowerIconRight"]
+rect_pivot_offset = Vector2( 48, 48 )
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 21 )
+
+[node name="IconsLeft" type="ReferenceRect" parent="RevolverBarrel"]
+margin_right = 344.0
+margin_bottom = 688.0
+mouse_filter = 2
+
+[node name="UpperIconLeft" type="ReferenceRect" parent="RevolverBarrel/IconsLeft"]
+margin_left = 193.0
+margin_top = 118.0
+margin_right = 289.0
+margin_bottom = 214.0
+mouse_filter = 1
+
+[node name="QuitGameIcon" type="TextureButton" parent="RevolverBarrel/IconsLeft/UpperIconLeft"]
+rect_pivot_offset = Vector2( 48, 48 )
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+
+[node name="MiddleIconLeft" type="ReferenceRect" parent="RevolverBarrel/IconsLeft"]
+margin_left = 89.0
+margin_top = 295.0
+margin_right = 185.0
+margin_bottom = 391.0
+mouse_filter = 1
+
+[node name="EmptyIcon" type="TextureButton" parent="RevolverBarrel/IconsLeft/MiddleIconLeft"]
+rect_pivot_offset = Vector2( 48, 48 )
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 19 )
+texture_hover = ExtResource( 23 )
+
+[node name="LowerIconLeft" type="ReferenceRect" parent="RevolverBarrel/IconsLeft"]
+margin_left = 194.0
+margin_top = 472.0
+margin_right = 290.0
+margin_bottom = 568.0
+mouse_filter = 1
+
+[node name="CreditsIcon" type="TextureButton" parent="RevolverBarrel/IconsLeft/LowerIconLeft"]
+rect_pivot_offset = Vector2( 48, 48 )
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/CreditsDown = SubResource( 17 )
+anims/CreditsUp = SubResource( 16 )
+anims/ExtraSlotDown = SubResource( 19 )
+anims/ExtraSlotUp = SubResource( 18 )
+anims/LevelSelectDown = SubResource( 13 )
+anims/LevelSelectUp = SubResource( 12 )
+anims/OptionsDown = SubResource( 15 )
+anims/OptionsUp = SubResource( 14 )
+anims/PlayDown = SubResource( 10 )
+anims/PlayUp = SubResource( 11 )
+anims/QuitGameDown = SubResource( 21 )
+anims/QuitGameUp = SubResource( 20 )
+anims/RESET = SubResource( 9 )
+
+[node name="BarrelAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+autoplay = "RESET"
+anims/BarrelIn = ExtResource( 25 )
+anims/BarrelOut = ExtResource( 17 )
+anims/RESET = SubResource( 22 )
+
+[node name="BarrelCollsionContainer" type="Area2D" parent="."]
+position = Vector2( -344, 16 )
+collision_layer = 2
+collision_mask = 2
+input_pickable = false
+
+[node name="BarrelCollision" type="CollisionPolygon2D" parent="BarrelCollsionContainer"]
+polygon = PoolVector2Array( 405, 2, 528, 68, 633, 237, 641, 452, 509, 637, 416, 686, 271, 685, 49, 673, 18, 456, 21, 236, 51, 15 )
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="CustomCursor" parent="." instance=ExtResource( 15 )]
+cursor_center = Vector2( 0, 0 )
+
+[node name="RotateSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 640, 0 )
+stream = ExtResource( 27 )
+
+[node name="UpperArrow" type="TextureButton" parent="."]
+margin_left = 673.0
+margin_top = 32.0
+margin_right = 777.0
+margin_bottom = 160.0
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 31 )
+
+[node name="LowerArrow" type="TextureButton" parent="."]
+margin_left = 678.0
+margin_top = 562.0
+margin_right = 782.0
+margin_bottom = 690.0
+mouse_default_cursor_shape = 1
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 30 )
+
+[node name="ScreenTransition" parent="." instance=ExtResource( 36 )]
+position = Vector2( 637, 360 )
+self_activate = true
+
+[connection signal="button_up" from="UpperCard/UpperButtonCredits" to="." method="_on_Credits_Button_button_up"]
+[connection signal="button_up" from="UpperCard/UpperButtonExtraSlot" to="." method="_on_Extra_Button_button_up"]
+[connection signal="button_up" from="UpperCard/UpperButtonLevelSelect" to="." method="_on_Levelselect_Button_button_up"]
+[connection signal="button_up" from="UpperCard/UpperButtonPlay" to="." method="_on_New_Game_Button_button_up"]
+[connection signal="button_up" from="UpperCard/UpperButtonOptions" to="." method="_on_Options_Button_button_down"]
+[connection signal="button_up" from="UpperCard/UpperButtonQuitGame" to="." method="_on_Quit_Game_Button_button_up"]
+[connection signal="button_up" from="MiddleCard/MiddleButtonCredits" to="." method="_on_Credits_Button_button_up"]
+[connection signal="button_up" from="MiddleCard/MiddleButtonExtraSlot" to="." method="_on_Extra_Button_button_up"]
+[connection signal="button_up" from="MiddleCard/MiddleButtonLevelSelect" to="." method="_on_Levelselect_Button_button_up"]
+[connection signal="button_up" from="MiddleCard/MiddleButtonPlay" to="." method="_on_New_Game_Button_button_up"]
+[connection signal="button_up" from="MiddleCard/MiddleButtonOptions" to="." method="_on_Options_Button_button_down"]
+[connection signal="button_up" from="MiddleCard/MiddleButtonQuitGame" to="." method="_on_Quit_Game_Button_button_up"]
+[connection signal="button_up" from="LowerCard/LowerButtonCredits" to="." method="_on_Credits_Button_button_up"]
+[connection signal="button_up" from="LowerCard/LowerButtonExtraSlot" to="." method="_on_Extra_Button_button_up"]
+[connection signal="button_up" from="LowerCard/LowerButtonLevelSelect" to="." method="_on_Levelselect_Button_button_up"]
+[connection signal="button_up" from="LowerCard/LowerButtonPlay" to="." method="_on_New_Game_Button_button_up"]
+[connection signal="button_up" from="LowerCard/LowerButtonOptions" to="." method="_on_Options_Button_button_down"]
+[connection signal="button_up" from="LowerCard/LowerButtonQuitGame" to="." method="_on_Quit_Game_Button_button_up"]
+[connection signal="button_up" from="RevolverBarrel/IconsRight/UpperIconRight/OptionsIcon" to="." method="_on_Options_Button_button_down"]
+[connection signal="button_up" from="RevolverBarrel/IconsRight/MiddleIconRight/NewGameIcon" to="." method="_on_New_Game_Button_button_up"]
+[connection signal="button_up" from="RevolverBarrel/IconsRight/LowerIconRight/LevelSelectIcon" to="." method="_on_Levelselect_Button_button_up"]
+[connection signal="button_up" from="RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon" to="." method="_on_Quit_Game_Button_button_up"]
+[connection signal="button_up" from="RevolverBarrel/IconsLeft/MiddleIconLeft/EmptyIcon" to="." method="_on_Extra_Button_button_up"]
+[connection signal="button_up" from="RevolverBarrel/IconsLeft/LowerIconLeft/CreditsIcon" to="." method="_on_Credits_Button_button_up"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="BarrelAnimationPlayer" to="." method="_on_BarrelAnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="BarrelCollsionContainer" to="." method="_on_BarrelCollsionContainer_area_entered"]
+[connection signal="area_exited" from="BarrelCollsionContainer" to="." method="_on_BarrelCollsionContainer_area_exited"]
+[connection signal="mouse_entered" from="BarrelCollsionContainer" to="." method="_on_BarrelCollsionContainer_mouse_entered"]
+[connection signal="mouse_exited" from="BarrelCollsionContainer" to="." method="_on_BarrelCollsionContainer_mouse_exited"]
+[connection signal="button_up" from="UpperArrow" to="." method="_on_UpperArrow_button_up"]
+[connection signal="button_up" from="LowerArrow" to="." method="_on_LowerArrow_button_up"]

@@ -1,0 +1,62 @@
+extends Node2D
+
+export (bool) var show_map_after_victory = true
+
+<<<<<<< working copy
+var is_paused = false
+
+func _process(delta):
+	# DEBUG
+	if Input.is_action_just_pressed("pause"):
+		if is_paused:
+			unpause()
+		else:
+			pause()
+	
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+		
+func pause():
+	for node in get_tree().get_nodes_in_group("Processing"):
+		node.set_process(false)
+		node.set_physics_process(false)
+	for node in get_tree().get_nodes_in_group("Timed"):
+		node.pause()
+	for node in get_tree().get_nodes_in_group("Animated"):
+		node.pause_animation()
+	$Player/Camera2D/PauseMenu.show()
+	is_paused = true
+		
+func unpause():
+	for node in get_tree().get_nodes_in_group("Processing"):
+		node.set_process(true)
+		node.set_physics_process(true)
+	for node in get_tree().get_nodes_in_group("Timed"):
+		node.unpause()
+	for node in get_tree().get_nodes_in_group("Animated"):
+		node.unpause_animation()
+	$Player/Camera2D/PauseMenu.hide()
+	is_paused = false
+=======
+func _process(delta):
+	# DEBUG
+	if Input.is_action_just_pressed("restart"):
+		queue_free()
+	
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+>>>>>>> merge rev
+
+func _on_VictoryZone_win():
+	$Player.hide()
+	$Player/Camera2D.current = false
+	$Player/Camera2D/CanvasLayer.hide()
+	$VictoryScreen/Camera2D.current = true
+	$Player.set_process(false)
+	$Player.set_physics_process(false)
+	if not show_map_after_victory:
+		$TileMap.hide()
+	$Enemies.hide()
+	
+	var stats = $Player.get_level_stats()
+	$VictoryScreen.activate(stats["time"], stats["kills"], stats["coins"])

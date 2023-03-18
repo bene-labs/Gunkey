@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Parallax/masts.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Parallax/bushpx.png" type="Texture" id=2]
+
+[node name="ParallaxMidground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="Poles" type="ParallaxLayer" parent="."]
+position = Vector2( 0, -880 )
+motion_scale = Vector2( 1, 0 )
+motion_mirroring = Vector2( 2882, 0 )
+
+[node name="Sprite" type="Sprite" parent="Poles"]
+position = Vector2( 0, 1096 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Bushes" type="ParallaxLayer" parent="."]
+position = Vector2( 0, -880 )
+motion_scale = Vector2( 1, 0 )
+motion_mirroring = Vector2( 820, 0 )
+
+[node name="Sprite" type="Sprite" parent="Bushes"]
+position = Vector2( 0, 1448 )
+texture = ExtResource( 2 )
+centered = false

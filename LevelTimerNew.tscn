@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEinhalb-Regular.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Sprites/UI/Fonts/PaperJohnnyEinhalb-Regular.otf"
+
+[sub_resource type="DynamicFont" id=3]
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[node name="LevelTimer" type="Node2D" groups=["Timed"]]
+
+[node name="ms" type="Label" parent="."]
+margin_left = 83.0
+margin_top = 3.0
+margin_right = 123.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 3 )
+text = "00"
+
+[node name="mm_ss" type="Label" parent="."]
+margin_right = 81.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 1 )
+text = "0:00"
+align = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.025
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_LevelTimer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sara_Afonso_-_Cuba_Urban_Street.mp3-daa3d3b100bfd53f71cf6f3e2bc77923.mp3str"
+
+[deps]
+
+source_file="res://Music/Sara_Afonso_-_Cuba_Urban_Street.mp3"
+dest_files=[ "res://.import/Sara_Afonso_-_Cuba_Urban_Street.mp3-daa3d3b100bfd53f71cf6f3e2bc77923.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

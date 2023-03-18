@@ -1,0 +1,383 @@
+[gd_scene load_steps=84 format=2]
+
+[ext_resource path="res://ExplodingEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Combat/Explosive.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_14.png" type="Texture" id=3]
+[ext_resource path="res://SimpleHealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Combat/AutoShooter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_06.png" type="Texture" id=6]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_04.png" type="Texture" id=7]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_17.png" type="Texture" id=8]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_03.png" type="Texture" id=9]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_07.png" type="Texture" id=10]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_00.png" type="Texture" id=11]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_12.png" type="Texture" id=12]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_15.png" type="Texture" id=13]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_18.png" type="Texture" id=14]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_09.png" type="Texture" id=15]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_05.png" type="Texture" id=16]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_02.png" type="Texture" id=17]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_08.png" type="Texture" id=18]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_01.png" type="Texture" id=19]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_11.png" type="Texture" id=20]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_10.png" type="Texture" id=21]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_13.png" type="Texture" id=22]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_16.png" type="Texture" id=23]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_16.png" type="Texture" id=24]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_17.png" type="Texture" id=25]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_12.png" type="Texture" id=26]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_11.png" type="Texture" id=27]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_10.png" type="Texture" id=28]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_19.png" type="Texture" id=29]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_08.png" type="Texture" id=30]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_09.png" type="Texture" id=31]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_20.png" type="Texture" id=32]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_21.png" type="Texture" id=33]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_22.png" type="Texture" id=34]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_23.png" type="Texture" id=35]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_07.png" type="Texture" id=36]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_13.png" type="Texture" id=37]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_18.png" type="Texture" id=38]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_14.png" type="Texture" id=39]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_05.png" type="Texture" id=40]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_06.png" type="Texture" id=41]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_15.png" type="Texture" id=42]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_04.png" type="Texture" id=43]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_19.png" type="Texture" id=44]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_21.png" type="Texture" id=45]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_01.png" type="Texture" id=46]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_06.png" type="Texture" id=47]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_10.png" type="Texture" id=48]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_17.png" type="Texture" id=49]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_19.png" type="Texture" id=50]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_00.png" type="Texture" id=51]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_20.png" type="Texture" id=52]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_13.png" type="Texture" id=53]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_21.png" type="Texture" id=54]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_05.png" type="Texture" id=55]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_04.png" type="Texture" id=56]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_03.png" type="Texture" id=57]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_22.png" type="Texture" id=58]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_09.png" type="Texture" id=59]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_23.png" type="Texture" id=60]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_00.png" type="Texture" id=61]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_01.png" type="Texture" id=62]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_12.png" type="Texture" id=63]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_02.png" type="Texture" id=64]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_07.png" type="Texture" id=65]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_15.png" type="Texture" id=66]
+[ext_resource path="res://Animation/Granasp/AttackLoop/Armature_AttackLoop_03.png" type="Texture" id=67]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_16.png" type="Texture" id=68]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_18.png" type="Texture" id=69]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_23.png" type="Texture" id=70]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_02.png" type="Texture" id=71]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_11.png" type="Texture" id=72]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_08.png" type="Texture" id=73]
+[ext_resource path="res://Animation/Granasp/Idle/Armature_IdleFlying_22.png" type="Texture" id=74]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_14.png" type="Texture" id=75]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_20.png" type="Texture" id=76]
+[ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_24.png" type="Texture" id=77]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 61 ), ExtResource( 62 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 43 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 36 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 37 ), ExtResource( 39 ), ExtResource( 42 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 38 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "AttackLoop",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 46 ), ExtResource( 71 ), ExtResource( 57 ), ExtResource( 56 ), ExtResource( 55 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 73 ), ExtResource( 59 ), ExtResource( 48 ), ExtResource( 72 ), ExtResource( 63 ), ExtResource( 53 ), ExtResource( 75 ), ExtResource( 66 ), ExtResource( 68 ), ExtResource( 49 ), ExtResource( 69 ), ExtResource( 50 ), ExtResource( 76 ), ExtResource( 54 ), ExtResource( 58 ), ExtResource( 60 ), ExtResource( 77 ) ],
+"loop": true,
+"name": "AttackStart",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 22 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 45 ), ExtResource( 74 ), ExtResource( 70 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 24.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 32.0
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HurtBox:collision_layer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtBox:collision_mask")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "Fly" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:collision_layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:collision_mask")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimatedSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HealthBar:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "die"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_process"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtBox:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("AutoShooter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimatedSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Explosive")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "../" ],
+"method": "explode"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HealthBar:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "take_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HealthBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="ExplodingEnemy" type="KinematicBody2D" groups=["Animated", "Destructible", "Processing"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+move_speed = 400
+current_health = 5
+max_health = 5
+follow_range = 950
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1, 0 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4, 14 )
+shape = SubResource( 2 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2( -4, 14 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/die = SubResource( 6 )
+anims/take_damage = SubResource( 4 )
+
+[node name="AutoShooter" parent="." instance=ExtResource( 5 )]
+
+[node name="Explosive" parent="." instance=ExtResource( 2 )]
+damage_to_unfriendly = 30.0
+explosion_range = 400.0
+
+[node name="HealthBar" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = -41.0
+margin_top = -59.0
+margin_right = 115.0
+margin_bottom = -33.0
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

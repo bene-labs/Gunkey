@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ProjectileMachineGunTurret.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Combat/BulletPattern.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EnemyScenes/ImmovableEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnemyScenes/VisualAutoShooter.tscn" type="PackedScene" id=4]
+
+[node name="ImmovableEnemy_VisualMachineGunTurret" instance=ExtResource( 3 )]
+current_health = 30
+max_health = 30
+look_at_target = false
+path = "res://EnemyScenes/ImmovableEnemyScenes/ImmovableEnemy_VisualMachineGunTurret.tscn"
+
+[node name="VisualAutoShooter" parent="." index="5" instance=ExtResource( 4 )]
+aim_at_target = true
+max_ammo = 20
+minimum_shot_delay = 0.2
+reload_time = 3.0
+barrel_appear_speed = 0.3
+barrel_shoot_pulsate_speed = 0.1
+barrel_dissappear_delay = 0.25
+
+[node name="BulletPattern" parent="VisualAutoShooter" index="2" instance=ExtResource( 2 )]
+
+[node name="Projectile" parent="VisualAutoShooter/BulletPattern" index="0" instance=ExtResource( 1 )]
+move_speed = 750
+damage = 2
+max_range = 800

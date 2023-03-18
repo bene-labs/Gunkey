@@ -1,0 +1,151 @@
+[gd_resource type="Theme" load_steps=41 format=2]
+
+[ext_resource path="res://Sprites/UI/ScreenUI/button_pressed.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/UI/ScreenUI/button_normal.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/UI/ScreenUI/button_hover.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/ScreenUI/button_disabled.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/ScreenUI/button_selectstate.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/checkbox_4.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/checkbox_2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/slider.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/slider2.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/slider_bar.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/slider_bar2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/checkbox_1.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/ScreenUI/dropdown1.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/ScreenUI/arrow.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=15]
+[ext_resource path="res://Sprites/UI/ScreenUI/dropdown3.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/UI/ScreenUI/dropdown2.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/checkbox_focus.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/dropdown_focus.png" type="Texture" id=19]
+
+[sub_resource type="DynamicFont" id=28]
+size = 30
+extra_spacing_bottom = -6
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 240, 96 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 240, 96 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 240, 96 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 240, 96 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 240, 96 )
+
+[sub_resource type="StyleBoxTexture" id=30]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 43, 43 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 43, 43 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 43, 43 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 43, 43 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 173, 26 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 173, 26 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 173, 26 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 36
+extra_spacing_bottom = -81
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 220, 43 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 220, 43 )
+
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 220, 43 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 220, 43 )
+
+[sub_resource type="DynamicFont" id=25]
+extra_spacing_top = 2
+extra_spacing_bottom = -2
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 220, 43 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 220, 120 )
+
+[resource]
+Button/colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+Button/colors/font_color_disabled = Color( 0.333333, 0.270588, 0.211765, 1 )
+Button/colors/font_color_focus = Color( 0.333333, 0.270588, 0.211765, 1 )
+Button/colors/font_color_hover = Color( 0.333333, 0.270588, 0.211765, 1 )
+Button/colors/font_color_pressed = Color( 0.333333, 0.270588, 0.211765, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 28 )
+Button/styles/disabled = SubResource( 9 )
+Button/styles/focus = SubResource( 10 )
+Button/styles/hover = SubResource( 6 )
+Button/styles/normal = SubResource( 7 )
+Button/styles/pressed = SubResource( 8 )
+CheckBox/icons/checked = ExtResource( 6 )
+CheckBox/icons/unchecked = ExtResource( 6 )
+CheckBox/styles/focus = SubResource( 30 )
+CheckBox/styles/hover = SubResource( 20 )
+CheckBox/styles/normal = SubResource( 19 )
+CheckBox/styles/pressed = SubResource( 12 )
+HSlider/icons/grabber = ExtResource( 8 )
+HSlider/icons/grabber_highlight = ExtResource( 9 )
+HSlider/styles/grabber_area = SubResource( 17 )
+HSlider/styles/grabber_area_highlight = SubResource( 18 )
+HSlider/styles/slider = SubResource( 16 )
+ItemList/fonts/font = SubResource( 29 )
+MenuButton/colors/font_color = Color( 0.2, 0.0941176, 0.0117647, 1 )
+MenuButton/colors/font_color_disabled = Color( 0.2, 0.0941176, 0.0117647, 1 )
+MenuButton/colors/font_color_focus = Color( 0.2, 0.0941176, 0.0117647, 1 )
+MenuButton/colors/font_color_hover = Color( 0.2, 0.0941176, 0.0117647, 1 )
+MenuButton/colors/font_color_pressed = Color( 0.2, 0.0941176, 0.0117647, 1 )
+MenuButton/constants/hseparation = 3
+MenuButton/fonts/font = null
+MenuButton/styles/disabled = null
+MenuButton/styles/focus = SubResource( 31 )
+MenuButton/styles/hover = SubResource( 21 )
+MenuButton/styles/normal = SubResource( 27 )
+MenuButton/styles/pressed = SubResource( 23 )
+PopupMenu/colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+PopupMenu/colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
+PopupMenu/fonts/font = SubResource( 25 )
+PopupMenu/styles/hover = SubResource( 26 )
+PopupMenu/styles/panel = SubResource( 24 )

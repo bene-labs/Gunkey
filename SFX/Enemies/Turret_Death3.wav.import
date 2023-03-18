@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Turret_Death3.wav-f44dc014ff22ba3da9adedc3ad054258.sample"
+
+[deps]
+
+source_file="res://SFX/Enemies/Turret_Death3.wav"
+dest_files=[ "res://.import/Turret_Death3.wav-f44dc014ff22ba3da9adedc3ad054258.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

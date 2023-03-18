@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/WeapomArm_SHG.png-f1574d3a585ac3e56c5009c0aa320e4d.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Sprites/Placeholders/Characters/Gunkey_Arm/IdleShotgunArm/WeapomArm_SHG.png"
+dest_files=[ "res://.import/WeapomArm_SHG.png-f1574d3a585ac3e56c5009c0aa320e4d.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

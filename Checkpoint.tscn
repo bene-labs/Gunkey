@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Checkpoint.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Checkpoint/Checkpoint_mast.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Checkpoint/inactive.png" type="Texture" id=3]
+[ext_resource path="res://SFX/Player/Sprung.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sprites/Checkpoint/active.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 107 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float speed = 2.0;
+uniform float frequency_x = 5.0;
+uniform float frequency_y = 5.0;
+uniform float amplitude_x = 50.0;
+uniform float amplitude_y = 25.0;
+uniform float inclination = 50.0;
+
+void vertex() {
+	VERTEX.y += sin((UV.x - TIME * speed) * frequency_y) * amplitude_y * (1.0 - UV.x);
+	VERTEX.x += cos((UV.y - TIME * speed) * frequency_x) * amplitude_x * (1.0 - UV.x);
+	VERTEX.x -= UV.y * inclination;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/speed = 2.0
+shader_param/frequency_x = 5.0
+shader_param/frequency_y = 5.0
+shader_param/amplitude_x = 10.0
+shader_param/amplitude_y = 10.0
+shader_param/inclination = 10.0
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "active",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "inactive",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 37, 45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "inactive" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "activate"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "active" ]
+}
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource( 1 )
+heal_ammount = 10
+
+[node name="Mast" type="Sprite" parent="."]
+position = Vector2( 61.3333, 83 )
+texture = ExtResource( 2 )
+
+[node name="ActivationArea" type="Area2D" parent="Mast"]
+position = Vector2( -61.3333, -83 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mast/ActivationArea"]
+position = Vector2( 61.75, 83 )
+shape = SubResource( 2 )
+
+[node name="Flag" type="AnimatedSprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 37, 45 )
+frames = SubResource( 1 )
+animation = "inactive"
+playing = true
+
+[node name="RespawnPoint" type="Position2D" parent="."]
+position = Vector2( 0, -13.3333 )
+
+[node name="ActivateSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 61, 1 )
+stream = ExtResource( 4 )
+volume_db = 10.574
+pitch_scale = 1.05
+bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Flag")
+autoplay = "RESET"
+anims/RESET = SubResource( 5 )
+anims/activate = SubResource( 6 )
+
+[connection signal="body_entered" from="Mast/ActivationArea" to="." method="_on_ActivationArea_body_entered"]

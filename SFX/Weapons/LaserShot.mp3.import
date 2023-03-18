@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/LaserShot.mp3-bbba8a085547cb0038c0bbf74dafa7f1.mp3str"
+
+[deps]
+
+source_file="res://SFX/Weapons/LaserShot.mp3"
+dest_files=[ "res://.import/LaserShot.mp3-bbba8a085547cb0038c0bbf74dafa7f1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

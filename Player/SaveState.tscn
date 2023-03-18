@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Configs.gd" type="Script" id=1]
+
+[node name="SaveState" type="Node"]
+script = ExtResource( 1 )
+silver_total_time = 330
+gold_total_time = 210
+special_total_time = 120
+adjectives = "big,small,crazy,strange,cool,hot,hip,masterful,mysterious,funky,mean,evil,nice,rowdy,dizzy,lil'"
+nouns = "Banana,Monkey,Boom,Cat,Dog,Dude,Skull,Unicorn,Kong,Ape,Gorilla,Robot,Sauce,Bean,Scientist,Wasp,Mosquito"

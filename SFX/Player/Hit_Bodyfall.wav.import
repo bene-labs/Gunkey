@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hit_Bodyfall.wav-f523afcb847023862242611ca6ac7a10.sample"
+
+[deps]
+
+source_file="res://SFX/Player/Hit_Bodyfall.wav"
+dest_files=[ "res://.import/Hit_Bodyfall.wav-f523afcb847023862242611ca6ac7a10.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Combat/Explosive.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Barrel.png" type="Texture" id=2]
+[ext_resource path="res://ExplosiveBarrel.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 26, 45 )
+
+[node name="ExplosiveBarrel" type="StaticBody2D" groups=["Destructible"]]
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Explosive" parent="." groups=["Destructible"] instance=ExtResource( 1 )]
+scale = Vector2( 0.65, 0.65 )
+damage_to_friendly = 3.0
+damage_to_unfriendly = 40.0
+explosion_range = 600.0

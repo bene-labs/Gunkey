@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Respawn3.wav-417d8b789c413e5e30f67ebd463e4b9c.sample"
+
+[deps]
+
+source_file="res://SFX/Player/Respawn3.wav"
+dest_files=[ "res://.import/Respawn3.wav-417d8b789c413e5e30f67ebd463e4b9c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
