@@ -299,14 +299,6 @@ focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/VideoButton
 focus_neighbour_bottom = NodePath("../FullscreenCheckBox")
 theme = ExtResource( 7 )
 
-[node name="TextureButton" type="Button" parent="VideoOptions/VideoOptionsButtons"]
-margin_left = -308.0
-margin_top = 288.0
-margin_right = -79.0
-margin_bottom = 356.0
-theme = ExtResource( 7 )
-text = "Delete Save"
-
 [node name="AudioOptions" type="Node2D" parent="."]
 visible = false
 position = Vector2( 408, 216 )
@@ -801,7 +793,6 @@ texture = ExtResource( 12 )
 [connection signal="button_up" from="VideoOptions/VideoOptionsButtons/FullscreenCheckBox" to="." method="_on_Fullscreen_Button_button_up"]
 [connection signal="about_to_show" from="VideoOptions/VideoOptionsButtons/ResolutionDropDown" to="VideoOptions/VideoOptionsButtons/ResolutionDropDown" method="_on_ResolutionDropDown_about_to_show"]
 [connection signal="button_up" from="VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox" to="." method="_on_ScreenShakeButton_button_up"]
-[connection signal="button_up" from="VideoOptions/VideoOptionsButtons/TextureButton" to="." method="_on_TextureButton_button_up"]
 [connection signal="toggled" from="AudioOptions/AudioOptionsButtons/MasterCheckBox" to="." method="_on_MasterCheckBox_toggled"]
 [connection signal="value_changed" from="AudioOptions/AudioOptionsButtons/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
 [connection signal="toggled" from="AudioOptions/AudioOptionsButtons/SFXCheckBox" to="." method="_on_SFXCheckBox_toggled"]

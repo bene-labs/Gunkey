@@ -44,7 +44,6 @@ func _ready():
 	$TotalKeysCollected/ProgressOverlay.max_value = SaveState.progress.get_total_keys()
 	$TotalKeysCollected/ProgressOverlay.value = SaveState.progress.get_total_collected_keys()
 	if $TotalKeysCollected/ProgressOverlay.value == $TotalKeysCollected/ProgressOverlay.max_value:
-		SaveState.progress.set_has_all_keys(true)
 		$TotalKeysCollected/ProgressOverlay.hide()
 		$TotalKeysCollected/ProgressOverlayFull.show()
 	$TotalKeysCollected/KeyCounter.text = str($TotalKeysCollected/ProgressOverlay.value) + "/" + str($TotalKeysCollected/ProgressOverlay.max_value)
@@ -65,10 +64,12 @@ func _input(event):
 			Input.is_action_just_pressed("ui_left") or  Input.is_action_just_pressed("ui_right"):
 				$Title.grab_focus()
 				controller_mode = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
-		if Input.is_mouse_button_pressed(1):
+		if event is InputEventMouse:
 			controller_mode = false
 			$Title.grab_focus()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene(MainMenuScenePath)
 

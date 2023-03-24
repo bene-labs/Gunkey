@@ -55,6 +55,7 @@ export var screen_shake_duration = 0.5
 var is_shot_on_cooldown = false
 var is_reloading = false
 var is_reload_queued = false
+var was_reload_started_on_ground = false
 
 var shot_cooldown_timer = Timer.new()
 var reload_timer = Timer.new()
@@ -86,6 +87,7 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("reload") and not is_reload_queued:
+		was_reload_started_on_ground = (get_node(user_path).has_method("get_is_grounded") and get_node(user_path).get_is_grounded())
 		reload()
 	if role == Role.PRIMARY and Input.is_action_pressed("shoot_primary") or \
 	role == Role.SECONDARY and Input.is_action_pressed("shoot_secondary"):
@@ -98,9 +100,10 @@ func _process(delta):
 			shoot()
 		
 	if is_reload_queued and \
-	(((get_node(user_path).has_method("is_on_floor") and get_node(user_path).is_on_floor()) or allow_reload_in_air) or \
-	((get_node(user_path).has_method("get_is_inside_wind") and get_node(user_path).get_is_inside_wind() == true))):
+	(((get_node(user_path).has_method("get_is_grounded") and get_node(user_path).get_is_grounded()) or allow_reload_in_air) or \
+	((get_node(user_path).has_method("get_is_inside_wind") and get_node(user_path).get_is_inside_wind() == true)) or was_reload_started_on_ground):
 		ammo_count = max_ammo
+		was_reload_started_on_ground = false
 		is_reload_queued = false
 			
 func set_ammo_count(count):
@@ -109,8 +112,8 @@ func set_ammo_count(count):
 		ammo_count = 0
 
 func reload():
-	if get_node(user_path).has_method("is_on_floor"):
-		if not allow_reload_in_air and not get_node(user_path).is_on_floor():
+	if get_node(user_path).has_method("get_is_grounded"):
+		if not allow_reload_in_air and not get_node(user_path).get_is_grounded():
 			if not enable_passive_air_reload:
 				return
 #	if get_node(user_path).has_method("get_is_inside_wind"):

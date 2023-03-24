@@ -27,10 +27,12 @@ func _input(event):
 			Input.is_action_just_pressed("ui_left") or  Input.is_action_just_pressed("ui_right"):
 				$Title.grab_focus()
 				controller_mode = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
-		if Input.is_mouse_button_pressed(1):
+		if event is InputEventMouse:
 			controller_mode = false
 			$Title.grab_focus()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		elif Input.is_action_just_pressed("ui_accept"):
 			if $HSlider.has_focus():
 				focus_button(active_button_id)

@@ -95,9 +95,13 @@ func _on_Extra_Button_button_up():
 
 func _on_Quit_Game_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().quit()
+	get_tree().change_scene("res://Menu's/UI_SaveSlotSelect.tscn")
 
 func _input(event):
+	if Input.is_action_just_pressed("ui_down") or  Input.is_action_just_pressed("ui_up"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	elif event is InputEventMouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if is_rotaion_locked:
 		return
 	if Input.is_action_just_pressed("ui_up"):

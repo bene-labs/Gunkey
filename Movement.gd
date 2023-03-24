@@ -91,6 +91,7 @@ func process(new_direction, attempt_jump = false, apply_gravity = true):
 			velocity.x += acceleration
 		
 	if attempt_jump and body.is_grounded:
+		velocity.y = 0
 		velocity.y -= jump_force
 		emit_signal("enter_jump")
 	

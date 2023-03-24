@@ -41,19 +41,30 @@ func _ready():
 	
 func _input(event):
 	if not controller_mode:
-		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
-			$ButtonsContainer/Buttons/MainMenu/MainMenuButton.grab_focus()
-			controller_mode = true
-	elif Input.is_action_just_pressed("ui_down_special"):
-		button_index += 1
-		if button_index >= len(buttons):
-			button_index = 0
-		buttons[button_index].grab_focus()
-	elif Input.is_action_just_pressed("ui_up_special"):
-		button_index -= 1
-		if button_index < 0:
-			button_index = len(buttons) - 1
-		buttons[button_index].grab_focus()
+		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or  \
+			Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+				$Title.grab_focus()
+				controller_mode = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		if event is InputEventMouse:
+			controller_mode = false
+			$Title.grab_focus()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#	if not controller_mode:
+#		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up"):
+#			$ButtonsContainer/Buttons/MainMenu/MainMenuButton.grab_focus()
+#			controller_mode = true
+#	elif Input.is_action_just_pressed("ui_down_special"):
+#		button_index += 1
+#		if button_index >= len(buttons):
+#			button_index = 0
+#		buttons[button_index].grab_focus()
+#	elif Input.is_action_just_pressed("ui_up_special"):
+#		button_index -= 1
+#		if button_index < 0:
+#			button_index = len(buttons) - 1
+#		buttons[button_index].grab_focus()
 
 func _on_Resume_Game_Button_button_up():
 	GlobalSounds.play_click_sound()

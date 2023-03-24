@@ -26,25 +26,30 @@ func _ready():
 	else:
 		settings.load_data() if not reset_settings else settings.save_data()
 		progress.load_data() if not reset_progress else progress.save_data()
-	if not progress.get_name():
-		randomize()
-
-		var adj_list = adjectives.split(",")
-		var noun_list = nouns.split(",")
-		var random_name = adj_list[randi() % len(adj_list)] + noun_list[randi() % len(noun_list)]
-		progress.set_name(random_name)
+#	if not progress.get_name():
+#		randomize()
+#
+#		var adj_list = adjectives.split(",")
+#		var noun_list = nouns.split(",")
+#		var random_name = adj_list[randi() % len(adj_list)] + noun_list[randi() % len(noun_list)]
+#		progress.set_name(random_name)
 	load_cloud_data()
 
 func load_cloud_data(nb = settings.get_active_save()):
+	settings.set_active_save(nb)
+	progress.data["Slot"] = nb
 	Ngio.cloud_load(funcref(self, "_on_cloud_loaded"), settings.get_active_save())
 	OS.window_position = settings.get_window_position()
 	OS.window_fullscreen = settings.is_fullscreen()
 
 func _on_cloud_loaded(data):
 	if data == null:
-		return
+		progress.reset_data()
+		progress.cloud_save_data()
 	else:
+		var slot = progress.data["Slot"]
 		progress.data = data
+		progress.data["Slot"] = slot
 		
 func _exit_tree():
 	settings.set_window_position(OS.window_position)

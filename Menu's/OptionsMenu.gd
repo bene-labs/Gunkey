@@ -32,6 +32,7 @@ func _ready():
 	
 	var test = SaveState.settings
 	emit_signal("toggle_screen_shake", $VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox.pressed)
+	show_video_options()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -43,12 +44,14 @@ func _input(event):
 				$ControlsOptions/ControlsOptionsControllerKeybinds.show()
 				$ControlsOptions/ControlsOptionsKeybinds.hide()
 				controller_mode = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
-		if Input.is_mouse_button_pressed(1):
+		if event is InputEventMouse:
 			$ControlsOptions/ControlsOptionsControllerKeybinds.hide()
 			$ControlsOptions/ControlsOptionsKeybinds.show()
 			controller_mode = false
 			$Title.grab_focus()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		elif Input.is_action_just_pressed("ui_accept"):
 			if $AudioOptions/AudioOptionsButtons/MasterSlider.has_focus():
 				$AudioOptions/AudioOptionsButtons/MasterCheckBox.call_deferred("grab_focus")
@@ -167,9 +170,3 @@ func _on_AudioButton_focus_entered():
 
 func _on_ControlsButton_focus_entered():
 	show_controls()
-
-
-func _on_TextureButton_button_up():
-	SaveState.progress.reset_data()
-	Ngio.request("CloudSave.clearSlot", {"id": 1})
-	

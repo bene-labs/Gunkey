@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu's/ProgressBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu's/UI_SaveSlotSelect.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/UI/ScreenUI/button_hover.png" type="Texture" id=4]
 [ext_resource path="res://Menu's/TransparentOverlay.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/UI/ScreenUI/MenuUnderlayOptions.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_GeneralButtons_Theme.tres" type="Theme" id=7]
@@ -66,6 +67,21 @@ font_data = ExtResource( 1 )
 size = 35
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 240, 96 )
+modulate_color = Color( 0.698039, 0.658824, 0.658824, 1 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 240, 96 )
+modulate_color = Color( 0.698039, 0.658824, 0.658824, 1 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 240, 96 )
+modulate_color = Color( 0.698039, 0.658824, 0.658824, 1 )
+
 [node name="SaveSlotSelect" type="CanvasLayer"]
 script = ExtResource( 3 )
 
@@ -116,9 +132,9 @@ custom_constants/separation = 25
 [node name="Save1Button" type="Button" parent="Categories/CategoryLabels"]
 margin_right = 200.0
 margin_bottom = 119.0
-focus_neighbour_left = NodePath("../../../Save1Options/SaveOptionsButtons/FullscreenCheckBox")
+focus_neighbour_left = NodePath("../../../Save1Options/SaveOptionsButtons/UseSaveCheckBox")
 focus_neighbour_top = NodePath("../../../ReturnButton")
-focus_neighbour_right = NodePath("../../../Save1Options/SaveOptionsButtons/FullscreenCheckBox")
+focus_neighbour_right = NodePath("../../../Save1Options/SaveOptionsButtons/UseSaveCheckBox")
 focus_neighbour_bottom = NodePath("../Save2Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -140,7 +156,9 @@ align = 2
 margin_top = 144.0
 margin_right = 200.0
 margin_bottom = 263.0
+focus_neighbour_left = NodePath("../../../Save2Options/SaveOptionsButtons/UseSaveCheckBox")
 focus_neighbour_top = NodePath("../Save1Button")
+focus_neighbour_right = NodePath("../../../Save2Options/SaveOptionsButtons/UseSaveCheckBox")
 focus_neighbour_bottom = NodePath("../Save3Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -161,9 +179,9 @@ align = 2
 margin_top = 288.0
 margin_right = 200.0
 margin_bottom = 408.0
-focus_neighbour_left = NodePath("../../../ReturnButton")
+focus_neighbour_left = NodePath("../../../Save3Options/SaveOptionsButtons/UseSaveCheckBox")
 focus_neighbour_top = NodePath("../Save2Button")
-focus_neighbour_right = NodePath("../../../ReturnButton")
+focus_neighbour_right = NodePath("../../../Save3Options/SaveOptionsButtons/UseSaveCheckBox")
 focus_neighbour_bottom = NodePath("../../../ReturnButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -223,7 +241,7 @@ margin_bottom = 154.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="FullscreenLabel" type="Label" parent="Save1Options/SaveOptionNames"]
+[node name="ProgressLabel" type="Label" parent="Save1Options/SaveOptionNames"]
 margin_right = 298.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -241,13 +259,13 @@ text = "Use Save"
 [node name="SaveOptionsButtons" type="Node2D" parent="Save1Options"]
 position = Vector2( 323, 17 )
 
-[node name="FullscreenCheckBox" type="Label" parent="Save1Options/SaveOptionsButtons"]
+[node name="ProgressPercantageLabel" type="Label" parent="Save1Options/SaveOptionsButtons"]
 margin_top = -3.0
 margin_right = 55.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 43, 43 )
 focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_top = NodePath("../ScreenShakeCheckBox")
+focus_neighbour_top = NodePath("../UseSaveCheckBox")
 focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save1Button")
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -256,30 +274,37 @@ text = "0 %"
 align = 1
 valign = 1
 
-[node name="ScreenShakeCheckBox" type="CheckBox" parent="Save1Options/SaveOptionsButtons"]
+[node name="UseSaveCheckBox" type="CheckBox" parent="Save1Options/SaveOptionsButtons"]
 margin_left = -8.0
 margin_top = 44.0
 margin_right = 35.0
 margin_bottom = 87.0
 rect_min_size = Vector2( 43, 43 )
 focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save1Button")
+focus_neighbour_top = NodePath("../DeleteButton")
 focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_bottom = NodePath("../FullscreenCheckBox")
+focus_neighbour_bottom = NodePath("../DeleteButton")
 theme = ExtResource( 7 )
 
-[node name="TextureButton" type="Button" parent="Save1Options/SaveOptionsButtons"]
-margin_left = -308.0
-margin_top = 288.0
-margin_right = -79.0
+[node name="DeleteButton" type="Button" parent="Save1Options/SaveOptionsButtons"]
+margin_left = -300.0
+margin_top = 282.0
+margin_right = -25.0
 margin_bottom = 356.0
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save1Button")
+focus_neighbour_top = NodePath("../UseSaveCheckBox")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save1Button")
+focus_neighbour_bottom = NodePath("../UseSaveCheckBox")
 theme = ExtResource( 7 )
+custom_styles/pressed = SubResource( 24 )
 text = "Delete Save"
 
 [node name="ProgressOverlay" parent="Save1Options" instance=ExtResource( 2 )]
-margin_left = 29.0
+margin_left = 30.0
 margin_top = 142.0
-margin_right = 529.0
+margin_right = 530.0
 margin_bottom = 190.0
+step = 0.5
 
 [node name="Save2Options" type="Node2D" parent="."]
 visible = false
@@ -297,7 +322,7 @@ margin_bottom = 154.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="FullscreenLabel" type="Label" parent="Save2Options/SaveOptionNames"]
+[node name="ProgressLabel" type="Label" parent="Save2Options/SaveOptionNames"]
 margin_right = 298.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -315,13 +340,13 @@ text = "Use Save"
 [node name="SaveOptionsButtons" type="Node2D" parent="Save2Options"]
 position = Vector2( 323, 17 )
 
-[node name="FullscreenCheckBox" type="Label" parent="Save2Options/SaveOptionsButtons"]
+[node name="ProgressPercantageLabel" type="Label" parent="Save2Options/SaveOptionsButtons"]
 margin_top = -3.0
 margin_right = 55.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 43, 43 )
 focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_top = NodePath("../ScreenShakeCheckBox")
+focus_neighbour_top = NodePath("../UseSaveCheckBox")
 focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save1Button")
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -330,29 +355,35 @@ text = "0 %"
 align = 1
 valign = 1
 
-[node name="ScreenShakeCheckBox" type="CheckBox" parent="Save2Options/SaveOptionsButtons"]
+[node name="UseSaveCheckBox" type="CheckBox" parent="Save2Options/SaveOptionsButtons"]
 margin_left = -8.0
 margin_top = 44.0
 margin_right = 35.0
 margin_bottom = 87.0
 rect_min_size = Vector2( 43, 43 )
-focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_bottom = NodePath("../FullscreenCheckBox")
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save2Button")
+focus_neighbour_top = NodePath("../DeleteButton")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save2Button")
+focus_neighbour_bottom = NodePath("../DeleteButton")
 theme = ExtResource( 7 )
 
-[node name="TextureButton" type="Button" parent="Save2Options/SaveOptionsButtons"]
-margin_left = -308.0
-margin_top = 288.0
-margin_right = -79.0
+[node name="DeleteButton" type="Button" parent="Save2Options/SaveOptionsButtons"]
+margin_left = -300.0
+margin_top = 282.0
+margin_right = -25.0
 margin_bottom = 356.0
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save2Button")
+focus_neighbour_top = NodePath("../UseSaveCheckBox")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save2Button")
+focus_neighbour_bottom = NodePath("../UseSaveCheckBox")
 theme = ExtResource( 7 )
+custom_styles/pressed = SubResource( 25 )
 text = "Delete Save"
 
 [node name="ProgressOverlay" parent="Save2Options" instance=ExtResource( 2 )]
-margin_left = 29.0
+margin_left = 30.0
 margin_top = 142.0
-margin_right = 529.0
+margin_right = 530.0
 margin_bottom = 190.0
 
 [node name="Save3Options" type="Node2D" parent="."]
@@ -371,7 +402,7 @@ margin_bottom = 154.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="FullscreenLabel" type="Label" parent="Save3Options/SaveOptionNames"]
+[node name="ProgressLabel" type="Label" parent="Save3Options/SaveOptionNames"]
 margin_right = 298.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -389,13 +420,13 @@ text = "Use Save"
 [node name="SaveOptionsButtons" type="Node2D" parent="Save3Options"]
 position = Vector2( 323, 17 )
 
-[node name="FullscreenCheckBox" type="Label" parent="Save3Options/SaveOptionsButtons"]
+[node name="ProgressPercantageLabel" type="Label" parent="Save3Options/SaveOptionsButtons"]
 margin_top = -3.0
 margin_right = 55.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 43, 43 )
 focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_top = NodePath("../ScreenShakeCheckBox")
+focus_neighbour_top = NodePath("../UseSaveCheckBox")
 focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save1Button")
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -404,45 +435,51 @@ text = "0 %"
 align = 1
 valign = 1
 
-[node name="ScreenShakeCheckBox" type="CheckBox" parent="Save3Options/SaveOptionsButtons"]
+[node name="UseSaveCheckBox" type="CheckBox" parent="Save3Options/SaveOptionsButtons"]
 margin_left = -8.0
 margin_top = 44.0
 margin_right = 35.0
 margin_bottom = 87.0
 rect_min_size = Vector2( 43, 43 )
-focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save1Button")
-focus_neighbour_bottom = NodePath("../FullscreenCheckBox")
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save3Button")
+focus_neighbour_top = NodePath("../DeleteButton")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save3Button")
+focus_neighbour_bottom = NodePath("../DeleteButton")
 theme = ExtResource( 7 )
 
-[node name="TextureButton" type="Button" parent="Save3Options/SaveOptionsButtons"]
-margin_left = -308.0
-margin_top = 288.0
-margin_right = -79.0
+[node name="DeleteButton" type="Button" parent="Save3Options/SaveOptionsButtons"]
+margin_left = -300.0
+margin_top = 282.0
+margin_right = -25.0
 margin_bottom = 356.0
+focus_neighbour_left = NodePath("../../../Categories/CategoryLabels/Save3Button")
+focus_neighbour_top = NodePath("../UseSaveCheckBox")
+focus_neighbour_right = NodePath("../../../Categories/CategoryLabels/Save3Button")
+focus_neighbour_bottom = NodePath("../UseSaveCheckBox")
 theme = ExtResource( 7 )
+custom_styles/pressed = SubResource( 26 )
 text = "Delete Save"
 
 [node name="ProgressOverlay" parent="Save3Options" instance=ExtResource( 2 )]
-margin_left = 29.0
+margin_left = 30.0
 margin_top = 142.0
-margin_right = 529.0
+margin_right = 530.0
 margin_bottom = 190.0
 
 [node name="Legonkl" type="Sprite" parent="."]
 position = Vector2( 1022, 278 )
 texture = ExtResource( 12 )
 
-[connection signal="button_up" from="Categories/CategoryLabels/Save1Button" to="." method="_on_VideoButton_button_up"]
-[connection signal="focus_entered" from="Categories/CategoryLabels/Save1Button" to="." method="_on_VideoButton_focus_entered"]
-[connection signal="button_up" from="Categories/CategoryLabels/Save2Button" to="." method="_on_AudioButton_button_up"]
-[connection signal="focus_entered" from="Categories/CategoryLabels/Save2Button" to="." method="_on_AudioButton_focus_entered"]
-[connection signal="button_up" from="Categories/CategoryLabels/Save3Button" to="." method="_on_ControlsButton_button_up"]
-[connection signal="focus_entered" from="Categories/CategoryLabels/Save3Button" to="." method="_on_ControlsButton_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/Save1Button" to="." method="_on_Save1_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/Save1Button" to="." method="_on_Save1Button_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/Save2Button" to="." method="_on_Save2_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/Save2Button" to="." method="_on_Save2Button_focus_entered"]
+[connection signal="button_up" from="Categories/CategoryLabels/Save3Button" to="." method="_on_Save3_button_up"]
+[connection signal="focus_entered" from="Categories/CategoryLabels/Save3Button" to="." method="_on_Save3Button_focus_entered"]
 [connection signal="button_up" from="ReturnButton" to="." method="_on_ReturnButton_button_up"]
-[connection signal="button_up" from="Save1Options/SaveOptionsButtons/ScreenShakeCheckBox" to="." method="_on_ScreenShakeButton_button_up"]
-[connection signal="button_up" from="Save1Options/SaveOptionsButtons/TextureButton" to="." method="_on_TextureButton_button_up"]
-[connection signal="button_up" from="Save2Options/SaveOptionsButtons/ScreenShakeCheckBox" to="." method="_on_ScreenShakeButton_button_up"]
-[connection signal="button_up" from="Save2Options/SaveOptionsButtons/TextureButton" to="." method="_on_TextureButton_button_up"]
-[connection signal="button_up" from="Save3Options/SaveOptionsButtons/ScreenShakeCheckBox" to="." method="_on_ScreenShakeButton_button_up"]
-[connection signal="button_up" from="Save3Options/SaveOptionsButtons/TextureButton" to="." method="_on_TextureButton_button_up"]
+[connection signal="button_up" from="Save1Options/SaveOptionsButtons/UseSaveCheckBox" to="." method="_on_UseSaveCheckBox_button_up" binds= [ 1 ]]
+[connection signal="button_up" from="Save1Options/SaveOptionsButtons/DeleteButton" to="." method="_on_DeleteButton_button_up" binds= [ 1 ]]
+[connection signal="button_up" from="Save2Options/SaveOptionsButtons/UseSaveCheckBox" to="." method="_on_UseSaveCheckBox_button_up" binds= [ 2 ]]
+[connection signal="button_up" from="Save2Options/SaveOptionsButtons/DeleteButton" to="." method="_on_DeleteButton_button_up" binds= [ 2 ]]
+[connection signal="button_up" from="Save3Options/SaveOptionsButtons/UseSaveCheckBox" to="." method="_on_UseSaveCheckBox_button_up" binds= [ 3 ]]
+[connection signal="button_up" from="Save3Options/SaveOptionsButtons/DeleteButton" to="." method="_on_DeleteButton_button_up" binds= [ 3 ]]

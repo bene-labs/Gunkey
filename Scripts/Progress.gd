@@ -13,7 +13,7 @@ var data = {
 	],
 	"Unlocks": {"Level2": false, "Level3": false, "Level4": false},
 	"CurrentLevel": 1,
-	"Name": false
+	"Slot": 1
 	}
 
 var default_data = {
@@ -25,9 +25,26 @@ var default_data = {
 	],
 	"Unlocks": {"Level2": false, "Level3": false, "Level4": false},
 	"CurrentLevel": 1,
-	"Name": false
 	}
 
+func get_percantage(save = data):
+	var total = 0
+	var got = 0
+	
+	if save == null or not "Levels" in save or not "Unlocks" in save:
+		print("Returning 0.0 %. Invalid data: ", save)
+		return 0.0
+	for level in save["Levels"]:
+		for key in level["Keys"]:
+			total += 1
+			got += 1 if key else 0
+		total += 4
+		got += level["Medal"]
+	for i in range(2, 5, 1):
+		total += 1
+		got += 1 if save["Unlocks"]["Level" + str(i)] else 0
+	return (float(got) / float(total)) * 100.0
+	
 func get_min_medal_score():
 	var result = 0
 	
@@ -162,7 +179,7 @@ func save_data():
 	file.close()
 	
 func cloud_save_data():
-	Ngio.cloud_save(data)
+	Ngio.cloud_save(data, data["Slot"])
 	
 func load_data():
 	var file = File.new()
@@ -174,6 +191,10 @@ func load_data():
 	if json_result.error == OK and json_result.result is Dictionary and \
 	json_result.result.has("Levels") and json_result.result.has("Unlocks"):
 		data = json_result.result
+		if not "Slot" in data or data["Slot"] == null or \
+		not (data["Slot"] >= 1 and data["Slot"] <= 3):
+			print("Set Progress Slot to 1.")
+			data["Slot"] = 1
 	else:
 		push_error("Cannot load Progress. Save Game file was corrupted!")
 		push_error("JSON Error on line " + str(json_result.error_line) + ": " + json_result.error_string)
@@ -181,5 +202,7 @@ func load_data():
 	file.close()
 
 func reset_data():
+	var slot = data["Slot"]
 	data = default_data
+	data["Slot"] = slot
 	save_data()

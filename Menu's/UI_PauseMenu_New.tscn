@@ -88,9 +88,14 @@ margin_right = 768.0
 margin_bottom = 720.0
 color = Color( 0.729412, 0.831373, 0.568627, 1 )
 
-[node name="Ttile" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 margin_left = 464.0
 margin_top = 50.0
+focus_neighbour_left = NodePath("../ButtonsContainer/Buttons/Resume/ResumeButton")
+focus_neighbour_top = NodePath("../ButtonsContainer/Buttons/Resume/ResumeButton")
+focus_neighbour_right = NodePath("../ButtonsContainer/Buttons/Resume/ResumeButton")
+focus_neighbour_bottom = NodePath("../ButtonsContainer/Buttons/Resume/ResumeButton")
+focus_mode = 2
 custom_colors/font_color = Color( 0.0980392, 0.0431373, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Pause"

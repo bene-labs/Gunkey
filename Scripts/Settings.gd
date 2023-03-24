@@ -8,6 +8,8 @@ var data = {
 	}
 	
 func get_active_save():
+	if not "ActiveSave" in data:
+		data["ActiveSave"] = 1
 	return data["ActiveSave"]
 	
 func set_active_save(nb):
@@ -91,6 +93,10 @@ func load_data():
 	if json_result.error == OK and json_result.result is Dictionary and \
 	json_result.result.has("ScreenShake") and json_result.result.has("Fullscreen"):
 		data = json_result.result
+		if not "ActiveSave" in data or data["ActiveSave"] == null or \
+		not (data["ActiveSave"] >= 1 and data["ActiveSave"] <= 3):
+			print("Set active Save to 1.")
+			data["ActiveSave"] = 1
 	else:
 		push_error("Cannot load Settings. Settings file was corrupted!")
 		push_error("JSON Error on line " + str(json_result.error_line) + ": " + json_result.error_string)

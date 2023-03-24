@@ -38,6 +38,9 @@ signal died
 signal enter_floor
 signal exit_floor
 
+func get_is_grounded():
+	return is_grounded
+
 func set_is_inside_wind(value):
 	is_inside_wind = value
 	
