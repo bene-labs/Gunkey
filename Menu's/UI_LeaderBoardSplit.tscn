@@ -502,6 +502,11 @@ text = "All Keys"
 align = 1
 valign = 1
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+__meta__ = {
+"_editor_description_": "Used to access scores from Firebase if the custom NG feature flag is not set."
+}
+
 [connection signal="button_up" from="Categories/CategoryLabels/Level1Button" to="." method="_on_Level1Button_button_up"]
 [connection signal="focus_entered" from="Categories/CategoryLabels/Level1Button" to="." method="_on_Level1Button_focus_entered"]
 [connection signal="button_up" from="Categories/CategoryLabels/Level2Button" to="." method="_on_Leve2Button_button_up"]
@@ -517,3 +522,4 @@ valign = 1
 [connection signal="button_up" from="ReturnButton" to="." method="_on_ReturnButton_button_up"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="button_up" from="AllKeysCheckBox" to="." method="_on_AllKeysCheckBox_button_up"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

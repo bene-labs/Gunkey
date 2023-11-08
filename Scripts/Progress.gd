@@ -27,6 +27,28 @@ var default_data = {
 	"CurrentLevel": 1,
 	}
 
+func clear_slot(slot):
+	var dir = Directory.new()
+	dir.remove("user://save_game" + str(slot) + ".dat")
+	save_default_data(slot)
+
+func get_data_by_slot(slot):
+	var result = null
+	
+	var file = File.new()
+	if not file.file_exists("user://save_game" + str(slot) + ".dat"):
+		return
+	file.open("user://save_game" + str(slot) + ".dat", File.READ)
+	var content = file.get_as_text()
+	var json_result = JSON.parse(content)
+	
+	if json_result.error == OK and json_result.result is Dictionary and \
+	json_result.result.has("Levels") and json_result.result.has("Unlocks"):
+		result = json_result.result
+	file.close()
+	return result
+
+
 func get_percantage(save = data):
 	var total = 0
 	var got = 0
@@ -178,6 +200,15 @@ func save_data():
 	file.store_string(JSON.print(data))
 	file.close()
 	
+func save_default_data(slot = -1):
+	var file = File.new()
+	if slot >= 1 and slot <= 3:
+		default_data["Slot"] = slot
+	default_data["Name"] = data["Name"]
+	file.open("user://save_game" + str(default_data["Slot"]) + ".dat", File.WRITE)
+	file.store_string(JSON.print(default_data))
+	file.close()
+
 func cloud_save_data():
 	Ngio.cloud_save(data, data["Slot"])
 	

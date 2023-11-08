@@ -79,8 +79,11 @@ func show_save1():
 		$Save1Options/ProgressOverlay.value = percantage
 	else:
 		$Save1Options/SaveOptionsButtons/UseSaveCheckBox.pressed = false
-		Ngio.cloud_load(funcref(self, "_on_save_preview_loaded"), 1)
-	
+		if OS.has_feature("NG"):
+			Ngio.cloud_load(funcref(self, "_on_save_preview_loaded"), 1)
+		else:
+			show_save_preview(SaveState.progress.get_data_by_slot(1))
+
 func show_save2():
 	save_preview = null
 	selected_save = 2
@@ -101,8 +104,11 @@ func show_save2():
 		$Save2Options/ProgressOverlay.value = percantage
 	else:
 		$Save2Options/SaveOptionsButtons/UseSaveCheckBox.pressed = false
-		Ngio.cloud_load(funcref(self, "_on_save_preview_loaded"), 2)
-	
+		if OS.has_feature("NG"):
+			Ngio.cloud_load(funcref(self, "_on_save_preview_loaded"), 2)
+		else:
+			show_save_preview(SaveState.progress.get_data_by_slot(2))
+
 func show_save3():
 	save_preview = null
 	selected_save = 3
@@ -123,13 +129,21 @@ func show_save3():
 		$Save3Options/ProgressOverlay.value = percantage
 	else:
 		$Save3Options/SaveOptionsButtons/UseSaveCheckBox.pressed = false
+	if OS.has_feature("NG"):
 		Ngio.cloud_load(funcref(self, "_on_save_preview_loaded"), 3)
+	else:
+		show_save_preview(SaveState.progress.get_data_by_slot(3))
 
 func _on_save_preview_loaded(data):
+	print("Save ", selected_save, " successfully fetched from NG!")
+	show_save_preview(data)
+	
+func show_save_preview(data):
 	save_preview = data
 	var percantage = SaveState.progress.get_percantage(data)
 	get_node("Save" + str(selected_save) + "Options/SaveOptionsButtons/ProgressPercantageLabel").text = str(percantage).pad_decimals(2) + "%"
 	get_node("Save" + str(selected_save) + "Options/ProgressOverlay").value = percantage
+
 
 func _on_Save1Button_focus_entered():
 	show_save1()

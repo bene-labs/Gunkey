@@ -279,7 +279,17 @@ stream = ExtResource( 11 )
 volume_db = -13.0
 bus = "Music"
 
+[node name="TimeRequest" type="HTTPRequest" parent="."]
+
+[node name="PatchRequest" type="HTTPRequest" parent="TimeRequest"]
+
+[node name="TotalTimeRequest" type="HTTPRequest" parent="."]
+
+[node name="PatchRequest" type="HTTPRequest" parent="TotalTimeRequest"]
+
 [connection signal="visibility_changed" from="." to="." method="_on_VictoryScreen_visibility_changed"]
 [connection signal="button_up" from="Buttons/MainMenuButton" to="." method="_on_Main_Menu_Button_button_up"]
 [connection signal="button_up" from="Buttons/NextLevelButton" to="." method="_on_Next_Level_Button_button_up"]
 [connection signal="button_up" from="Buttons/RetryButton" to="." method="_on_RetryButton_button_up"]
+[connection signal="request_completed" from="TimeRequest" to="." method="_on_TimeRequest_request_completed"]
+[connection signal="request_completed" from="TotalTimeRequest" to="." method="_on_TotalTimeRequest_request_completed"]

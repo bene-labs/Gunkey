@@ -17,6 +17,8 @@ var controller_mode = false
 var medal_requirements = [[80, 50, 30], [80, 50, 30], [90, 60, 30], [80, 50, 30]]
 
 func _ready():
+	if OS.has_feature("NG"):
+		$HTTPRequest.queue_free()
 	$Title.grab_focus()
 	$UsernameLineEdit.text = SaveState.progress.get_name()
 	_on_Level1Button_button_up()
@@ -86,12 +88,17 @@ func display_list(table):
 	$Table/Body/RankingList.clear()
 	var i = 1 + page * max_rows
 	for row in table:
-		$Table/Body/UsernameList.add_item((row["user"]["name"] if "user" in row and "name" in row["user"] else ""), null, false)
-		$Table/Body/TimeList.add_item((row["formatted_value"] if "formatted_value" in row else ""), null, false)
-		if "formatted_value" in row:
-			$Table/Body/MedalList.add_icon_item(medal_textures[get_medal(active_button_id, unformat_time(row["formatted_value"]))], false)
+		if OS.has_feature("NG"):
+			$Table/Body/UsernameList.add_item((row["user"]["name"] if "user" in row and "name" in row["user"] else ""), null, false)
+			$Table/Body/TimeList.add_item((row["formatted_value"] if "formatted_value" in row else ""), null, false)
+			if "formatted_value" in row:
+				$Table/Body/MedalList.add_icon_item(medal_textures[get_medal(active_button_id, unformat_time(row["formatted_value"]))], false)
+			else:
+				$Table/Body/MedalList.add_icon_item(null, false)
 		else:
-			$Table/Body/MedalList.add_icon_item(null, false)
+			$Table/Body/UsernameList.add_item(row["Name"], key_icon if "Icon" in row and row["Icon"] == 1 else null, false)
+			$Table/Body/TimeList.add_item(format_time(row["Time"]), null, false)
+			$Table/Body/MedalList.add_icon_item(medal_textures[row["Medal"]], false)
 		$Table/Body/RankingList.add_item("#" + str(i), null, false)
 		i += 1
 
@@ -100,12 +107,22 @@ func load_leaderboard(id):
 	for button in $Categories/CategoryLabels.get_children():
 		button.disabled = false
 	if $AllKeysCheckBox.pressed:
-		Ngio.request("ScoreBoard.getScores", {"id": Ngio.leaderboards_ids[1][id - 1], "period": "A", "limit": 100}, funcref(self, "_on_get_scores_request_completed"))
-#			$HTTPRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_level_%d/leaderboard" % id)
+		if OS.has_feature("NG"):
+			Ngio.request("ScoreBoard.getScores", {"id": Ngio.leaderboards_ids[1][id - 1], "period": "A", "limit": 100}, funcref(self, "_on_get_scores_request_completed"))
+		elif id > 4:
+			$HTTPRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_total/leaderboard")
+		else:
+			$HTTPRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_level_%d/leaderboard" % id)
 	else:
-		Ngio.request("ScoreBoard.getScores", {"id": Ngio.leaderboards_ids[0][id - 1], "period": "A", "limit": 100}, funcref(self, "_on_get_scores_request_completed"))
-#			$HTTPRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/level_%d/leaderboard" % id)
+		if OS.has_feature("NG"):
+			Ngio.request("ScoreBoard.getScores", {"id": Ngio.leaderboards_ids[0][id - 1], "period": "A", "limit": 100}, funcref(self, "_on_get_scores_request_completed"))
+		elif id > 4:
+			$HTTPRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/total/leaderboard")
+		else:
+			$HTTPRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/level_%d/leaderboard" % id)
+	if id <= 4:
 		get_node("Categories/CategoryLabels/Level%dButton" % id).disabled = true
+	else:
 		$Categories/CategoryLabels/TotalButton.disabled = true
 	is_page_loaded = false
 

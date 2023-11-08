@@ -92,8 +92,10 @@ func activate(time, keys, collection_count, level):
 			$Timers/BestTimeLabel.text = "Best Time: " + format_time(time)
 			$Timers/TimeLabel/PersonalBestLabel.show()
 			if SaveState.progress.get_total_all_keys_best_time() != "not set":
-				Ngio.post_score(5, 1, int(float(SaveState.progress.get_total_best_time()) * 1000.0))
-#				$TotalTimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_total/leaderboard") 
+				if OS.has_feature("NG"):
+					Ngio.post_score(5, 1, int(float(SaveState.progress.get_total_best_time()) * 1000.0))
+				else:
+					$TotalTimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_total/leaderboard") 
 		else:
 			$Timers/BestTimeLabel.text = "Best Time: " + format_time(float(SaveState.progress.get_level_stats(level.level_number)["AllKeyTime"]))
 	else:
@@ -101,8 +103,10 @@ func activate(time, keys, collection_count, level):
 			$Timers/BestTimeLabel.text = "Best Time: " + format_time(time)
 			$Timers/TimeLabel/PersonalBestLabel.show()
 			if SaveState.progress.get_total_best_time() != "not set":
-				Ngio.post_score(5, 0, int(float(SaveState.progress.get_total_best_time()) * 1000.0))
-#				$TotalTimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/total/leaderboard") 
+				if OS.has_feature("NG"):
+					Ngio.post_score(5, 0, int(float(SaveState.progress.get_total_best_time()) * 1000.0))
+				else:
+					$TotalTimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/total/leaderboard") 
 		else:
 			$Timers/BestTimeLabel.text = "Best Time: " + format_time(float(SaveState.progress.get_level_stats(level.level_number)["Time"]))
 	
@@ -133,12 +137,8 @@ func activate(time, keys, collection_count, level):
 	$BestMedal.show_sprite(int(SaveState.progress.get_level_stats(level.level_number)["Medal"]))
 	$Medal.show_sprite(new_medal_score)
 	if is_medal_improvement:
-		for i in range(prev_medal, new_medal_score + 1):
-			if i == 0:
-				i = 1
-			print("Medal ", i, " unlocked thanks to time ", time)
-			Ngio.unlock_medal(level.level_number, i)
-		
+		if OS.has_feature("NG"):
+			unlock_NG_medals(prev_medal, new_medal_score, time, level)
 		$BestMedal.transition_to(new_medal_score)
 
 	if got_all_keys:
@@ -149,18 +149,31 @@ func activate(time, keys, collection_count, level):
 	lvl_nb = level.level_number
 	upload_result_to_leaderboard(got_all_keys)
 
+func unlock_NG_medals(prev_medal, new_medal_score, time, level):
+	if prev_medal == 0:
+		prev_medal = 1
+	for i in range(prev_medal, new_medal_score + 1):
+			print("Medal ", i, " unlocked thanks to time ", time)
+			Ngio.unlock_medal(level.level_number, i)
+			
 func compare_times(row1, row2):
-	return unformat_time(row1["formatted_value"]) < unformat_time(row2["formatted_value"])
+	if OS.has_feature("NG"):
+		return unformat_time(row1["formatted_value"]) < unformat_time(row2["formatted_value"])
+	return row1["Time"] < row2["Time"]
 
 func upload_result_to_leaderboard(all_keys):
 	if all_keys:
-		Ngio.post_score(lvl_nb, 1, int(result_time * 1000), funcref(self, "_on_score_posted"))
-#		$TimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_level_%d/leaderboard" % lvl_nb)
+		if OS.has_feature("NG"):
+			Ngio.post_score(lvl_nb, 1, int(result_time * 1000), funcref(self, "_on_NG_score_posted"))
+		else:
+			$TimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_level_%d/leaderboard" % lvl_nb)
 	else:
-		Ngio.post_score(lvl_nb, 0, int(result_time * 1000), funcref(self, "_on_score_posted"))
-#		$TimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/level_%d/leaderboard" % lvl_nb)
+		if OS.has_feature("NG"):
+			Ngio.post_score(lvl_nb, 0, int(result_time * 1000), funcref(self, "_on_NG_score_posted"))
+		else:
+			$TimeRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/level_%d/leaderboard" % lvl_nb)
 
-func _on_score_posted(results):
+func _on_NG_score_posted(results):
 	print("Score Post Results:\n", results)
 	if not results["success"]:
 		print("Score Post failed!")
@@ -203,60 +216,61 @@ func _on_VictoryScreen_visibility_changed():
 		$Music.stop()
 
 func compare_list_data(data1, data2):
-	return data1["formatted_value"] == data2["formatted_value"]
+	if OS.has_feature("NG"):
+		return data1["formatted_value"] == data2["formatted_value"]
+	return data1["Name"] == data2["Name"] and data1["Time"] == data2["Time"]
+
+func _on_TimeRequest_request_completed(result, response_code, headers, body):
+	if response_code != 200:
+		print("Request failed!")
+		print(response_code)
+		print(result)
+		return
+	var json = JSON.parse(body.get_string_from_utf8())
+	var data = JSON.parse(json.result["fields"]["entries"]["stringValue"]).result
+
+	data.append({"Name": SaveState.progress.get_name(), "Time": result_time, "Medal": result_medal, "Icon": (1 if SaveState.progress.has_all_keys() else 0)})
+	data.sort_custom(self, "compare_times")
+
+	var rank = binary_search(data, 0, len(data) - 1, {"Name": SaveState.progress.get_name(), "Time": result_time, "Medal": result_medal}) + 1
+	if rank <= 3:
+		if got_all_keys:
+			$Timers/TimeLabel/GlobalRankLabel.text = "- Global All Keys #%d! -" % rank
+		else:
+			$Timers/TimeLabel/GlobalRankLabel.text = "- Global #%d! -" % rank
+	else:
+		if got_all_keys:
+			$Timers/TimeLabel/GlobalRankLabel.text = "- Global All Keys Top " + str(int(float(rank) / float(len(data)) * 100.0)) + "% -"
+		else:
+			$Timers/TimeLabel/GlobalRankLabel.text = "- Global Top " + str(int(float(rank) / float(len(data)) * 100.0)) + "% -"
+	$Timers/TimeLabel/GlobalRankLabel.show()
+	var patch_body = json.result
+	patch_body["fields"]["entries"]["stringValue"] = JSON.print(data)
+	if got_all_keys:
+		$TimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_level_%d/leaderboard" % lvl_nb, [], \
+		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
+	else:
+		$TimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/level_%d/leaderboard" % lvl_nb, [], \
+		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
 
 
-#func _on_GetRequest_request_completed(result, response_code, headers, body):
-#	if response_code != 200:
-#		print("Request failed!")
-#		print(response_code)
-#		print(result)
-#		return
-#	var json = JSON.parse(body.get_string_from_utf8())
-#	var data = JSON.parse(json.result["fields"]["entries"]["stringValue"]).result
-#
-#	data.append({"Name": SaveState.progress.get_name(), "Time": result_time, "Medal": result_medal, "Icon": (1 if SaveState.progress.has_all_keys() else 0)})
-#	data.sort_custom(self, "compare_times")
-#
-#	var rank = binary_search(data, 0, len(data) - 1, {"Name": SaveState.progress.get_name(), "Time": result_time, "Medal": result_medal}) + 1
-#	if rank <= 3:
-#		if got_all_keys:
-#			$Timers/TimeLabel/GlobalRankLabel.text = "- Global All Keys #%d! -" % rank
-#		else:
-#			$Timers/TimeLabel/GlobalRankLabel.text = "- Global #%d! -" % rank
-#	else:
-#		if got_all_keys:
-#			$Timers/TimeLabel/GlobalRankLabel.text = "- Global All Keys Top " + str(int(float(rank) / float(len(data)) * 100.0)) + "% -"
-#		else:
-#			$Timers/TimeLabel/GlobalRankLabel.text = "- Global Top " + str(int(float(rank) / float(len(data)) * 100.0)) + "% -"
-#	$Timers/TimeLabel/GlobalRankLabel.show()
-#	var patch_body = json.result
-#	patch_body["fields"]["entries"]["stringValue"] = JSON.print(data)
-#	if got_all_keys:
-#		$TimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_level_%d/leaderboard" % lvl_nb, [], \
-#		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
-#	else:
-#		$TimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/level_%d/leaderboard" % lvl_nb, [], \
-#		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
+func _on_TotalTimeRequest_request_completed(result, response_code, headers, body):
+	if response_code != 200:
+		print("Request failed!")
+		print(response_code)
+		print(result)
+		return
+	var json = JSON.parse(body.get_string_from_utf8())
+	var data = JSON.parse(json.result["fields"]["entries"]["stringValue"]).result
 
+	data.append({"Name": SaveState.progress.get_name(), "Time": float(SaveState.progress.get_total_all_keys_best_time()) if got_all_keys else float(SaveState.progress.get_total_best_time()), "Medal": SaveState.progress.get_total_medal(), "Icon": (1 if SaveState.progress.has_all_keys() else 0)})
+	data.sort_custom(self, "compare_times")
 
-#func _on_TotalTimeRequest_request_completed(result, response_code, headers, body):
-#	if response_code != 200:
-#		print("Request failed!")
-#		print(response_code)
-#		print(result)
-#		return
-#	var json = JSON.parse(body.get_string_from_utf8())
-#	var data = JSON.parse(json.result["fields"]["entries"]["stringValue"]).result
-#
-#	data.append({"Name": SaveState.progress.get_name(), "Time": float(SaveState.progress.get_total_all_keys_best_time()) if got_all_keys else float(SaveState.progress.get_total_best_time()), "Medal": SaveState.progress.get_total_medal(), "Icon": (1 if SaveState.progress.has_all_keys() else 0)})
-#	data.sort_custom(self, "compare_times")
-#
-#	var patch_body = json.result
-#	patch_body["fields"]["entries"]["stringValue"] = JSON.print(data)
-#	if got_all_keys:
-#		$TotalTimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_total/leaderboard", [], \
-#		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
-#	else:
-#		$TotalTimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/total/leaderboard", [], \
-#		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
+	var patch_body = json.result
+	patch_body["fields"]["entries"]["stringValue"] = JSON.print(data)
+	if got_all_keys:
+		$TotalTimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/all_keys_total/leaderboard", [], \
+		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
+	else:
+		$TotalTimeRequest/PatchRequest.request("https://firestore.googleapis.com/v1/projects/gunkey-6a1db/databases/(default)/documents/total/leaderboard", [], \
+		true, HTTPClient.METHOD_PATCH, JSON.print(patch_body))
