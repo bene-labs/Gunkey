@@ -30,6 +30,7 @@ func _ready():
 	OS.window_position = settings.get_window_position()
 	OS.window_fullscreen = settings.is_fullscreen()
 	Resolution.update_resolution(settings.get_resolution())
+	GlobalSounds.apply_audio_settings()
 	
 	if OS.has_feature("NG"): 
 		load_cloud_data()

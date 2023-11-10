@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu's/OptionsMenu.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/option2.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/keybind_underlay.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/UI/ScreenUI/legonkl.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/ScreenUI/MenuUnderlayOptionsSidebar.jpeg" type="Texture" id=13]
 [ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_return.png" type="Texture" id=25]
 
 [sub_resource type="DynamicFont" id=1]
@@ -82,6 +83,10 @@ texture = ExtResource( 6 )
 [node name="TransparentOverlay" parent="." instance=ExtResource( 5 )]
 visible = false
 focus_mode = 2
+
+[node name="OptionsUnderlay2" type="Sprite" parent="TransparentOverlay"]
+position = Vector2( 261, 405 )
+texture = ExtResource( 13 )
 
 [node name="Title" type="Label" parent="."]
 margin_left = 424.0
