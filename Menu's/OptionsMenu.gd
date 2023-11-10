@@ -25,10 +25,6 @@ func _ready():
 	$AudioOptions/AudioOptionsButtons/SFXSlider.value = SaveState.settings.get_sfx_volume()
 	$AudioOptions/AudioOptionsButtons/MusicCheckBox.pressed = !SaveState.settings.get_mute_music()
 	$AudioOptions/AudioOptionsButtons/MusicSlider.value = SaveState.settings.get_music_volume()
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), SaveState.settings.get_mute_master())
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), SaveState.settings.get_mute_sfx())
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), SaveState.settings.get_mute_music())
-	
 	
 	var test = SaveState.settings
 	emit_signal("toggle_screen_shake", $VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox.pressed)

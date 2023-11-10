@@ -1,4 +1,4 @@
-extends MenuButton
+class_name Resolution extends MenuButton
 
 var popup
 
@@ -15,7 +15,6 @@ func _ready():
 	popup.connect("id_pressed", self, "_on_id_pressed")
 	
 	text = SaveState.settings.get_resolution()
-	update_resolution(text)
 	
 func _on_id_pressed(id):
 	GlobalSounds.play_click_sound()
@@ -23,7 +22,7 @@ func _on_id_pressed(id):
 	SaveState.settings.set_resolution(text)
 	update_resolution(text)
 	
-func update_resolution(string):
+static func update_resolution(string):
 	var new_res = Vector2.ZERO
 	new_res.x = int(string.split('x')[0])
 	new_res.y = int(string.split('x')[1])

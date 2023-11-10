@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Projectile.gd"
 }, {
+"base": "MenuButton",
+"class": "Resolution",
+"language": "GDScript",
+"path": "res://Menu's/ResolutionDropDown.gd"
+}, {
 "base": "Node",
 "class": "Settings",
 "language": "GDScript",
@@ -104,6 +109,7 @@ _global_script_class_icons={
 "Player": "",
 "Progress": "",
 "Projectile": "",
+"Resolution": "",
 "Settings": "",
 "VisualAutoShooter": ""
 }

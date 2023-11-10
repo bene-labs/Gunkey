@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Menu's/GlobalSound.gd" type="Script" id=1]
+[ext_resource path="res://Menu's/GlobalSounds.gd" type="Script" id=1]
 [ext_resource path="res://Music/Sara_Afonso_-_Cuba_Urban_Street.mp3" type="AudioStream" id=2]
 [ext_resource path="res://SFX/Menu/Select_MainMenu.wav" type="AudioStream" id=3]
 

@@ -26,6 +26,11 @@ func _ready():
 	else:
 		settings.load_data() if not reset_settings else settings.save_data()
 		progress.load_data() if not reset_progress else progress.save_data()
+	
+	OS.window_position = settings.get_window_position()
+	OS.window_fullscreen = settings.is_fullscreen()
+	Resolution.update_resolution(settings.get_resolution())
+	
 	if OS.has_feature("NG"): 
 		load_cloud_data()
 	elif not progress.get_name():
@@ -39,8 +44,6 @@ func load_cloud_data(nb = settings.get_active_save()):
 	settings.set_active_save(nb)
 	progress.data["Slot"] = nb
 	Ngio.cloud_load(funcref(self, "_on_cloud_loaded"), settings.get_active_save())
-	OS.window_position = settings.get_window_position()
-	OS.window_fullscreen = settings.is_fullscreen()
 
 func _on_cloud_loaded(data):
 	if data == null:
