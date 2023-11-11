@@ -5,7 +5,7 @@
 [ext_resource path="res://Sprites/Cursor/cursor2.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 18.0
+radius = 13.0
 
 [node name="CustomCursor" type="Node2D"]
 script = ExtResource( 1 )

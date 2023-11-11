@@ -5,6 +5,9 @@ export (NodePath) var collectibles_path
 export (NodePath) var barrels_path = ""
 export (NodePath) var player_path
 
+# Enemies that are this close to the checkpoint won't respawn
+export var minimum_enemy_distance = 950
+
 var explosive_barrel_template = preload("res://ExplosiveBarrel.tscn")
 
 var activated_checkpoints = []
@@ -20,7 +23,6 @@ var kills = 0
 
 #var enemies_to_reset = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	for child in get_children():
 		if child is Checkpoint:
@@ -46,7 +48,8 @@ func reset_enemies():
 	for enemy in enemies.get_children():
 		enemies.remove_child(enemy)
 		enemy.queue_free()
-	$EnemyFactory.construct_enemies(get_node(enemies_path))
+	$EnemyFactory.construct_enemies(get_node(enemies_path), \
+		selected_checkpoint.global_position, minimum_enemy_distance)
 #	get_node(enemies_path).queue_free()
 #	var new_enemies = enemy_back_up.custom_duplicate(15)
 #	get_tree().root.get_child(3).add_child(new_enemies)

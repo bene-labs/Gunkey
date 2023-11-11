@@ -25,9 +25,12 @@ func generate_enemy_templates(constr_data):
 func set_construction_data(value):
 	construction_data = value
 
-func construct_enemies(dest):
+func construct_enemies(dest, origin_point = Vector2.ZERO, min_distance = -1):
 	for data in construction_data:
 		var new_enemy = get_template_by_path(data["Path"]).instance()
+		if min_distance >= 0 and data["Type"] != "Turret" and data["Type"] != "Walker":
+			if origin_point.distance_to(data["Position"]) <= min_distance:
+				continue
 		if not is_instance_valid(new_enemy):
 			push_error("Cannot construt Enemy of type" + data["Type"] + ": Path '" + data["Path"] + "' is invalid!")
 			continue
