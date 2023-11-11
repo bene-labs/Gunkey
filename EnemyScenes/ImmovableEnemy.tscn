@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=2]
+[gd_scene load_steps=193 format=2]
 
 [ext_resource path="res://Animation/EnemyTurret/AnimationenSplitBodyAndHead/IdleHead/Armature_Idle_13.png" type="Texture" id=1]
 [ext_resource path="res://ImmovableEnemy.gd" type="Script" id=2]
@@ -182,6 +182,7 @@
 [ext_resource path="res://Animation/EnemyTurret/AnimationenSplitBodyAndHead/IdleBody/Armature_Idle_24.png" type="Texture" id=180]
 [ext_resource path="res://EnemyScenes/EnemyExplosive.tscn" type="PackedScene" id=181]
 [ext_resource path="res://SFX/Enemies/Turret_Death2.wav" type="AudioStream" id=182]
+[ext_resource path="res://VFX/vfx_RobotEnemyHit.tscn" type="PackedScene" id=183]
 
 [sub_resource type="SpriteFrames" id=26]
 animations = [ {
@@ -829,6 +830,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 0, 4 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("RobotEnemyHit:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="ImmovableEnemy" type="StaticBody2D" groups=["Animated", "Destructible", "Enemy", "Processing"]]
 collision_layer = 2
@@ -883,6 +896,8 @@ margin_right = 117.0
 margin_bottom = -9.0
 
 [node name="Explosive" parent="." instance=ExtResource( 181 )]
+
+[node name="RobotEnemyHit" parent="." instance=ExtResource( 183 )]
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="body_exited" from="HurtBox" to="." method="_on_HurtBox_body_exited"]

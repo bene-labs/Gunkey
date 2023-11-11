@@ -7,9 +7,6 @@
 
 [node name="StackableEnemy_ShootCrossUp" instance=ExtResource( 2 )]
 
-[node name="AnimatedSprite" parent="." index="0"]
-frame = 0
-
 [node name="AutoShooter2" type="Node2D" parent="." index="7" groups=["Timed"]]
 script = ExtResource( 4 )
 

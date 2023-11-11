@@ -9,12 +9,24 @@ var controller_mode = false
 
 
 func _ready():
+	if OS.has_feature("web"):
+		$VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox.rect_position = \
+			$VideoOptions/VideoOptionsButtons/FullscreenCheckBox.rect_position if OS.has_feature("itch") \
+			else $VideoOptions/VideoOptionsButtons/ResolutionDropDown.rect_position
+		$VideoOptions/VideoOptionsButtons/ResolutionDropDown.queue_free()
+		$VideoOptions/VideoOptionsNames/ResolutionLabel.queue_free()
+		if OS.has_feature("itch"):
+			$VideoOptions/VideoOptionsButtons/FullscreenCheckBox.queue_free()
+			$VideoOptions/VideoOptionsNames/FullscreenLabel.queue_free()
+	
 	if stand_alone:
 		$TransparentOverlay.hide()
 		$Background.show()
 	else:
 		$TransparentOverlay.show()
 		$Background.hide()
+		$SavesButton.disabled = true
+		$SavesButton.hide()
 		connect("Return", get_tree().root.get_child(3), "_on_OptionsMenu_Return")
 	$VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox.pressed = SaveState.settings.is_screen_shake()
 	$VideoOptions/VideoOptionsButtons/FullscreenCheckBox.pressed = SaveState.settings.is_fullscreen()
@@ -166,3 +178,8 @@ func _on_AudioButton_focus_entered():
 
 func _on_ControlsButton_focus_entered():
 	show_controls()
+
+
+func _on_SavesButton_button_down():
+	GlobalSounds.play_click_sound()
+	get_tree().change_scene("res://Menu's/UI_SaveSlotSelect.tscn")

@@ -6,7 +6,10 @@ var controller_mode = false
 
 func _on_ReturnButton_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(MainMenuScenePath)
+	if OS.has_feature("web"):
+		$ScreenTransition.transition_to(MainMenuScenePath)
+	else:
+		get_tree().change_scene(MainMenuScenePath)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):

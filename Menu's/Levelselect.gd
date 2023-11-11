@@ -100,4 +100,7 @@ func _on_BonusLevel1Button_button_up():
 
 func _on_Return_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(MainMenuScenePath)
+	if OS.has_feature("web"):
+		$ScreenTransition.transition_to(MainMenuScenePath)
+	else:
+		get_tree().change_scene(MainMenuScenePath)

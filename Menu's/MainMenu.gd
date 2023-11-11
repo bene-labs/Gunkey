@@ -21,6 +21,14 @@ func _ready():
 	if not GlobalSounds.is_menu_music_playing():
 		GlobalSounds.play_menu_music()
 
+	# Replace Quit Game Button
+	if OS.has_feature("web"):
+		$UpperCard/UpperButtonQuitGame.text = "                     Saves"
+		$MiddleCard/MiddleButtonQuitGame.text = "                     Saves"
+		$LowerCard/LowerButtonQuitGame.text = "                     Saves"
+		$RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon.texture_normal = load("res://Sprites/UI/ScreenUI/Icons/ic_checkpoint.png")
+		$RevolverBarrel/IconsLeft/UpperIconLeft/QuitGameIcon.texture_hover = load("res://Sprites/UI/ScreenUI/Icons/hover/ic_checkpoint2_h.png")
+
 func set_main_button_name(value):
 	main_button_name = value
 
@@ -95,7 +103,10 @@ func _on_Extra_Button_button_up():
 
 func _on_Quit_Game_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene("res://Menu's/UI_SaveSlotSelect.tscn")
+	if OS.has_feature("web"):
+		get_tree().change_scene("res://Menu's/UI_SaveSlotSelect.tscn")
+	else:
+		get_tree().quit()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_down") or  Input.is_action_just_pressed("ui_up"):

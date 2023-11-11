@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu's/OptionsMenu.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/keybind_underlay.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/UI/ScreenUI/legonkl.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/UI/ScreenUI/MenuUnderlayOptionsSidebar.jpeg" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_checkpoint.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_return.png" type="Texture" id=25]
 
 [sub_resource type="DynamicFont" id=1]
@@ -194,9 +195,9 @@ text = "Controls"
 align = 2
 
 [node name="ReturnButton" type="Button" parent="."]
-margin_left = 1024.0
+margin_left = 1033.0
 margin_top = 608.0
-margin_right = 1264.0
+margin_right = 1265.0
 margin_bottom = 704.0
 focus_neighbour_left = NodePath("../Categories/CategoryLabels/ControlsButton")
 focus_neighbour_top = NodePath("../Categories/CategoryLabels/ControlsButton")
@@ -219,6 +220,34 @@ focus_mode = 2
 custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
 custom_fonts/font = SubResource( 19 )
 text = "Return"
+valign = 1
+
+[node name="SavesButton" type="Button" parent="."]
+margin_left = 1033.0
+margin_top = 501.0
+margin_right = 1273.0
+margin_bottom = 597.0
+focus_neighbour_left = NodePath("../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_top = NodePath("../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_right = NodePath("../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_bottom = NodePath("../Categories/CategoryLabels/VideoButton")
+theme = ExtResource( 7 )
+icon = ExtResource( 14 )
+align = 0
+
+[node name="SavesButtonLabel" type="Label" parent="SavesButton"]
+margin_left = 98.0
+margin_top = 1.0
+margin_right = 208.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_top = NodePath("../../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_right = NodePath("../../Categories/CategoryLabels/ControlsButton")
+focus_neighbour_bottom = NodePath("../../Categories/CategoryLabels/VideoButton")
+focus_mode = 2
+custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "Saves"
 valign = 1
 
 [node name="VideoOptions" type="Node2D" parent="."]
@@ -795,6 +824,7 @@ texture = ExtResource( 12 )
 [connection signal="button_up" from="Categories/CategoryLabels/ControlsButton" to="." method="_on_ControlsButton_button_up"]
 [connection signal="focus_entered" from="Categories/CategoryLabels/ControlsButton" to="." method="_on_ControlsButton_focus_entered"]
 [connection signal="button_up" from="ReturnButton" to="." method="_on_ReturnButton_button_up"]
+[connection signal="button_down" from="SavesButton" to="." method="_on_SavesButton_button_down"]
 [connection signal="button_up" from="VideoOptions/VideoOptionsButtons/FullscreenCheckBox" to="." method="_on_Fullscreen_Button_button_up"]
 [connection signal="about_to_show" from="VideoOptions/VideoOptionsButtons/ResolutionDropDown" to="VideoOptions/VideoOptionsButtons/ResolutionDropDown" method="_on_ResolutionDropDown_about_to_show"]
 [connection signal="button_up" from="VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox" to="." method="_on_ScreenShakeButton_button_up"]

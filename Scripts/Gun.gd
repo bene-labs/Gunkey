@@ -87,7 +87,7 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("reload") and not is_reload_queued:
-		was_reload_started_on_ground = (get_node(user_path).has_method("get_is_grounded") and get_node(user_path).get_is_grounded())
+		was_reload_started_on_ground = (get_node(user_path).has_method("get_is_grounded") and get_node(user_path).get_is_grounde())
 		reload()
 	if role == Role.PRIMARY and Input.is_action_pressed("shoot_primary") or \
 	role == Role.SECONDARY and Input.is_action_pressed("shoot_secondary"):

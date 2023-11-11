@@ -6,8 +6,8 @@
 [ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_credits.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_newgame.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_options.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_checkpoint.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_checkpoint2_h.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/hover/ic_quit_h.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_quitgame.png" type="Texture" id=8]
 [ext_resource path="res://Menu's/UI_OptionsMenu_New.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Menu's/MainMenu.gd" type="Script" id=10]
 [ext_resource path="res://Sprites/UI/ScreenUI/main_menu_barrel.png" type="Texture" id=11]
@@ -4082,7 +4082,7 @@ custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 3 )
 disabled = true
-text = "                     Saves "
+text = "                     Quit"
 
 [node name="MiddleCard" type="ReferenceRect" parent="."]
 margin_left = -135.0
@@ -4189,7 +4189,7 @@ custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 8 )
 disabled = true
-text = "                   Saves"
+text = "                   Quit"
 
 [node name="LowerCard" type="ReferenceRect" parent="."]
 margin_left = -135.0
@@ -4296,7 +4296,7 @@ custom_colors/font_color_hover = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_colors/font_color_pressed = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 3 )
 disabled = true
-text = "                     Saves "
+text = "                     Quit"
 
 [node name="SfUp" type="Sprite" parent="."]
 visible = false
@@ -4380,8 +4380,8 @@ mouse_filter = 1
 [node name="QuitGameIcon" type="TextureButton" parent="RevolverBarrel/IconsLeft/UpperIconLeft"]
 rect_pivot_offset = Vector2( 48, 48 )
 mouse_default_cursor_shape = 1
-texture_normal = ExtResource( 7 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
 
 [node name="MiddleIconLeft" type="ReferenceRect" parent="RevolverBarrel/IconsLeft"]
 margin_left = 89.0

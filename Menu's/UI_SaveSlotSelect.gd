@@ -57,7 +57,10 @@ func _on_Save3_button_up():
 
 func _on_ReturnButton_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(return_to_scene_path)
+	if OS.has_feature("web"):
+		$ScreenTransition.transition_to(return_to_scene_path)
+	else:
+		get_tree().change_scene(return_to_scene_path)
 
 func show_save1():
 	save_preview = null
@@ -181,9 +184,12 @@ func _on_DeleteButton_button_up(nb):
 		get_node("Save" + str(nb) + "Options/SaveOptionsButtons/DeleteButton").disabled = true
 		if nb == SaveState.progress.data["Slot"]:
 			SaveState.progress.reset_data()
-			SaveState.progress.cloud_save_data()
-		else:
+			if OS.has_feature("NG"):
+				SaveState.progress.cloud_save_data()
+		elif OS.has_feature("NG"):
 			Ngio.request("CloudSave.clearSlot", {"id": nb})
+		else:
+			SaveState.progress.clear_slot(nb)
 		get_node("Save" + str(selected_save) + "Options/SaveOptionsButtons/ProgressPercantageLabel").text = "0.00%"
 		get_node("Save" + str(selected_save) + "Options/SaveOptionsButtons/DeleteButton").text = "Deleted Save."
 		get_node("Save" + str(selected_save) + "Options/ProgressOverlay").value = 0.0

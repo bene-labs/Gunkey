@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://ExplodingEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Combat/Explosive.tscn" type="PackedScene" id=2]
@@ -77,6 +77,7 @@
 [ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_14.png" type="Texture" id=75]
 [ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_20.png" type="Texture" id=76]
 [ext_resource path="res://Animation/Granasp/AttackStart/Armature_AttackStart_24.png" type="Texture" id=77]
+[ext_resource path="res://VFX/vfx_EnemyHit.tscn" type="PackedScene" id=78]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -334,6 +335,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("EnemyHit:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="ExplodingEnemy" type="KinematicBody2D" groups=["Animated", "Destructible", "Processing"]]
 collision_layer = 2
@@ -349,7 +362,7 @@ position = Vector2( -1, 0 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 1
+frame = 18
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -379,5 +392,7 @@ margin_left = -41.0
 margin_top = -59.0
 margin_right = 115.0
 margin_bottom = -33.0
+
+[node name="EnemyHit" parent="." instance=ExtResource( 78 )]
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

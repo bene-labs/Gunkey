@@ -60,7 +60,10 @@ func _on_Next_Level_Button_button_up():
 
 func _on_Main_Menu_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(MainMenuScenePath)
+	if OS.has_feature("web"):
+		$ScreenTransition.transition_to(MainMenuScenePath)
+	else:
+		get_tree().change_scene(MainMenuScenePath)
 
 func format_time(time_in_sec):
 	var seconds = int(time_in_sec)%60

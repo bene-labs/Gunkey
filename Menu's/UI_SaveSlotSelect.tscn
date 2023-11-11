@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu's/ProgressBar.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/option1.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/option3.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/UI/ScreenUI/OptionsMenu/option2.png" type="Texture" id=10]
+[ext_resource path="res://Menu's/ScreenTransition.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Sprites/UI/ScreenUI/legonkl.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_return.png" type="Texture" id=25]
 
@@ -199,7 +200,7 @@ text = "Save 3"
 align = 2
 
 [node name="ReturnButton" type="Button" parent="."]
-margin_left = 1024.0
+margin_left = 1033.0
 margin_top = 608.0
 margin_right = 1264.0
 margin_bottom = 704.0
@@ -469,6 +470,8 @@ margin_bottom = 190.0
 [node name="Legonkl" type="Sprite" parent="."]
 position = Vector2( 1022, 278 )
 texture = ExtResource( 12 )
+
+[node name="ScreenTransition" parent="." instance=ExtResource( 11 )]
 
 [connection signal="button_up" from="Categories/CategoryLabels/Save1Button" to="." method="_on_Save1_button_up"]
 [connection signal="focus_entered" from="Categories/CategoryLabels/Save1Button" to="." method="_on_Save1Button_focus_entered"]
