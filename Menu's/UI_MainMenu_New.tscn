@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/UI/main_menu.png" type="Texture" id=2]
@@ -34,7 +34,6 @@
 [ext_resource path="res://Sprites/UI/scroll_arrow1_p.png" type="Texture" id=33]
 [ext_resource path="res://Sprites/VFX/vfx_mm_smoke.png" type="Texture" id=34]
 [ext_resource path="res://Sprites/VFX/vfx_cigarette_glow.png" type="Texture" id=35]
-[ext_resource path="res://Menu's/ScreenTransition.tscn" type="PackedScene" id=36]
 
 [sub_resource type="Gradient" id=24]
 offsets = PoolRealArray( 0, 0.832258, 1 )
@@ -4471,10 +4470,6 @@ mouse_default_cursor_shape = 1
 texture_normal = ExtResource( 29 )
 texture_pressed = ExtResource( 32 )
 texture_hover = ExtResource( 30 )
-
-[node name="ScreenTransition" parent="." instance=ExtResource( 36 )]
-position = Vector2( 637, 360 )
-self_activate = true
 
 [connection signal="button_up" from="UpperCard/UpperButtonCredits" to="." method="_on_Credits_Button_button_up"]
 [connection signal="button_up" from="UpperCard/UpperButtonExtraSlot" to="." method="_on_Extra_Button_button_up"]

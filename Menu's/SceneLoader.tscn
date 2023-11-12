@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Menu's/SceneLoader.gd" type="Script" id=2]
+
+[node name="SceneLoader" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="SameSceneTransitionDelay" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true

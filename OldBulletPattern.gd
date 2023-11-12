@@ -35,5 +35,5 @@ func shoot(spawn_positon, target = null, friendly = false) -> bool:
 		var bullet_property = bullet_properties[i] if use_different_bullets else bullet_properties[0] 
 		if overwritte_bullet_properties:
 			bullet.setup(self, bullet_property["speed"], bullet_property["damage"], bullet_property["range"], bullet_property["size"])
-		 get_tree().root.get_child(3).call_deferred("add_child", bullet)
+		 get_tree().current_scene.call_deferred("add_child", bullet)
 	return true

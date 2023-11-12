@@ -28,14 +28,14 @@ func _ready():
 			total_collectibles += 1
 			child.connect("collected", self, "_on_collectible_collected", [child])
 			collectibles.append(child)
-	 get_tree().root.get_child(3).get_node("Player").set_key_total(total_collectibles)
+	 get_tree().current_scene.get_node("Player").set_key_total(total_collectibles)
 	collectibles.sort_custom(self, "compare_x_position")
 	for i in range(len(collectibles)):
-		if SaveState.progress.data["Levels"][get_tree().root.get_child(3).level_number - 1]["Keys"][i] == true:
+		if SaveState.progress.data["Levels"][get_tree().current_scene.level_number - 1]["Keys"][i] == true:
 			collectibles[i].mark_collected()
 			collected += 1
-			get_tree().root.get_child(3).get_node("Player").increase_collection_counter()
-			get_tree().root.get_child(3).get_node("Player").collection_count = 0
+			get_tree().current_scene.get_node("Player").increase_collection_counter()
+			get_tree().current_scene.get_node("Player").collection_count = 0
 	is_ready = true
 
 func compare_x_position(a, b):

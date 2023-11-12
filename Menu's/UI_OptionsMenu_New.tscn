@@ -251,6 +251,7 @@ text = "Saves"
 valign = 1
 
 [node name="VideoOptions" type="Node2D" parent="."]
+visible = false
 position = Vector2( 408, 216 )
 
 [node name="Option1" type="Sprite" parent="VideoOptions"]
@@ -478,100 +479,110 @@ align = 1
 valign = 1
 
 [node name="ControlsOptions" type="Node2D" parent="."]
-visible = false
 position = Vector2( 408, 216 )
 
 [node name="Option3" type="Sprite" parent="ControlsOptions"]
 position = Vector2( 280, 188 )
 texture = ExtResource( 9 )
 
-[node name="ControlsOptionsNames" type="VBoxContainer" parent="ControlsOptions"]
-margin_left = 25.0
-margin_top = 17.0
-margin_right = 323.0
-margin_bottom = 389.0
+[node name="ControlPageSlider" type="HSlider" parent="ControlsOptions"]
+margin_left = 28.0
+margin_top = -6.0
+margin_right = 243.0
+margin_bottom = 47.0
+theme = ExtResource( 7 )
+max_value = 1.0
+
+[node name="Pages" type="Control" parent="ControlsOptions"]
+margin_right = 514.0
+margin_bottom = 381.0
+mouse_filter = 2
+
+[node name="Page1" type="HBoxContainer" parent="ControlsOptions/Pages"]
+margin_left = 28.0
+margin_top = 52.0
+margin_right = 632.0
+margin_bottom = 383.0
+custom_constants/separation = 20
+
+[node name="ControlsOptionsNames" type="VBoxContainer" parent="ControlsOptions/Pages/Page1"]
+margin_right = 292.0
+margin_bottom = 331.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 5
 
-[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_right = 298.0
+[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsNames"]
+margin_right = 292.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Walk Left"
 
-[node name="WalkRightLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_top = 47.0
-margin_right = 298.0
-margin_bottom = 90.0
+[node name="WalkRightLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsNames"]
+margin_top = 48.0
+margin_right = 292.0
+margin_bottom = 91.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Walk Right"
 
-[node name="JumpLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_top = 94.0
-margin_right = 298.0
-margin_bottom = 137.0
+[node name="JumpLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsNames"]
+margin_top = 96.0
+margin_right = 292.0
+margin_bottom = 139.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Jump"
 
-[node name="FallDownLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_top = 141.0
-margin_right = 298.0
-margin_bottom = 184.0
+[node name="FallDownLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsNames"]
+margin_top = 144.0
+margin_right = 292.0
+margin_bottom = 187.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "Fall Down"
+text = "Drop"
 
-[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_top = 188.0
-margin_right = 298.0
-margin_bottom = 231.0
+[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsNames"]
+margin_top = 192.0
+margin_right = 292.0
+margin_bottom = 235.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Fire Shotgun"
 
-[node name="FireUZILabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_top = 235.0
-margin_right = 298.0
-margin_bottom = 278.0
+[node name="FireUZILabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsNames"]
+margin_top = 240.0
+margin_right = 292.0
+margin_bottom = 283.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Fire UZI"
 
-[node name="ReloadLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_top = 282.0
-margin_right = 298.0
-margin_bottom = 325.0
+[node name="ReloadLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsNames"]
+margin_top = 288.0
+margin_right = 292.0
+margin_bottom = 331.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Reload"
 
-[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/ControlsOptionsNames"]
-margin_top = 329.0
-margin_right = 298.0
-margin_bottom = 372.0
-custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
-custom_fonts/font = SubResource( 7 )
-text = "Pause / Unpause"
-
-[node name="ControlsOptionsKeybinds" type="VBoxContainer" parent="ControlsOptions"]
-margin_left = 323.0
-margin_top = 17.0
-margin_right = 523.0
-margin_bottom = 389.0
+[node name="ControlsOptionsKeybinds" type="VBoxContainer" parent="ControlsOptions/Pages/Page1"]
+margin_left = 312.0
+margin_right = 604.0
+margin_bottom = 331.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 4
+custom_constants/separation = 48
 
-[node name="WalkLeftContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
+[node name="WalkLeftContainer" type="Control" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds"]
+margin_right = 292.0
 
-[node name="WalkLeftUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/WalkLeftContainer"]
+[node name="WalkLeftUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/WalkLeftContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/WalkLeftContainer"]
+[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/WalkLeftContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -579,14 +590,16 @@ custom_fonts/font = SubResource( 7 )
 text = "A"
 align = 1
 
-[node name="WalkRightContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
-position = Vector2( 0, 45 )
+[node name="WalkRightContainer" type="Control" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds"]
+margin_top = 48.0
+margin_right = 292.0
+margin_bottom = 48.0
 
-[node name="WalkRightUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/WalkRightContainer"]
+[node name="WalkRightUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/WalkRightContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="WalkRightLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/WalkRightContainer"]
+[node name="WalkRightLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/WalkRightContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -594,14 +607,16 @@ custom_fonts/font = SubResource( 7 )
 text = "D"
 align = 1
 
-[node name="JumpContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
-position = Vector2( 0, 91 )
+[node name="JumpContainer" type="Control" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds"]
+margin_top = 96.0
+margin_right = 292.0
+margin_bottom = 96.0
 
-[node name="JumpUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/JumpContainer"]
+[node name="JumpUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/JumpContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="JumpLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/JumpContainer"]
+[node name="JumpLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/JumpContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -609,14 +624,16 @@ custom_fonts/font = SubResource( 7 )
 text = "Spacebar"
 align = 1
 
-[node name="FallDownContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
-position = Vector2( 0, 137 )
+[node name="FallDownContainer" type="Control" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds"]
+margin_top = 144.0
+margin_right = 292.0
+margin_bottom = 144.0
 
-[node name="FallDownUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/FallDownContainer"]
+[node name="FallDownUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/FallDownContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="FallDownLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/FallDownContainer"]
+[node name="FallDownLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/FallDownContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -624,14 +641,16 @@ custom_fonts/font = SubResource( 7 )
 text = "S"
 align = 1
 
-[node name="FireShotgunContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
-position = Vector2( 0, 183 )
+[node name="FireShotgunContainer" type="Control" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds"]
+margin_top = 192.0
+margin_right = 292.0
+margin_bottom = 192.0
 
-[node name="FireShotgunUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/FireShotgunContainer"]
+[node name="FireShotgunUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/FireShotgunContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/FireShotgunContainer"]
+[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/FireShotgunContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -639,14 +658,16 @@ custom_fonts/font = SubResource( 7 )
 text = "L_Mouse"
 align = 1
 
-[node name="FireUZIContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
-position = Vector2( 0, 229 )
+[node name="FireUZIContainer" type="Control" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds"]
+margin_top = 240.0
+margin_right = 292.0
+margin_bottom = 240.0
 
-[node name="FireUZIUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/FireUZIContainer"]
+[node name="FireUZIUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/FireUZIContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="FireUZILabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/FireUZIContainer"]
+[node name="FireUZILabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/FireUZIContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -654,14 +675,16 @@ custom_fonts/font = SubResource( 7 )
 text = "R_Mouse"
 align = 1
 
-[node name="ReloadContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
-position = Vector2( 0, 275 )
+[node name="ReloadContainer" type="Control" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds"]
+margin_top = 288.0
+margin_right = 292.0
+margin_bottom = 288.0
 
-[node name="ReloadUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/ReloadContainer"]
+[node name="ReloadUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/ReloadContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="ReloadLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/ReloadContainer"]
+[node name="ReloadLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsKeybinds/ReloadContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -669,38 +692,23 @@ custom_fonts/font = SubResource( 7 )
 text = "R"
 align = 1
 
-[node name="PauseUnpauseContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsKeybinds"]
-position = Vector2( 0, 321 )
-
-[node name="PauseUnpauseUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsKeybinds/PauseUnpauseContainer"]
-position = Vector2( 100, 15 )
-texture = ExtResource( 11 )
-
-[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/ControlsOptionsKeybinds/PauseUnpauseContainer"]
-margin_right = 200.0
-margin_bottom = 43.0
-custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
-custom_fonts/font = SubResource( 7 )
-text = "Escape / P"
-align = 1
-
-[node name="ControlsOptionsControllerKeybinds" type="VBoxContainer" parent="ControlsOptions"]
+[node name="ControlsOptionsControllerKeybinds" type="VBoxContainer" parent="ControlsOptions/Pages/Page1"]
 visible = false
-margin_left = 323.0
-margin_top = 17.0
-margin_right = 523.0
-margin_bottom = 389.0
+margin_left = 306.0
+margin_top = -36.0
+margin_right = 506.0
+margin_bottom = 336.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 4
 
-[node name="WalkLeftContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="WalkLeftContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 
-[node name="WalkLeftUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkLeftContainer"]
+[node name="WalkLeftUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/WalkLeftContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkLeftContainer"]
+[node name="WalkLeftLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/WalkLeftContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -708,14 +716,14 @@ custom_fonts/font = SubResource( 7 )
 text = "L_Joystick"
 align = 1
 
-[node name="WalkRightContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="WalkRightContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 position = Vector2( 0, 45 )
 
-[node name="WalkRightUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkRightContainer"]
+[node name="WalkRightUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/WalkRightContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="WalkRightLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/WalkRightContainer"]
+[node name="WalkRightLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/WalkRightContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -723,14 +731,14 @@ custom_fonts/font = SubResource( 7 )
 text = "L_Joystick"
 align = 1
 
-[node name="JumpContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="JumpContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 position = Vector2( 0, 91 )
 
-[node name="JumpUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/JumpContainer"]
+[node name="JumpUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/JumpContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="JumpLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/JumpContainer"]
+[node name="JumpLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/JumpContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -738,14 +746,14 @@ custom_fonts/font = SubResource( 7 )
 text = "L1/R1/A/B"
 align = 1
 
-[node name="FallDownContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="FallDownContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 position = Vector2( 0, 137 )
 
-[node name="FallDownUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FallDownContainer"]
+[node name="FallDownUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/FallDownContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="FallDownLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FallDownContainer"]
+[node name="FallDownLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/FallDownContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -753,14 +761,14 @@ custom_fonts/font = SubResource( 7 )
 text = "L_Joystick"
 align = 1
 
-[node name="FireShotgunContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="FireShotgunContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 position = Vector2( 0, 183 )
 
-[node name="FireShotgunUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireShotgunContainer"]
+[node name="FireShotgunUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/FireShotgunContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireShotgunContainer"]
+[node name="FireShotgunLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/FireShotgunContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -768,14 +776,14 @@ custom_fonts/font = SubResource( 7 )
 text = "L2"
 align = 1
 
-[node name="FireUZIContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="FireUZIContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 position = Vector2( 0, 229 )
 
-[node name="FireUZIUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireUZIContainer"]
+[node name="FireUZIUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/FireUZIContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="FireUZILabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/FireUZIContainer"]
+[node name="FireUZILabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/FireUZIContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -783,14 +791,14 @@ custom_fonts/font = SubResource( 7 )
 text = "R2"
 align = 1
 
-[node name="ReloadContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="ReloadContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 position = Vector2( 0, 275 )
 
-[node name="ReloadUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/ReloadContainer"]
+[node name="ReloadUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/ReloadContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="ReloadLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/ReloadContainer"]
+[node name="ReloadLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/ReloadContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -798,14 +806,133 @@ custom_fonts/font = SubResource( 7 )
 text = "X/Y"
 align = 1
 
-[node name="PauseUnpauseContainer" type="Node2D" parent="ControlsOptions/ControlsOptionsControllerKeybinds"]
+[node name="PauseUnpauseContainer" type="Node2D" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds"]
 position = Vector2( 0, 321 )
 
-[node name="PauseUnpauseUnderlay" type="Sprite" parent="ControlsOptions/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
+[node name="PauseUnpauseUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
 position = Vector2( 100, 15 )
 texture = ExtResource( 11 )
 
-[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
+[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/Pages/Page1/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
+margin_right = 200.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Start"
+align = 1
+
+[node name="Page2" type="HBoxContainer" parent="ControlsOptions/Pages"]
+visible = false
+margin_left = 28.0
+margin_top = 53.0
+margin_right = 587.0
+margin_bottom = 375.0
+custom_constants/separation = 20
+
+[node name="ControlsOptionsNames" type="VBoxContainer" parent="ControlsOptions/Pages/Page2"]
+margin_right = 292.0
+margin_bottom = 322.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/Pages/Page2/ControlsOptionsNames"]
+margin_right = 292.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Pause / Unpause"
+
+[node name="BackLabel" type="Label" parent="ControlsOptions/Pages/Page2/ControlsOptionsNames"]
+margin_top = 47.0
+margin_right = 292.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Back"
+
+[node name="QuickRestartLabel" type="Label" parent="ControlsOptions/Pages/Page2/ControlsOptionsNames"]
+margin_top = 94.0
+margin_right = 292.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Quick Restart"
+
+[node name="ControlsOptionsKeybinds" type="VBoxContainer" parent="ControlsOptions/Pages/Page2"]
+margin_left = 312.0
+margin_right = 559.0
+margin_bottom = 322.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 48
+
+[node name="PauseUnpauseContainer" type="Control" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds"]
+margin_right = 247.0
+
+[node name="PauseUnpauseUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds/PauseUnpauseContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds/PauseUnpauseContainer"]
+margin_right = 180.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Escape / P"
+align = 1
+
+[node name="BackContainer" type="Control" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds"]
+margin_top = 48.0
+margin_right = 247.0
+margin_bottom = 48.0
+
+[node name="BackUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds/BackContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="BackLabel" type="Label" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds/BackContainer"]
+margin_right = 180.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Escape
+"
+align = 1
+
+[node name="QuickRestart" type="Control" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds"]
+margin_top = 96.0
+margin_right = 247.0
+margin_bottom = 96.0
+
+[node name="Underlay" type="Sprite" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds/QuickRestart"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="ControlsOptions/Pages/Page2/ControlsOptionsKeybinds/QuickRestart"]
+margin_right = 192.0
+margin_bottom = 43.0
+custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "CTRL + R"
+align = 1
+
+[node name="ControlsOptionsControllerKeybinds" type="VBoxContainer" parent="ControlsOptions/Pages/Page2"]
+visible = false
+margin_left = 306.0
+margin_top = -36.0
+margin_right = 506.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+
+[node name="PauseUnpauseContainer" type="Node2D" parent="ControlsOptions/Pages/Page2/ControlsOptionsControllerKeybinds"]
+
+[node name="PauseUnpauseUnderlay" type="Sprite" parent="ControlsOptions/Pages/Page2/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
+position = Vector2( 100, 15 )
+texture = ExtResource( 11 )
+
+[node name="PauseUnpauseLabel" type="Label" parent="ControlsOptions/Pages/Page2/ControlsOptionsControllerKeybinds/PauseUnpauseContainer"]
 margin_right = 200.0
 margin_bottom = 43.0
 custom_colors/font_color = Color( 0.92549, 0.886275, 0.788235, 1 )
@@ -834,3 +961,4 @@ texture = ExtResource( 12 )
 [connection signal="value_changed" from="AudioOptions/AudioOptionsButtons/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
 [connection signal="toggled" from="AudioOptions/AudioOptionsButtons/MusicCheckBox" to="." method="_on_MusicCheckBox_toggled"]
 [connection signal="value_changed" from="AudioOptions/AudioOptionsButtons/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="ControlsOptions/ControlPageSlider" to="." method="_on_ControlPageSlider_value_changed"]

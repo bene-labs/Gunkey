@@ -169,7 +169,7 @@ func restart(hard = false):
 	if not hard and checkpoint_manager != "" and is_instance_valid(get_node(checkpoint_manager).selected_checkpoint):
 		get_node(checkpoint_manager).respawn(self)
 	else:
-		$ScreenTransition.transition_to_restart()
+		SceneLoader.reload_current_scene()
 
 func die():
 	for child in get_children():

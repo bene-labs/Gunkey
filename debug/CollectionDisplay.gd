@@ -16,7 +16,7 @@ func update():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_tree().root.get_child(3).get_node("Collectibles") != null:
-		total = get_tree().root.get_child(3).get_node("Collectibles").total_collectibles
+	if get_tree().current_scene.get_node("Collectibles") != null:
+		total = get_tree().current_scene.get_node("Collectibles").total_collectibles
 	else:
 		push_warning("No Collectibles in level!")

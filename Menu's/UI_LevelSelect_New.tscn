@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu's/CollectedKeysDisplay.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Sprites/UI/ScreenUI/progress1.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/UI/ScreenUI/progress2.png" type="Texture" id=11]
 [ext_resource path="res://Menu's/SelectSound.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Menu's/ScreenTransition.tscn" type="PackedScene" id=13]
 [ext_resource path="res://medal_shine.tres" type="Material" id=14]
 [ext_resource path="res://Menu's/ProgressBar.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Menu's/Medal.tscn" type="PackedScene" id=17]
@@ -342,9 +341,6 @@ align = 1
 valign = 1
 
 [node name="SelectSound" parent="." instance=ExtResource( 12 )]
-
-[node name="ScreenTransition" parent="." instance=ExtResource( 13 )]
-self_activate = true
 
 [connection signal="button_up" from="LevelContainer/Level/Levl1&3/Level1/Level1Button" to="." method="_on_Level_1_Button_button_up"]
 [connection signal="button_up" from="LevelContainer/Level/Levl1&3/Level3/Level3Button" to="." method="_on_Level_3_Button_button_up"]

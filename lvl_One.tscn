@@ -657,7 +657,7 @@ position = Vector2( 18629, 136 )
 scale = Vector2( 2.36, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 29 )]
-position = Vector2( 760, 294 )
+position = Vector2( 21763, -61 )
 camera_path = NodePath("../LimitedCamera")
 show_kill_count = true
 

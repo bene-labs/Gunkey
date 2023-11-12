@@ -35,9 +35,9 @@ func _ready():
 	if target_path != "":
 		target = get_node(target_path)
 	else:
-		target = get_tree().root.get_child(3).get_node("Player")
+		target = get_tree().current_scene.get_node("Player")
 	
-	connect("died", get_tree().root.get_child(3).get_node("Player").get_node("Camera2D").get_node("CanvasLayer").get_node("KillCount"), "on_kill")
+	connect("died", get_tree().current_scene.get_node("Player").get_node("Camera2D").get_node("CanvasLayer").get_node("KillCount"), "on_kill")
 	$HealthBar.max_value = max_health
 	$HealthBar.value = current_health
 	

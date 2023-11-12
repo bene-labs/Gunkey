@@ -22,7 +22,7 @@ func spawn_enemy():
 	var position = spawn_positons[randi() % len(spawn_positons)].position
 	var enemy = enemy_scene.instance()
 	enemy.global_position = position
-	 get_tree().root.get_child(3).call_deferred("add_child", enemy)
+	 get_tree().current_scene.call_deferred("add_child", enemy)
 	$Timer.wait_time += spawn_delay_decrease
 	
 func _on_Timer_timeout():

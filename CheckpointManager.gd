@@ -52,13 +52,13 @@ func reset_enemies():
 		selected_checkpoint.global_position, minimum_enemy_distance)
 #	get_node(enemies_path).queue_free()
 #	var new_enemies = enemy_back_up.custom_duplicate(15)
-#	get_tree().root.get_child(3).add_child(new_enemies)
+#	get_tree().current_scene.add_child(new_enemies)
 #	enemies_path = new_enemies.get_path()
 
 func reset_keys():
 	get_node(collectibles_path).queue_free()
 	var new_keys = keys_back_up.custom_duplicate(15)
-	get_tree().root.get_child(3).add_child(new_keys)
+	get_tree().current_scene.add_child(new_keys)
 	new_keys.name = "Collectibles"
 	collectibles_path = new_keys.get_path()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Sprites/UI/Fonts/PaperJohnnyEins-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu's/CollectedKeysDisplay.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Sprites/UI/ScreenUI/Icons/ic_mainmenu.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/UI/ScreenUI/Themes/UI_GeneralButtons_Theme.tres" type="Theme" id=8]
 [ext_resource path="res://Menu's/Medal.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Menu's/ScreenTransition.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Music/Till_Paradiso_-_Funky_Martin_Yeah_TP_79.mp3" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
@@ -271,8 +270,6 @@ custom_colors/font_color = Color( 0.333333, 0.270588, 0.211765, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Retry"
 valign = 1
-
-[node name="ScreenTransition" parent="." instance=ExtResource( 10 )]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )

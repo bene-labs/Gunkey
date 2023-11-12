@@ -29,7 +29,7 @@ func _ready():
 		$Sleep.restart()
 		$Sleep.emitting = false
 	
-	connect("OpenOptions", get_tree().root.get_child(3), "_on_PauseMenu_OpenOptions")
+	connect("OpenOptions", get_tree().current_scene, "_on_PauseMenu_OpenOptions")
 	buttons = [	$ButtonsContainer/Buttons/Resume/ResumeButton,
 				$ButtonsContainer/Buttons/LastCheckpoint/LastCheckpointButton,
 				$ButtonsContainer/Buttons/Restart/RestartButton,
@@ -68,11 +68,11 @@ func _input(event):
 
 func _on_Resume_Game_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().root.get_child(3).unpause()
+	get_tree().current_scene.unpause()
 
 func _on_Reset_Button_button_up():
 	GlobalSounds.play_click_sound()
-	$ScreenTransition.transition_to_restart()
+	SceneLoader.reload_current_scene()
 
 
 func _on_Options_Button_button_up():
@@ -82,10 +82,10 @@ func _on_Options_Button_button_up():
 
 func _on_Main_Menu_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(MainMenuScenePath)
+	SceneLoader.transition_to(MainMenuScenePath)
 
 func _on_LastCheckpointButton_button_up():
-	get_tree().root.get_child(3).unpause()
+	get_tree().current_scene.unpause()
 	GlobalSounds.play_click_sound()
 	get_node(player_path).restart()
 

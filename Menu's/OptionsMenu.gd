@@ -27,7 +27,7 @@ func _ready():
 		$Background.hide()
 		$SavesButton.disabled = true
 		$SavesButton.hide()
-		connect("Return", get_tree().root.get_child(3), "_on_OptionsMenu_Return")
+		connect("Return", get_tree().current_scene, "_on_OptionsMenu_Return")
 	$VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox.pressed = SaveState.settings.is_screen_shake()
 	$VideoOptions/VideoOptionsButtons/FullscreenCheckBox.pressed = SaveState.settings.is_fullscreen()
 	
@@ -88,11 +88,8 @@ func _on_VideoButton_button_up():
 	GlobalSounds.play_click_sound()
 	show_video_options()
 
-
 func _on_AudioButton_button_up():
 	GlobalSounds.play_click_sound()
-
-
 
 func _on_ControlsButton_button_up():
 	GlobalSounds.play_click_sound()
@@ -136,7 +133,7 @@ func _on_MusicCheckBox_toggled(button_pressed):
 func _on_ReturnButton_button_up():
 	GlobalSounds.play_click_sound()
 	if stand_alone:
-		get_tree().change_scene(return_to_scene_path)
+		SceneLoader.transition_to(return_to_scene_path)
 	else:
 		emit_signal("Return")
 
@@ -182,4 +179,12 @@ func _on_ControlsButton_focus_entered():
 
 func _on_SavesButton_button_down():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene("res://Menu's/UI_SaveSlotSelect.tscn")
+	SceneLoader.transition_to("res://Menu's/UI_SaveSlotSelect.tscn")
+
+func _on_ControlPageSlider_value_changed(value):
+	var pages = $ControlsOptions/Pages.get_children()
+	for i in range(pages.size()):
+		if i == $ControlsOptions/ControlPageSlider.value:
+			pages[i].show()
+		else:
+			pages[i].hide()

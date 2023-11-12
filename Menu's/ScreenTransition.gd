@@ -8,6 +8,7 @@ func _ready():
 	if self_activate:
 		activate()
 
+
 func transition_to(_next_scene):
 	SaveState.set_is_transition_queded(true)
 	$AnimationPlayer.play("FadeIn")

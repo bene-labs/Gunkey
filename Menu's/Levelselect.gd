@@ -71,36 +71,36 @@ func _input(event):
 			$Title.grab_focus()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene(MainMenuScenePath)
+		SceneLoader.transition_to(MainMenuScenePath)
 
 func _on_Level_1_Button_button_up():
 	GlobalSounds.play_click_sound()
 	$"LevelContainer/Level/Levl1&3/Level1/Level1Button".mouse_default_cursor_shape = Control.CURSOR_BUSY
 	Input.set_default_cursor_shape(Input.CURSOR_BUSY)
-	$ScreenTransition.transition_to(Level1ScenePath)
+	SceneLoader.transition_to(Level1ScenePath)
 	
 func _on_Level_2_Button_button_up():
 	GlobalSounds.play_click_sound()
 	$"LevelContainer/Level/Levl2&4/Level2/Level2Button".mouse_default_cursor_shape = Control.CURSOR_BUSY
 	Input.set_default_cursor_shape(Input.CURSOR_BUSY)
-	$ScreenTransition.transition_to(Level2ScenePath)
+	SceneLoader.transition_to(Level2ScenePath)
 
 func _on_Level_3_Button_button_up():
 	GlobalSounds.play_click_sound()
 	$"LevelContainer/Level/Levl1&3/Level3/Level3Button".mouse_default_cursor_shape = Control.CURSOR_BUSY
 	Input.set_default_cursor_shape(Input.CURSOR_BUSY)
-	$ScreenTransition.transition_to(Level3ScenePath)
+	SceneLoader.transition_to(Level3ScenePath)
 
 func _on_BonusLevel1Button_button_up():
 	GlobalSounds.play_click_sound()
 	$"LevelContainer/Level/Levl2&4/Level4/Level4Button".mouse_default_cursor_shape = Control.CURSOR_BUSY
 	Input.set_default_cursor_shape(Input.CURSOR_BUSY)
-	$ScreenTransition.transition_to(Level4ScenePath)
+	SceneLoader.transition_to(Level4ScenePath)
 
 
 func _on_Return_Button_button_up():
 	GlobalSounds.play_click_sound()
 	if OS.has_feature("web"):
-		$ScreenTransition.transition_to(MainMenuScenePath)
+		SceneLoader.transition_to(MainMenuScenePath)
 	else:
-		get_tree().change_scene(MainMenuScenePath)
+		SceneLoader.transition_to(MainMenuScenePath)

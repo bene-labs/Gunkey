@@ -51,7 +51,7 @@ func _on_UsernameLineEdit_text_change_rejected(rejected_substring):
 
 func _on_ReturnButton_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene("res://Menu's/UI_MainMenu_New.tscn")
+	SceneLoader.transition_to("res://Menu's/UI_MainMenu_New.tscn")
 
 func unformat_time(formated_time : String):
 	var hours = int(formated_time.split(":")[0])

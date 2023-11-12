@@ -140,7 +140,7 @@ func shoot():
 		projectile.get_node("Sprite").rotation_degrees = global_rotation_degrees
 		projectile.get_node("Sprite").rotation_degrees += angle + rand_range(min_offset, max_offset)
 		projectile.setup(self, bullet_speed, bullet_damage, max_range)
-		get_tree().root.get_child(3).call_deferred("add_child", projectile)
+		get_tree().current_scene.call_deferred("add_child", projectile)
 		ammo_count -= 1
 		
 #		get_node(user_path).apply_knockback(-Vector2(knockback_force, 0).rotated(global_rotation), \

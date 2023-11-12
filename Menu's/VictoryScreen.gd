@@ -56,14 +56,11 @@ func _input(event):
 
 func _on_Next_Level_Button_button_up():
 	GlobalSounds.play_click_sound()
-	$ScreenTransition.transition_to(NextScenePath)
+	SceneLoader.transition_to(NextScenePath)
 
 func _on_Main_Menu_Button_button_up():
 	GlobalSounds.play_click_sound()
-	if OS.has_feature("web"):
-		$ScreenTransition.transition_to(MainMenuScenePath)
-	else:
-		get_tree().change_scene(MainMenuScenePath)
+	SceneLoader.transition_to(MainMenuScenePath, OS.has_feature("web"))
 
 func format_time(time_in_sec):
 	var seconds = int(time_in_sec)%60
@@ -208,7 +205,7 @@ func _on_get_scores_request_completed(results):
 
 func _on_RetryButton_button_up():
 	GlobalSounds.play_click_sound()
-	$ScreenTransition.transition_to_restart()
+	SceneLoader.reload_current_scene()
 
 
 func _on_VictoryScreen_visibility_changed():

@@ -9,11 +9,11 @@ func _on_ReturnButton_button_up():
 	if OS.has_feature("web"):
 		$ScreenTransition.transition_to(MainMenuScenePath)
 	else:
-		get_tree().change_scene(MainMenuScenePath)
+		SceneLoader.transition_to(MainMenuScenePath)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene(MainMenuScenePath)
+		SceneLoader.transition_to(MainMenuScenePath)
 	
 	if not controller_mode:
 		if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or  \

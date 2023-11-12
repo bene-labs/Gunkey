@@ -57,10 +57,7 @@ func _on_Save3_button_up():
 
 func _on_ReturnButton_button_up():
 	GlobalSounds.play_click_sound()
-	if OS.has_feature("web"):
-		$ScreenTransition.transition_to(return_to_scene_path)
-	else:
-		get_tree().change_scene(return_to_scene_path)
+	SceneLoader.transition_to(return_to_scene_path, OS.has_feature("web"))
 
 func show_save1():
 	save_preview = null

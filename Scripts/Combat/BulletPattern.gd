@@ -34,7 +34,7 @@ func shoot(spawn_positon, aim_rotation, offset = 0, friendly = false) -> bool:
 		bullet.rotation += aim_rotation
 		if offset != 0:
 			bullet.position += Vector2(offset, 0).rotated(bullet.rotation)
-		get_tree().root.get_child(3).call_deferred("add_child", bullet)
+		get_tree().current_scene.call_deferred("add_child", bullet)
 	return true
 
 func get_aim_rotations() -> Array:

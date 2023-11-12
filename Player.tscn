@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=2]
+[gd_scene load_steps=207 format=2]
 
 [ext_resource path="res://ShotgunStatDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -126,7 +126,6 @@
 [ext_resource path="res://Animation/NEWANIMATIONS/Gunkey/NEWFallingLoop/Gunkey_Falling_loop_12.png" type="Texture" id=124]
 [ext_resource path="res://Animation/NEWANIMATIONS/Gunkey/NEWAscending/Gunkey_NewAscending_02.png" type="Texture" id=125]
 [ext_resource path="res://Animation/NEWANIMATIONS/Gunkey/NEWFallingLoop/Gunkey_Falling_loop_08.png" type="Texture" id=126]
-[ext_resource path="res://Menu's/ScreenTransition.tscn" type="PackedScene" id=127]
 [ext_resource path="res://Music/MusicPlaylist.tscn" type="PackedScene" id=128]
 [ext_resource path="res://SFX/Player/PlayerDeath.wav" type="AudioStream" id=129]
 [ext_resource path="res://LabeledHealthBar.tscn" type="PackedScene" id=130]
@@ -1114,7 +1113,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Player" type="KinematicBody2D" groups=["Animated", "Destructible", "Processing", "Pushable"]]
+[node name="Player" type="KinematicBody2D" groups=["Animated", "Destructible", "Player", "Processing", "Pushable"]]
 collision_mask = 3
 script = ExtResource( 2 )
 current_health = 50
@@ -1305,8 +1304,6 @@ wait_time = 0.2
 one_shot = true
 
 [node name="TouchDamageTimer" type="Timer" parent="."]
-
-[node name="ScreenTransition" parent="." instance=ExtResource( 127 )]
 
 [node name="MusicPlaylist" parent="." instance=ExtResource( 128 )]
 

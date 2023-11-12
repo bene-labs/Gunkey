@@ -64,7 +64,7 @@ func enable_front_buttons():
 	
 func _on_Levelselect_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(LevelselectScenePath)
+	SceneLoader.transition_to(LevelselectScenePath, false)
 
 func _on_New_Game_Button_button_up():
 	GlobalSounds.play_click_sound()
@@ -76,35 +76,34 @@ func _on_New_Game_Button_button_up():
 	
 	match int(SaveState.progress.data["CurrentLevel"]):
 		1:
-			$ScreenTransition.transition_to("res://lvl_One_new_tiles.tscn")
+			SceneLoader.transition_to("res://lvl_One_new_tiles.tscn")
 		2:
-			$ScreenTransition.transition_to("res://lvl_Two_reworked.tscn")
+			SceneLoader.transition_to("res://lvl_Two_reworked.tscn")
 		3:
-			$ScreenTransition.transition_to("res://lvl_Three.tscn")
+			SceneLoader.transition_to("res://lvl_Three.tscn")
 		4:
-			$ScreenTransition.transition_to("res://lvl_one_hard_version.tscn")
+			SceneLoader.transition_to("res://lvl_one_hard_version.tscn")
 		_:
-			$ScreenTransition.transition_to("res://lvl_One_new_tiles.tscn")
+			SceneLoader.transition_to("res://lvl_One_new_tiles.tscn")
 	
 
 
 func _on_Options_Button_button_down():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(OptionsScenePath)
+	SceneLoader.transition_to(OptionsScenePath, false)
 
 
 func _on_Credits_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(CreditsScenePath)
+	SceneLoader.transition_to(CreditsScenePath, false)
 
 func _on_Extra_Button_button_up():
 	GlobalSounds.play_click_sound()
-	get_tree().change_scene(LeaderBoardsScenePath)
+	SceneLoader.transition_to(LeaderBoardsScenePath, false)
 
 func _on_Quit_Game_Button_button_up():
-	GlobalSounds.play_click_sound()
 	if OS.has_feature("web"):
-		get_tree().change_scene("res://Menu's/UI_SaveSlotSelect.tscn")
+		SceneLoader.transition_to("res://Menu's/UI_SaveSlotSelect.tscn", false)
 	else:
 		get_tree().quit()
 

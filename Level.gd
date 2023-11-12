@@ -1,7 +1,7 @@
 extends Node2D
 
 export var level_number = 1
-
+ 
 var is_paused = false
 var is_options = false
 var is_won = false
@@ -9,16 +9,14 @@ var is_won = false
 func _ready():
 	SaveState.progress.data["CurrentLevel"] = level_number
 	$CheckpointManager/EnemyFactory.generate_enemy_templates($Enemies.construction_data)
-	$Player/ScreenTransition.connect("fade_in_completed", self, "_on_victory_screen_fade_in_completed")
-	$Player/ScreenTransition.activate()
 
-func _process(delta):
+func _input(event):
 	if SaveState.is_transition_queded:
 		return
 	
-	if Input.is_action_just_pressed("pause"):
+	if event.is_action_pressed("pause"):
 		if is_won:
-			get_tree().change_scene("res://Menu's/UI_MainMenu_New.tscn")
+			SceneLoader.transition_to("res://Menu's/UI_MainMenu_New.tscn")
 		else:
 			if is_paused:
 				if is_options:
@@ -27,7 +25,8 @@ func _process(delta):
 					unpause()
 			else:
 				pause()
-
+	#if event.is_action_pressed("quick_restart"):
+	
 func pause_rec(node):
 	if node.has_method("pause"):
 		node.pause()
@@ -73,9 +72,9 @@ func _on_OptionsMenu_Return():
 func _on_VictoryZone_win():
 	is_won = true
 	pause(false)
-	$Player/ScreenTransition.simulate_transition()
-
-
+	yield(SceneLoader.simulate_transition($VictoryScreen), "completed")
+	_on_victory_screen_fade_in_completed()
+ 
 func _on_victory_screen_fade_in_completed():
 	var stats = $Player.get_level_stats()
 	$VictoryScreen.activate(stats["time"], stats["keys"], stats["collected"], self)

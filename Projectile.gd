@@ -60,7 +60,7 @@ func die():
 	var burst = burst_vfx.instance()
 	burst.self_modulate = $Sprite.self_modulate
 	burst.global_position = global_position
-	get_tree().root.get_child(3).add_child(burst)
+	get_tree().current_scene.add_child(burst)
 	queue_free()
 
 func _on_Projectile_body_entered(body):
