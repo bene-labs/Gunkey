@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Projectile.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Combat/Bullet Trail.gd" type="Script" id=3]
 [ext_resource path="res://VFX/vfx_MuzzleFlash.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/Enemies/bullet_tr_std.png" type="Texture" id=5]
 
@@ -93,7 +92,6 @@ speed_scale = 4.34
 randomness = 1.0
 process_material = SubResource( 4 )
 texture = ExtResource( 5 )
-script = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

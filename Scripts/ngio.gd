@@ -149,7 +149,7 @@ func request(component, parameters, func_ref = null, on_load_function = null):
 			"input=" + JSON.print(input_parameters).percent_encode()
 		)
 
-func _request_completed(result, response_code, headers, body, func_ref, on_load_function = null):
+func _request_completed(_result, _response_code, _headers, body, func_ref, on_load_function = null):
 	if on_load_function:
 		func_ref.call_func(parse_json(body.get_string_from_ascii()), on_load_function)
 	else:
@@ -187,7 +187,7 @@ func _handle_single_cloud_load_results(results, on_load_function:FuncRef):
 	load_http_request.connect("request_completed", self, "_handle_single_cloud_load_data", [on_load_function])
 	load_http_request.request(results["result"]["data"]["slot"]["url"])
 
-func _handle_single_cloud_load_data(result, response_code, headers, body, on_load_function:FuncRef):
+func _handle_single_cloud_load_data(_result, _response_code, _headers, body, on_load_function:FuncRef):
 	var stringified_data:String = body.get_string_from_ascii()
 	stringified_data = stringified_data.replace('<<<doublequote>>>', '"')
 	stringified_data = stringified_data.replace('<<<singlequote>>>', "'")
@@ -217,7 +217,7 @@ func _handle_multiple_cloud_load_results(results, on_load_function:FuncRef):
 			load_http_request.connect("request_completed", self, "_handle_multiple_cloud_load_data", [on_load_function, slot["id"]])
 			load_http_request.request(slot["url"])
 
-func _handle_multiple_cloud_load_data(result, response_code, headers, body, on_load_function:FuncRef, slot_number):
+func _handle_multiple_cloud_load_data(_result, _response_code, _headers, body, on_load_function:FuncRef, slot_number):
 	var stringified_data:String = body.get_string_from_ascii()
 	stringified_data = stringified_data.replace('<<<doublequote>>>', '"')
 	stringified_data = stringified_data.replace('<<<singlequote>>>', "'")

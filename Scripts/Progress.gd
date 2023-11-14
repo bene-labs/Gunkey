@@ -157,7 +157,6 @@ func get_total_collected_keys():
 	return result
 
 func try_update_medal(lvl_nb, medal_value):
-	var test = data["Levels"][lvl_nb - 1]["Medal"]
 	if medal_value > data["Levels"][lvl_nb - 1]["Medal"]:
 		data["Levels"][lvl_nb - 1]["Medal"] = medal_value
 		save_data()

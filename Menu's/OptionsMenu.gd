@@ -30,7 +30,6 @@ func _ready():
 		connect("Return", get_tree().current_scene, "_on_OptionsMenu_Return")
 	$VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox.pressed = SaveState.settings.is_screen_shake()
 	$VideoOptions/VideoOptionsButtons/FullscreenCheckBox.pressed = SaveState.settings.is_fullscreen()
-	
 	$AudioOptions/AudioOptionsButtons/MasterCheckBox.pressed = !SaveState.settings.get_mute_master()
 	$AudioOptions/AudioOptionsButtons/MasterSlider.value = SaveState.settings.get_master_volume()
 	$AudioOptions/AudioOptionsButtons/SFXCheckBox.pressed = !SaveState.settings.get_mute_sfx()
@@ -38,7 +37,6 @@ func _ready():
 	$AudioOptions/AudioOptionsButtons/MusicCheckBox.pressed = !SaveState.settings.get_mute_music()
 	$AudioOptions/AudioOptionsButtons/MusicSlider.value = SaveState.settings.get_music_volume()
 	
-	var test = SaveState.settings
 	emit_signal("toggle_screen_shake", $VideoOptions/VideoOptionsButtons/ScreenShakeCheckBox.pressed)
 	show_video_options()
 
@@ -184,7 +182,7 @@ func _on_SavesButton_button_down():
 func _on_ControlPageSlider_value_changed(value):
 	var pages = $ControlsOptions/Pages.get_children()
 	for i in range(pages.size()):
-		if i == $ControlsOptions/ControlPageSlider.value:
+		if i == value:
 			pages[i].show()
 		else:
 			pages[i].hide()

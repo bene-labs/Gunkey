@@ -89,7 +89,6 @@ func load_data():
 	file.open("user://settings.dat", File.READ)
 	var content = file.get_as_text()
 	var json_result = JSON.parse(content)
-	var res = json_result.result
 	if json_result.error == OK and json_result.result is Dictionary and \
 	json_result.result.has("ScreenShake") and json_result.result.has("Fullscreen"):
 		data = json_result.result
