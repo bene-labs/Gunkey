@@ -14,7 +14,6 @@ export var very_low_health = 20
 export var textures = []
 
 func _on_HealthBar_value_changed(value):
-	value = value
 	
 	var percantage = value / max_value * 100
 	

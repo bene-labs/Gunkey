@@ -15,10 +15,13 @@ export var very_low_health = 20
 export var textures = []
 export var icons = []
 
-func _on_HealthBar_value_changed(value):
-	value = value
+func set_max_value(value):
+	$HealthBar.max_value = value
+
+func set_value(value):
+	$HealthBar.value = value
 	
-	var percantage = $HealthBar.value /  $HealthBar.max_value * 100
+	var percantage = value /  $HealthBar.max_value * 100
 	
 	if percantage <= very_low_health:
 		$HealthBar.texture_progress = textures[-1]

@@ -55,7 +55,7 @@ func is_inside_range(target_position):
 
 func reset():
 	current_health = max_health
-	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.value = current_health
+	$Camera2D/CanvasLayer/LabeledHealthBar.set_value(current_health)
 	reset_animation()
 	$Movement.reset()
 	direction = Movement.Direction.NONE
@@ -77,8 +77,8 @@ func format_time(time_in_sec):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reset_animation()
-	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.max_value = max_health
-	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.value = current_health
+	$Camera2D/CanvasLayer/LabeledHealthBar.set_max_value(max_health)
+	$Camera2D/CanvasLayer/LabeledHealthBar.set_value(current_health)
 #	AnimationHelper.reconfige_even_timed_animation_lenght($AnimationPlayer.get_animation("take_damage"), invicibility_time, [0.25, 0.5])
 	if camera_path != "":
 		$Camera2D.current = false
@@ -154,13 +154,13 @@ func heal(ammount):
 	current_health += ammount
 	if current_health > max_health:
 		current_health = max_health
-	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.value = current_health
+	$Camera2D/CanvasLayer/LabeledHealthBar.set_value(current_health)
 
 func take_damage(damage = 1):
 	if damage <= 0 or is_invincible or current_health <= 0:
 		return
 	current_health -= damage
-	$Camera2D/CanvasLayer/LabeledHealthBar/HealthBar.value = current_health
+	$Camera2D/CanvasLayer/LabeledHealthBar.set_value(current_health)
 	$AnimationPlayer.play("take_damage")
 	if current_health <= 0:
 		die()

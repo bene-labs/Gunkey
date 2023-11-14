@@ -35,7 +35,7 @@ func get_construction_data():
 func reset_animation():
 	$AnimatedSprite.frame = 0
 	$AnimatedSprite.playing = true
-	$AnimatedSprite.play("Default")
+	$AnimatedSprite.play("Idle")
 	
 func _ready():
 	reset_animation()
