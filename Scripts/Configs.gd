@@ -34,7 +34,7 @@ func _ready():
 	
 	if OS.has_feature("NG"): 
 		load_cloud_data()
-	elif not progress.get_name():
+	elif not progress.try_get_name():
 		randomize()
 		var adj_list = adjectives.split(",")
 		var noun_list = nouns.split(",")

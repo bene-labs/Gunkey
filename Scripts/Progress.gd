@@ -97,6 +97,11 @@ func set_medal_requirements(silver, gold, special):
 	gold_total_time = gold
 	special_total_time = special
 
+func try_get_name():
+	if not "Name" in data:
+		return false
+	return data["Name"]
+
 func get_name():
 	return data["Name"]
 	
