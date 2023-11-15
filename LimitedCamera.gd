@@ -1,14 +1,15 @@
 extends Camera2D
 
 var shake_strength = 0
+var limit_rect = null
 export var enable_screen_shake = true
 
 func _ready():
-	var limit_rect = null
 	for child in get_children():
 		if child is ReferenceRect:
 			limit_rect = child.get_global_rect()
-	apply_limit(limit_rect)
+			apply_limit(limit_rect)
+			return
 
 func apply_limit(rect):
 	if rect == null:
