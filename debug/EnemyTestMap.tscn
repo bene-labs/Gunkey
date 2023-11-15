@@ -35,7 +35,6 @@ margin_bottom = 62.0
 position = Vector2( 172, -38 )
 current_health = 1000
 max_health = 1000
-invicibility_time = 0.2
 camera_path = NodePath("../LimitedCamera")
 
 [node name="MachineGunTurretEnemy" parent="." instance=ExtResource( 6 )]

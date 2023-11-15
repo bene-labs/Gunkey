@@ -808,9 +808,6 @@ scale = Vector2( 2.38139, 121.369 )
 
 [node name="VictoryScreen" parent="." instance=ExtResource( 12 )]
 NextScenePath = "res://lvl_Three.tscn"
-silver_time = 80
-gold_time = 50
-special_time = 30
 
 [node name="CustomCursor" parent="." instance=ExtResource( 29 )]
 position = Vector2( 0, -574 )

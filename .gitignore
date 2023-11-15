@@ -10,3 +10,16 @@ export_presets.cfg
 .mono/
 data_*/
 build/
+
+# Build files
+*.exe
+export/
+
+# Mac files
+.DS_Store
+
+# Rider files
+.idea/
+
+# Mercurial files
+*.orig

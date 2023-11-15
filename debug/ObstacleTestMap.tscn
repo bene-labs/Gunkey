@@ -20,6 +20,7 @@
 [node name="MovementTestMap" type="Node2D"]
 position = Vector2( 3, -17 )
 script = ExtResource( 5 )
+level_number = 5
 
 [node name="Collectibles" parent="." instance=ExtResource( 13 )]
 
@@ -123,7 +124,6 @@ script = ExtResource( 16 )
 
 [node name="GroundedEnemy" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( 874, -887 )
-move_on_ground_only = false
 
 [node name="FlyingEnemy" parent="Enemies" instance=ExtResource( 15 )]
 position = Vector2( 1797, -1261 )

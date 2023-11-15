@@ -11,10 +11,6 @@
 [node name="AnimatedSprite" parent="." index="0"]
 frame = 2
 
-[node name="AutoShooter" parent="." index="5"]
-aim_at_target = true
-reload_time = 4.0
-
 [node name="LaserPointer" parent="." index="6" instance=ExtResource( 2 )]
 
 [node name="AutoShooter2" type="Node2D" parent="." index="7"]
